@@ -13,6 +13,7 @@ public class HealthBarControllerNew : MonoBehaviour {
 	void Start()
 	{
 		currentHP = 1;
+
 	}
 
 	void OnGUI() {
