@@ -4,15 +4,19 @@ using System.Collections;
 public class HealthBarControllerNew : MonoBehaviour {
 	
 	public GUITexture healthBar;
+	public GUIText lifeText;
 
 	private float currentHP;
-	private float textureRatio;
+	private float healthBarLength100;
 	private bool gameOver = false;
+	private int life = 5;
 
 	// Use this for initialization
 	void Start()
 	{
-		currentHP = 1;
+		currentHP = 100;
+		healthBarLength100 = healthBar.guiTexture.pixelInset.width;
+		takeDamage (90);
 
 	}
 
@@ -20,27 +24,43 @@ public class HealthBarControllerNew : MonoBehaviour {
 
 	}
 
-	public void takeDamage(float HP) {
-		if (HP < 0) {
-			HP = 0;
+	void takeDamage(float dmg) {
+		currentHP = currentHP - dmg;
+
+		if (currentHP <= 0) {
+			decrementLife();
 		}
-		if (HP != 0) {
-			StartCoroutine (AnimateHPLoss (HP));		
+		if (currentHP != 0) {
+			updateHealthbar();
 		} else {
-			StartCoroutine (AnimateHPLoss (HP));
 			gameOver = true;
 		}
 
 	}
 
-
-	IEnumerator AnimateHPLoss(float HP){
-		while (currentHP > HP) {
-			healthBar.pixelInset = (new Rect (0+(float)(Screen.height*0.15*textureRatio*0.1503f), Screen.height-(float)(Screen.height*0.15), (float)(Screen.height*0.15*textureRatio*currentHP), (float)(Screen.height*0.15)));
-
-			currentHP = currentHP - 0.01f;
-			yield return new WaitForSeconds(0.03f);
-		}
+	void updateHealthbar (){
+		healthBar.guiTexture.pixelInset = new Rect(healthBar.guiTexture.pixelInset.x,healthBar.guiTexture.pixelInset.y, (healthBarLength100 * currentHP/100),healthBar.guiTexture.pixelInset.height);
 	}
+
+	void decrementLife() {
+		life--;
+		updateLifeText ();
+	}
+
+	void incrementLife() {
+		life++;
+		updateLifeText ();
+	}
+	void updateLifeText() {
+		lifeText.text = "x" + life;
+	}
+
+	//IEnumerator AnimateHPLoss(float HP){
+	//		healthBar.pixelInset = (new Rect (0+(float)(Screen.height*0.15*textureRatio*0.1503f), Screen.height-(float)(Screen.height*0.15), (float)(Screen.height*0.15*textureRatio*currentHP), (float)(Screen.height*0.15)));
+	//
+	//		currentHP = currentHP - 0.01f;
+	//		yield return new WaitForSeconds(0.03f);
+	//	}
+	//}
 
 }
