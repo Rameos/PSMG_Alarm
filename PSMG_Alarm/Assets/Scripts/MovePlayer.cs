@@ -22,44 +22,49 @@ public class MovePlayer : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        //if (Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    if (y < 0) y = -y;
+        //    y += speed;
+        //    keyPressed = true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    if (y > 0) y = -y;
+        //    y -= speed;
+        //    keyPressed = true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    if (x > 0) x = -x;
+        //    x -= speed;
+        //    keyPressed = true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    if (x < 0) x = -x;
+        //    x += speed;
+        //    keyPressed = true;
+        //}
+        //if (keyPressed == true)
+        //{
+        //    transform.Translate(x * Time.deltaTime / 10, y * Time.deltaTime / 10, 0);
+        //}
+        //if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        //{
+        //    keyPressed = false;
+        //}
+        //if (keyPressed == false)
+        //{
+        //    if (y < 0) y += 1;
+        //    if (y > 0) y -= 1;
+        //    if (x > 0) x -= 1;
+        //    if (x < 0) x += 1;
+        //}
+
+        if (Input.GetAxis("Vertical") > 0) 
         {
-            if (y < 0) y = -y;
-            y += speed;
-            keyPressed = true;
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (y > 0) y = -y;
-            y -= speed;
-            keyPressed = true;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (x > 0) x = -x;
-            x -= speed;
-            keyPressed = true;
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (x < 0) x = -x;
-            x += speed;
-            keyPressed = true;
-        }
-        if (keyPressed == true)
-        {
-            transform.Translate(x * Time.deltaTime / 10, y * Time.deltaTime / 10, 0);
-        }
-        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            keyPressed = false;
-        }
-        if (keyPressed == false)
-        {
-            if (y < 0) y += 1;
-            if (y > 0) y -= 1;
-            if (x > 0) x -= 1;
-            if (x < 0) x += 1;
+            rigidbody2D.AddForce(Vector2.right * 2);
         }
     }
 }
