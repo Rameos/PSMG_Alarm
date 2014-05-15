@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         return randomPos;
     }
 
-    private void SpawnEnemy()
+    public void SpawnEnemy()
     {
         Vector3 pos = GetRandomPosition();
         GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0)) as GameObject;

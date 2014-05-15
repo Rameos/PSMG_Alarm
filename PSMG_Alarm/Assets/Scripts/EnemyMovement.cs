@@ -7,11 +7,14 @@ public class EnemyMovement : MonoBehaviour {
 
     public GameObject camera2d;
 
+    private EnemySpawner spawner;
+
     public float speed = 2;
 
 	void Start () 
     {
         camera2d = GameObject.Find("2D Camera");
+        spawner = GameObject.Find("GameController").GetComponent<EnemySpawner>();
         GetNewTargetLocation();
 	}
 	
@@ -42,10 +45,12 @@ public class EnemyMovement : MonoBehaviour {
         {
             Destroy(gameObject);
             Destroy(col.gameObject);
+            spawner.SpawnEnemy();
         }
         else if (col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            spawner.SpawnEnemy();
         }
 
     }
