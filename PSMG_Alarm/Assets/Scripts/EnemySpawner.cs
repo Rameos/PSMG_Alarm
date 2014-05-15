@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
         float screenX = Random.Range(0.0f, camera2d.camera.pixelWidth);
         float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
         Vector3 randomPos = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
+        randomPos.y = 9;
 
         return randomPos;
     }
@@ -28,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Vector3 pos = GetRandomPosition();
-        GameObject clone = Instantiate(enemy, pos, Quaternion.EulerAngles(90, 0, 0)) as GameObject;
+        GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(90, 0, 0)) as GameObject;
         enemiesAlive++;
     }
 

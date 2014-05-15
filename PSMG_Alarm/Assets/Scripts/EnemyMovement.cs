@@ -26,6 +26,7 @@ public class EnemyMovement : MonoBehaviour {
         float screenX = Random.Range(0.0f, camera2d.camera.pixelWidth);
         float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
         targetLocation = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
+        targetLocation.y = 9;
     }
 
     void MoveToTargetLocation()
