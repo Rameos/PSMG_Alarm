@@ -37,5 +37,6 @@ public class PlayerShooting : MonoBehaviour {
            Debug.Log("bulletForce: " + bulletInstance.transform.right+ "bulletForce forward"+ bulletInstance.transform.forward);
            Destroy(bulletInstance, 2);
         }
+        
     }
 }
