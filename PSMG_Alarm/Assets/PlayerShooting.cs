@@ -15,7 +15,7 @@ public class PlayerShooting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+      
         
 	}
     void FixedUpdate()
@@ -35,14 +35,20 @@ public class PlayerShooting : MonoBehaviour {
         {
             int ammoIndex = 0;
             //Debug.Log("posx" + aimPositon.x + " posy " + aimPositon.y +"angle"+ angle);
-            GameObject bulletInstance = (GameObject)Instantiate(rocket[ammoIndex], transform.position,transform.rotation);
-
+            GameObject bulletInstance = (GameObject)Instantiate(rocket[ammoIndex], transform.position, Quaternion.Euler(new Vector3(0,0,0)));
+            Debug.Log("pos:" + transform.position);
+            Debug.Log("rot:" + transform.rotation);
             
-            //bulletInstance.velocity = new Vector2(aimPositon.x / speed, aimPositon.y / speed);
+            
             Debug.Log("mouseposition" + aimPositon);
-            bulletInstance.transform.LookAt(aimPositon);
-           // bulletInstance.rigidbody2D.AddForce(bulletInstance.transform.forward * speed);
-
+           // bulletInstance.transform.LookAt(aimPositon);
+            bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90) );
+            //bulletInstance.rigidbody2D.velocity = new Vector2(aimPositon.x / speed, aimPositon.y / speed);
+            //bulletInstance.rigidbody2D.velocity = transform.InverseTransformDirection(Vector3.forward) * speed;
+            
+           bulletInstance.rigidbody.AddForce(bulletInstance.transform.right*1000);
+           Debug.Log("bulletForce: " + bulletInstance.transform.right+ "bulletForce forward"+ bulletInstance.transform.forward);
+           Destroy(bulletInstance, 2);
         }
     }
 }
