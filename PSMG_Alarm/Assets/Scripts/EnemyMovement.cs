@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Start () 
     {
-        camera2d = GameObject.Find("2D Game Camera");
+        camera2d = GameObject.Find("2D Camera");
         GetNewTargetLocation();
 	}
 	
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour {
         float screenX = Random.Range(0.0f, camera2d.camera.pixelWidth);
         float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
         targetLocation = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
-        targetLocation.y = 9;
+        targetLocation.z = 9;
     }
 
     void MoveToTargetLocation()
@@ -34,5 +34,11 @@ public class EnemyMovement : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, targetLocation, Time.deltaTime * speed);
         if (transform.position == targetLocation)
             GetNewTargetLocation();
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Jhkjnk");
+        Destroy(gameObject);
     }
 }
