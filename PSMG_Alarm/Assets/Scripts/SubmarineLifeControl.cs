@@ -19,8 +19,6 @@ public class SubmarineLifeControl : MonoBehaviour {
 
 		decrementLife ();
 		decrementLife ();
-		decrementLife ();
-		decrementLife ();
 	}
 	
 	// Update is called once per frame
