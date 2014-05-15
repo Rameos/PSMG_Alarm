@@ -14,11 +14,8 @@ public class PlayerShooting : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-      
-        
-	}
-    void FixedUpdate()
+	
+    void Update()
     {
         Vector3 aimPositon = Input.mousePosition;
         aimPositon.z = 0.0f;
