@@ -39,13 +39,6 @@ public class EnemyMovement : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Jhkjnk");
-        if (col.gameObject.tag == "Rocket")
-        {
-            Destroy(gameObject);
-        }
-        else if (col.gameObject.tag=="Enemy"){
-             Destroy(gameObject);
-        }
-       
+        Destroy(gameObject);
     }
 }

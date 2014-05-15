@@ -64,7 +64,22 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetAxis("Vertical") > 0) 
         {
-            rigidbody2D.AddForce(Vector2.right * 2);
+            rigidbody2D.AddForce(transform.right * 20);
+        }
+
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            rigidbody2D.AddForce(-transform.right * 20);
+        }
+
+        if (Input.GetButton("Left"))
+        {
+            transform.Rotate(Vector3.forward);
+        }
+
+        if (Input.GetButton("Right"))
+        {
+            transform.Rotate(-Vector3.forward);
         }
     }
 }
