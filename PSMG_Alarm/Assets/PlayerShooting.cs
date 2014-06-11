@@ -6,7 +6,6 @@ public class PlayerShooting : MonoBehaviour
     public GameObject[] rocket;
     public float speed = 19f;
 
-
     private MovePlayer uboot;
 
     // Use this for initialization
