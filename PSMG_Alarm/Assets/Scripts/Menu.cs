@@ -84,7 +84,11 @@ public class Menu : MonoBehaviour
         {
             Application.LoadLevel("submarine");
         }
-
+        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+        {
+            modiMenu = false;
+            mainMenu = true;
+        }
     }
 
     void initLevelsOfDifficultyMenu()
@@ -102,6 +106,11 @@ public class Menu : MonoBehaviour
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "schwer"))
         {
             Application.LoadLevel("submarine");
+        }
+        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+        {
+            levelsOfDifficulty = false;
+            modiMenu = true;
         }
     }
 
