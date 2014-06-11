@@ -63,6 +63,7 @@ public class Menu : MonoBehaviour
         }
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 4 * buttonHeight, buttonWidth, buttonHeight), "Spiel beenden"))
         {
+            Application.Quit(); 
         }
     }
 
@@ -116,7 +117,12 @@ public class Menu : MonoBehaviour
 
     void initHighscores()
     {
-
+        GUI.Label(new Rect(centerX, guiBoxY, buttonWidth, buttonHeight * 2), "Highscores");
+        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+        {
+            highscores = false;
+            mainMenu = true;
+        }
     }
 }
 
