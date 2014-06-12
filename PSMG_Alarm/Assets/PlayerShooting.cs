@@ -35,10 +35,11 @@ public class PlayerShooting : MonoBehaviour
         //Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
        aimPositon.x = aimPositon.x - ubootposition.x;
-        aimPositon.y = aimPositon.y - ubootposition.y;
+        //Für Mouse
+       //aimPositon.y = aimPositon.y - ubootposition.x;
+        //Für Eyetracking
+        aimPositon.y = (Screen.height-aimPositon.y) - ubootposition.y;
 
-
-        //- vor aimpositon.y for eyetracker
 
         float angle = Mathf.Atan2(aimPositon.y, aimPositon.x) * Mathf.Rad2Deg - 90;
 
