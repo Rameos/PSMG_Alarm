@@ -50,7 +50,7 @@ public class EnemyMovement : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
 		highscorecontroller.addScoreValue(100);
-<<<<<<< HEAD
+
         if (col.gameObject.tag == "Rocket") {
 			Destroy (gameObject);
 			Destroy (col.gameObject);
@@ -64,20 +64,7 @@ public class EnemyMovement : MonoBehaviour {
 			Destroy (gameObject);
 			spawner.SpawnEnemy ();
 		}
-=======
-        if (col.gameObject.tag == "Rocket")
-        {
-            Destroy(gameObject);
-            Destroy(col.gameObject);
-            if(!gameOver.getGameOver()) spawner.SpawnEnemy();
-        }
-        else if (col.gameObject.tag == "Player")
-        {
-			submarineLifeControl.decrementLife();
-            Destroy(gameObject);
-            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
-        }
->>>>>>> 63d1b0cf71235e9a58ee234e6c0dfe1cd8c7bc24
+
 
     }
 
