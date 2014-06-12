@@ -6,6 +6,7 @@ public class PowerUpMovement : MonoBehaviour
 
     private Vector3 targetLocation;
     public GameObject camera2d;
+	public PowerUpEffectScript powerUpEffectScript;
     private PowerUpSpawner spawner;
     public float speed;
     private bool moveAllowed = true;
@@ -16,6 +17,7 @@ public class PowerUpMovement : MonoBehaviour
         speed = 0.2f;
         camera2d = GameObject.Find("2D Camera");
         spawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();
+		powerUpEffectScript = GameObject.FindObjectOfType(typeof(PowerUpEffectScript)) as PowerUpEffectScript;
         GetNewTargetLocation();
     }
 
@@ -44,8 +46,10 @@ public class PowerUpMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+			powerUpEffectScript.shield();
             Destroy(gameObject);
             spawner.removePowerUp();
+
         }
     }
 

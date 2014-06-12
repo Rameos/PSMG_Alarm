@@ -50,18 +50,21 @@ public class EnemyMovement : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
 		highscorecontroller.addScoreValue(100);
-        if (col.gameObject.tag == "Rocket")
-        {
-            Destroy(gameObject);
-            Destroy(col.gameObject);
-            if(!gameOver.getGameOver()) spawner.SpawnEnemy();
-        }
-        else if (col.gameObject.tag == "Player")
-        {
-			submarineLifeControl.decrementLife();
-            Destroy(gameObject);
-            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
-        }
+
+        if (col.gameObject.tag == "Rocket") {
+			Destroy (gameObject);
+			Destroy (col.gameObject);
+			spawner.SpawnEnemy ();
+		} else if (col.gameObject.tag == "Player") {
+			submarineLifeControl.decrementLife ();
+			Destroy (gameObject);
+			spawner.SpawnEnemy ();
+		} else if (col.gameObject.tag == "Shield") {
+			Destroy (GameObject.Find("Shield(Clone)"));
+			Destroy (gameObject);
+			spawner.SpawnEnemy ();
+		}
+
 
     }
 
