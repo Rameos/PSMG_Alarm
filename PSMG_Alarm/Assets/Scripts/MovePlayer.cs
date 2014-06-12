@@ -7,6 +7,8 @@ public class MovePlayer : MonoBehaviour
     public float speedBackwards = 15;
     public float rotationSpeed = 2;
 
+	private bool playerMove = true;
+
     void Start()
     {
 
@@ -14,7 +16,9 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        Move();
+		if (playerMove) {
+			Move();
+		}        
     }
 
     void Move()
@@ -39,4 +43,8 @@ public class MovePlayer : MonoBehaviour
             transform.Rotate(-Vector3.forward * rotationSpeed);
         }
     }
+
+	public void disablePlayerMovement() {
+		playerMove = false;
+	}
 }
