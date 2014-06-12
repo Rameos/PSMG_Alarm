@@ -34,10 +34,9 @@ public class PlayerShooting : MonoBehaviour
         aimPositon.z = 0.0f;
         //Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
-       // aimPositon.x = aimPositon.x - ubootposition.x;
-        //aimPositon.y = aimPositon.y - ubootposition.y;
-        aimPositon.x = aimPositon.x - playerSubmarine.transform.position.x;
-        aimPositon.y = aimPositon.y - playerSubmarine.transform.position.y;
+       aimPositon.x = aimPositon.x - ubootposition.x;
+        aimPositon.y = aimPositon.y - ubootposition.y;
+
 
         //- vor aimpositon.y for eyetracker
 
