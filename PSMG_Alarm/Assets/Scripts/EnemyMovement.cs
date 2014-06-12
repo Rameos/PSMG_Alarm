@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 	private HighscoreScript highscorecontroller;
 	private SubmarineLifeControl submarineLifeControl;
 
+
     public float speed = 2;
 
 
