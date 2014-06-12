@@ -16,7 +16,7 @@ public class PlayerShooting : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
+        gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
         uboot = transform.root.GetComponent<MovePlayer>();
     }
 

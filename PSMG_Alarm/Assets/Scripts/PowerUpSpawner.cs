@@ -17,7 +17,7 @@ public class PowerUpSpawner : MonoBehaviour
     void Start()
     {
         updateCount = 0;
-        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
+        gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
     }
 
     // Update is called once per frame

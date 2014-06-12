@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
+        gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
     }
 
     void Update()

@@ -44,7 +44,6 @@ public class Menu : MonoBehaviour
     void initMainMenu()
     {
 
-
         GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Hauptmenü");
 
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Spiel Starten"))

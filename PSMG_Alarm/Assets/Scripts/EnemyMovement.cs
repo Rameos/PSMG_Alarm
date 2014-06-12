@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour {
         GetNewTargetLocation();
 		highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
 		submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
-        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
+        gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
 
 	}
 	
