@@ -5,6 +5,7 @@ public class PlayerShooting : MonoBehaviour
 {
     public GameObject[] rocket;
     public GameObject[] laser;
+    private GameOverScript gameOver; 
     public float speed = 19f;
     public enum weaponTyps { rocket, laser };
     public weaponTyps weaponTyp = weaponTyps.rocket;
@@ -15,7 +16,7 @@ public class PlayerShooting : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        
+        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
         uboot = transform.root.GetComponent<MovePlayer>();
     }
 
@@ -49,7 +50,7 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Waffe2Gewechselt" + weaponTyp);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver())
         {
             switch (weaponTyp)
             {
