@@ -9,8 +9,6 @@ public class HighscoreScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		score = 1234;
-		changeScoreText ();
 	}
 	
 	// Update is called once per frame
@@ -18,8 +16,9 @@ public class HighscoreScript : MonoBehaviour {
 	
 	}
 
-	void addScoreValue(int value) {
+	public void addScoreValue(int value) {
 		score = score + value;
+		changeScoreText ();
 	}
 
 	void changeScoreText() {

@@ -9,8 +9,7 @@ public class LifeScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		life = 5;
-		decrementLife ();
+		life = 4;
 	}
 	
 	// Update is called once per frame
@@ -18,12 +17,12 @@ public class LifeScript : MonoBehaviour {
 	
 	}
 
-	void incrementLife(){
+	public void incrementLife(){
 		life++;
 		updateLifeText ();
 	}
 
-	void decrementLife(){
+	public void decrementLife(){
 		life--;
 		updateLifeText ();
 	}

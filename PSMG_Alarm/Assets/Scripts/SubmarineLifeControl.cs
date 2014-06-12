@@ -6,6 +6,7 @@ public class SubmarineLifeControl : MonoBehaviour {
 	public GUITexture [] sub = new GUITexture[4];
 	public Texture2D red;
 	public Texture2D grey;
+	public GameOverScript gameOverScript;
 
 	private int [] lifeArray = new int[4];
 	private int life;
@@ -16,9 +17,7 @@ public class SubmarineLifeControl : MonoBehaviour {
 		for (int i = 0; i < lifeArray.Length; i++) {
 			lifeArray[i] = 1;
 		}
-
-		decrementLife ();
-		decrementLife ();
+		updateLife ();
 	}
 	
 	// Update is called once per frame
@@ -26,7 +25,7 @@ public class SubmarineLifeControl : MonoBehaviour {
 	
 	}
 
-	void incrementLife(){
+	public void incrementLife(){
 		if (life > 0 && life < 4) {
 			life++;
 			lifeArray [life - 1] = 1;
@@ -34,14 +33,15 @@ public class SubmarineLifeControl : MonoBehaviour {
 		}
 	}
 
-	void decrementLife(){
+	public void decrementLife(){
 		if (life > 0 && life <= 4) {
 			life--;
 			lifeArray[life] = 0;
 			updateLife ();	
 		}
-		if (life == 0) {
-			Debug.Log("You lose!");		
+		if (life <= 0) {
+			Debug.Log("You lose!");
+			gameOverScript.endOfGame();
 		}
 	}
 

@@ -8,14 +8,20 @@ public class EnemyMovement : MonoBehaviour {
     public GameObject camera2d;
 
     private EnemySpawner spawner;
+	private HighscoreScript highscorecontroller;
+	private SubmarineLifeControl submarineLifeControl;
 
     public float speed = 2;
+
 
 	void Start () 
     {
         camera2d = GameObject.Find("2D Camera");
         spawner = GameObject.Find("GameController").GetComponent<EnemySpawner>();
         GetNewTargetLocation();
+		highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
+		submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
+
 	}
 	
 
@@ -41,6 +47,7 @@ public class EnemyMovement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+		highscorecontroller.addScoreValue(100);
         if (col.gameObject.tag == "Rocket")
         {
             Destroy(gameObject);
@@ -49,6 +56,7 @@ public class EnemyMovement : MonoBehaviour {
         }
         else if (col.gameObject.tag == "Player")
         {
+			submarineLifeControl.decrementLife();
             Destroy(gameObject);
             spawner.SpawnEnemy();
         }
