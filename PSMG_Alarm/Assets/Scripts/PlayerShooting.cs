@@ -3,7 +3,6 @@ using System.Collections;
 [RequireComponent(typeof(LineRenderer))]
 public class PlayerShooting : MonoBehaviour
 {
-    public GameObject playerSubmarine;
     public GameObject[] rocket;
     public GameObject[] laser;
     private GameOverScript gameOver; 
@@ -27,18 +26,16 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         
-          Vector3 aimPositon = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
-        //Vector3 aimPositon = Input.mousePosition;
-          Debug.Log("AimpositionGaze " + aimPositon);
-          Debug.Log("Aimpos Mouse " + Input.mousePosition);
+          //Vector3 aimPositon = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
+        Vector3 aimPositon = Input.mousePosition;
+
         aimPositon.z = 0.0f;
-        //Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
-       aimPositon.x = aimPositon.x - ubootposition.x;
+       	aimPositon.x = aimPositon.x - ubootposition.x;
         //Für Mouse
-       //aimPositon.y = aimPositon.y - ubootposition.x;
+      	aimPositon.y = aimPositon.y - ubootposition.y;
         //Für Eyetracking
-        aimPositon.y = (Screen.height-aimPositon.y) - ubootposition.y;
+        //aimPositon.y = (Screen.height-aimPositon.y) - ubootposition.y;
 
 
         float angle = Mathf.Atan2(aimPositon.y, aimPositon.x) * Mathf.Rad2Deg - 90;

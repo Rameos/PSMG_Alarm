@@ -39,13 +39,21 @@ public class EnemyMovement : MonoBehaviour {
         targetLocation = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
         targetLocation.z = 9;
     }
-
-    void MoveToTargetLocation()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, targetLocation, Time.deltaTime * speed);
-        if (transform.position == targetLocation)
-            GetNewTargetLocation();
-    }
+	void MoveToTargetLocation()
+	{
+		TurnToTarget();
+		
+		transform.position = transform.position + transform.right * speed * Time.deltaTime;
+		if (Vector3.Distance(transform.position, targetLocation) < 1)
+			GetNewTargetLocation();
+	}
+	
+	void TurnToTarget()
+	{
+		float angle = Vector3.Angle(transform.position - targetLocation, -transform.right);
+		if (angle > 20) 
+			transform.Rotate(Vector3.forward, 10);
+	}
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -54,15 +62,18 @@ public class EnemyMovement : MonoBehaviour {
         if (col.gameObject.tag == "Rocket") {
 			Destroy (gameObject);
 			Destroy (col.gameObject);
-			if(!gameOver) spawner.SpawnEnemy ();
+			if(!gameOver.getGameOver()) spawner.SpawnEnemy ();
 		} else if (col.gameObject.tag == "Player") {
 			submarineLifeControl.decrementLife ();
 			Destroy (gameObject);
-            if (!gameOver) spawner.SpawnEnemy();
+			if(!gameOver.getGameOver())spawner.SpawnEnemy();
 		} else if (col.gameObject.tag == "Shield") {
 			Destroy (GameObject.Find("Shield(Clone)"));
 			Destroy (gameObject);
-            if (!gameOver) spawner.SpawnEnemy();
+			if(!gameOver.getGameOver())spawner.SpawnEnemy();
+		} else if (col.gameObject.tag == "Wave") {
+			Destroy (gameObject);
+			if(!gameOver.getGameOver())spawner.SpawnEnemy();
 		}
 
 

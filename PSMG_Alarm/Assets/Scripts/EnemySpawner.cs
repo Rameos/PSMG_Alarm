@@ -24,8 +24,31 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        float screenX = Random.Range(0.0f, camera2d.camera.pixelWidth);
-        float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
+		float screenX;
+		float screenY;
+		
+		int edge = Random.Range(0, 4);
+		
+		if (edge == 0)
+		{
+			screenX = Random.Range(camera2d.camera.pixelWidth, camera2d.camera.pixelWidth + 2);
+			screenY = Random.Range(0, -1);
+		} 
+		else if (edge == 1)
+		{
+			screenX = Random.Range(0, -2);
+			screenY = Random.Range(camera2d.camera.pixelHeight, camera2d.camera.pixelHeight + 2);
+		} 
+		else if (edge == 2)
+		{
+			screenX = Random.Range(0, -2);
+			screenY = Random.Range(0, -2);
+		} 
+		else
+		{
+			screenX = Random.Range(camera2d.camera.pixelWidth, camera2d.camera.pixelWidth + 2);
+			screenY = Random.Range(camera2d.camera.pixelHeight, camera2d.camera.pixelHeight + 2);
+		}
         Vector3 randomPos = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
         randomPos.z = 9;
 
@@ -34,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
+		Debug.Log ("spawn stuff");
         Vector3 pos = GetRandomPosition();
         GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
         enemiesAlive++;
