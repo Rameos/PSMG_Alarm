@@ -3,12 +3,14 @@ using System.Collections;
 [RequireComponent(typeof(LineRenderer))]
 public class PlayerShooting : MonoBehaviour
 {
+    public GameObject playerSubmarine;
     public GameObject[] rocket;
     public GameObject[] laser;
     private GameOverScript gameOver; 
     public float speed = 19f;
     public enum weaponTyps { rocket, laser };
     public weaponTyps weaponTyp = weaponTyps.rocket;
+    
     
 
     private MovePlayer uboot;
@@ -25,17 +27,22 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         
-        //  Vector3 aimPositon = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
-        Vector3 aimPositon = Input.mousePosition;
+          Vector3 aimPositon = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
+        //Vector3 aimPositon = Input.mousePosition;
+          Debug.Log("AimpositionGaze " + aimPositon);
+          Debug.Log("Aimpos Mouse " + Input.mousePosition);
         aimPositon.z = 0.0f;
         //Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
-        aimPositon.x = aimPositon.x - ubootposition.x;
-        aimPositon.y = aimPositon.y - ubootposition.y;
+       // aimPositon.x = aimPositon.x - ubootposition.x;
+        //aimPositon.y = aimPositon.y - ubootposition.y;
+        aimPositon.x = aimPositon.x - playerSubmarine.transform.position.x;
+        aimPositon.y = aimPositon.y - playerSubmarine.transform.position.y;
 
         //- vor aimpositon.y for eyetracker
 
         float angle = Mathf.Atan2(aimPositon.y, aimPositon.x) * Mathf.Rad2Deg - 90;
+
         Vector3 rotationVector = new Vector3(0, 0, angle);
         transform.rotation = Quaternion.Euler(rotationVector);
 
