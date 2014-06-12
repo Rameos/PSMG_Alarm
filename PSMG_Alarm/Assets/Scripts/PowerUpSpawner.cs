@@ -7,6 +7,7 @@ public class PowerUpSpawner : MonoBehaviour
 
     public GameObject powerUp;
     public GameObject camera2d;
+    private GameOverScript gameOver; 
     private int updateCount;
     private int randomNumber;
     private int powerUpsCount;
@@ -16,6 +17,7 @@ public class PowerUpSpawner : MonoBehaviour
     void Start()
     {
         updateCount = 0;
+        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         updateCount++;
         randomNumber = Random.Range(100, 200);
-        if (updateCount % randomNumber == 0 && powerUpsCount < MAX_POWERUPS_COUNT)
+        if (updateCount % randomNumber == 0 && powerUpsCount < MAX_POWERUPS_COUNT && !gameOver.getGameOver())
         {
             SpawnPowerup();
             updateCount = 0;

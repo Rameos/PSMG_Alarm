@@ -6,13 +6,19 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemy;
     public GameObject camera2d;
-
+    private GameOverScript gameOver; 
+   
     private int enemiesAlive;
     public int enemiesSouldBeAlive;
 
+    void Start()
+    {
+        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
+    }
+
     void Update()
     {
-        if (enemiesAlive < enemiesSouldBeAlive)
+        if (enemiesAlive < enemiesSouldBeAlive && !gameOver.getGameOver())
             SpawnEnemy();
     }
 
