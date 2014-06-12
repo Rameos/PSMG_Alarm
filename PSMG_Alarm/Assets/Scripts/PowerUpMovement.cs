@@ -8,6 +8,7 @@ public class PowerUpMovement : MonoBehaviour
     public GameObject camera2d;
     private PowerUpSpawner spawner;
     public float speed;
+    private bool moveAllowed = true;
 
     // Use this for initialization
     void Start()
@@ -21,7 +22,7 @@ public class PowerUpMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveToTargetLocation();
+        if(moveAllowed) MoveToTargetLocation();
     }
 
     void GetNewTargetLocation()
@@ -46,5 +47,15 @@ public class PowerUpMovement : MonoBehaviour
             Destroy(gameObject);
             spawner.removePowerUp();
         }
+    }
+
+    public void stopPowerUpMovement()
+    {
+        moveAllowed = false;
+    }
+
+    public bool getMoveAllowed()
+    {
+        return moveAllowed;
     }
 }

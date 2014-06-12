@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour {
     private EnemySpawner spawner;
 	private HighscoreScript highscorecontroller;
 	private SubmarineLifeControl submarineLifeControl;
-
-
+    private GameOverScript gameOver; 
+    private bool moveAllowed = true;
     public float speed = 2;
 
 
@@ -22,13 +22,14 @@ public class EnemyMovement : MonoBehaviour {
         GetNewTargetLocation();
 		highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
 		submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
+        gameOver = GameObject.Find("Game Over Overlay").GetComponent<GameOverScript>();
 
 	}
 	
 
 	void Update () 
     {
-        MoveToTargetLocation();
+        if(moveAllowed) MoveToTargetLocation();
 	}
 
     void GetNewTargetLocation()
@@ -53,14 +54,24 @@ public class EnemyMovement : MonoBehaviour {
         {
             Destroy(gameObject);
             Destroy(col.gameObject);
-            spawner.SpawnEnemy();
+            if(!gameOver.getGameOver()) spawner.SpawnEnemy();
         }
         else if (col.gameObject.tag == "Player")
         {
 			submarineLifeControl.decrementLife();
             Destroy(gameObject);
-            spawner.SpawnEnemy();
+            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
         }
 
+    }
+
+    public void stopEnemyMovement()
+    {
+        moveAllowed = false;
+    }
+
+    public bool getMoveAllowed()
+    {
+        return moveAllowed; 
     }
 }

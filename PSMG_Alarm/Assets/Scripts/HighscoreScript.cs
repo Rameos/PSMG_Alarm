@@ -6,9 +6,11 @@ public class HighscoreScript : MonoBehaviour {
 	public GUIText scoreText;
 
 	private int score;
+    
 
 	// Use this for initialization
 	void Start () {
+        
 	}
 	
 	// Update is called once per frame
