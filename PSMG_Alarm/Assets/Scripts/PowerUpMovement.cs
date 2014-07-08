@@ -7,6 +7,7 @@ public class PowerUpMovement : MonoBehaviour
     private Vector3 targetLocation;
     public GameObject camera2d;
 	public PowerUpEffectScript powerUpEffectScript;
+	public PowerUpSlowEnemyEffectScript powerUpSlowEnemyEffectScript; 
     private PowerUpSpawner spawner;
     public float speed;
     private bool moveAllowed = true;
@@ -18,6 +19,7 @@ public class PowerUpMovement : MonoBehaviour
         camera2d = GameObject.Find("2D Camera");
         spawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();
 		powerUpEffectScript = GameObject.FindObjectOfType(typeof(PowerUpEffectScript)) as PowerUpEffectScript;
+		powerUpSlowEnemyEffectScript = GameObject.FindObjectOfType (typeof(PowerUpSlowEnemyEffectScript)) as PowerUpSlowEnemyEffectScript;
         GetNewTargetLocation();
     }
 
@@ -46,10 +48,14 @@ public class PowerUpMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-			powerUpEffectScript.shield();
-            Destroy(gameObject);
-            spawner.removePowerUp();
-
+			if(this.gameObject.name == "SlowEnemyPowerUp(Clone)") {
+				powerUpSlowEnemyEffectScript.slowEnemies();
+			}
+			if(this.gameObject.name == "PowerUp(Clone)") {
+				powerUpEffectScript.shield();
+			}
+			Destroy(gameObject);
+			spawner.removePowerUp();
         }
     }
 

@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour {
 	private SubmarineLifeControl submarineLifeControl;
     private GameOverScript gameOver; 
     private bool moveAllowed = true;
-    public float speed = 2;
+    private float speed = 2;
 
 
 	void Start () 
@@ -83,10 +83,16 @@ public class EnemyMovement : MonoBehaviour {
     public void stopEnemyMovement()
     {
         moveAllowed = false;
+		Debug.Log ("stop"); 
     }
 
     public bool getMoveAllowed()
     {
         return moveAllowed; 
     }
+
+	public void setSpeed(float value) {
+		Debug.Log (value); 
+		speed = value; 
+	}
 }

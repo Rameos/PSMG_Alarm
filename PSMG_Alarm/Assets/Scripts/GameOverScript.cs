@@ -6,8 +6,7 @@ public class GameOverScript : MonoBehaviour {
 	//private GUIText gameOverText;
 	//private GUITexture tryAgainBut;
 	//private GUITexture mainMenuBut;
-    private GameObject[] enemies;
-    private GameObject[] powerUps; 
+	private GameObject[] enemies, powerUps; 
     private MovePlayer movePlayer;
     private bool gameOver;
 
@@ -28,8 +27,7 @@ public class GameOverScript : MonoBehaviour {
 	public void endOfGame() {
 
         gameOver = true;
-        EnemyMovement enemyMovement;
-        PowerUpMovement powerUpMovement;
+       
        // gameOverText.enabled = true;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -37,18 +35,26 @@ public class GameOverScript : MonoBehaviour {
         movePlayer = GameObject.Find("Submarine").GetComponent<MovePlayer>();
         
         movePlayer.stopPlayerMovement();
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemyMovement = enemies[i].GetComponent<EnemyMovement>();
-            enemyMovement.stopEnemyMovement(); 
-        }
-        for (int i = 0; i < powerUps.Length; i++)
-        {
-            powerUpMovement = powerUps[i].GetComponent<PowerUpMovement>(); 
-            powerUpMovement.stopPowerUpMovement(); 
-        }
-
+		stopEnemies (); 
+		stopPowerUps (); 
         
+	}
+
+	void stopEnemies() {
+		EnemyMovement enemyMovement;
+		for (int i = 0; i < enemies.Length; i++) {
+			enemyMovement = enemies [i].GetComponent<EnemyMovement> ();
+			enemyMovement.stopEnemyMovement (); 
+		}
+	}
+
+	void stopPowerUps() {
+		PowerUpMovement powerUpMovement;
+		for (int i = 0; i < powerUps.Length; i++)
+		{
+			powerUpMovement = powerUps[i].GetComponent<PowerUpMovement>(); 
+			powerUpMovement.stopPowerUpMovement(); 
+		}
 	}
 
     void OnGUI()
@@ -78,6 +84,7 @@ public class GameOverScript : MonoBehaviour {
             Application.LoadLevel("main_menu");
         }
     }
+
     public bool getGameOver()
     {
         return gameOver; 

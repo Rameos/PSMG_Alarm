@@ -49,7 +49,6 @@ public class PowerUpSpawner : MonoBehaviour
     {
         Vector3 pos = GetRandomPosition();
 		randomPowerUpNumber = Random.Range (1, 3); 
-        //GameObject clone = (Instantiate(powerUp, pos, Quaternion.Euler(0, 0, 0)) as GameObject);
 		GameObject clone = randomPowerUpNumber == 1 ? (Instantiate(powerUp, pos, Quaternion.Euler(0, 0, 0)) as GameObject) : (Instantiate(slowEnemyPowerUp, pos, Quaternion.Euler(0, 0, 0)) as GameObject);
         powerUpsCount++;
     }
