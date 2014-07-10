@@ -6,12 +6,13 @@ public class MovePlayer : MonoBehaviour
     public float speedForwards = 20;
     public float speedBackwards = 15;
     public float rotationSpeed = 2;
+    private SubmarineLifeControl submarineLifeControl;
 
     private bool moveAllowed = true;
 
     void Start()
     {
-
+        submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
     }
 
     void Update()
@@ -45,4 +46,6 @@ public class MovePlayer : MonoBehaviour
     public void stopPlayerMovement() {
         moveAllowed = false;
     }
+
+   
 }

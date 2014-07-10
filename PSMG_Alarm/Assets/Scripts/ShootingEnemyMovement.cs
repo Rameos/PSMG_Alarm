@@ -14,7 +14,6 @@ public class ShootingEnemyMovement : MonoBehaviour
     private GameOverScript gameOver;
     private bool moveAllowed = true;
     private float speed = 2;
-    private Transform target;
     public GameObject enemyBullet;
 
 
@@ -43,6 +42,7 @@ public class ShootingEnemyMovement : MonoBehaviour
         float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
         targetLocation = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
         targetLocation.z = 9;
+        ShootPlayer();
     }
     void MoveToTargetLocation()
     {
@@ -52,26 +52,32 @@ public class ShootingEnemyMovement : MonoBehaviour
         transform.position = transform.position + transform.right * speed * Time.deltaTime;
         if (Vector3.Distance(transform.position, targetLocation) < 1)
             GetNewTargetLocation();
+        
             
         
     }
     void ShootPlayer()
     {
         GameObject submarine = GameObject.FindGameObjectWithTag("Player");
-        Transform target = submarine.transform;
-        GameObject bullet = (GameObject)Instantiate(enemyBullet, transform.position, transform.rotation);
+        Vector3 target = submarine.transform.position;
+        float angleEnemy = Mathf.Atan2(submarine.transform.position.y, submarine.transform.position.x) * Mathf.Rad2Deg - 90;
+        GameObject bullet = (GameObject)Instantiate(enemyBullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleEnemy + 90));
        
-        bullet.rigidbody2D.AddForce(bullet.transform.right * 500);
-        Debug.Log("veloctiy" + target.forward);
+        bullet.rigidbody2D.AddForce(bullet.transform.right * 300);
+        Destroy(bullet, 3);
+        
     }
 
     void TurnToTarget()
     {
+        GameObject submarine = GameObject.FindGameObjectWithTag("Player");
         float angle = Vector3.Angle(transform.position - targetLocation, -transform.right);
         if (angle > 20)
         {
+            
             transform.Rotate(Vector3.forward, 10);
-            ShootPlayer();
+            
         }
     }
 

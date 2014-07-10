@@ -5,6 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public GameObject enemy;
+    public GameObject enemyRed;
     public GameObject camera2d;
     private GameOverScript gameOver; 
    
@@ -57,9 +58,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        int random= Random.Range(0, 2);
 		Debug.Log ("spawn stuff");
         Vector3 pos = GetRandomPosition();
-        GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+        if (random == 0)
+        {
+            GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
+        else if (random == 1)
+        {
+            GameObject clone = Instantiate(enemyRed, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+        }
         enemiesAlive++;
     }
 
