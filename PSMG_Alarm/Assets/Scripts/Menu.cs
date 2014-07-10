@@ -99,15 +99,15 @@ public class Menu : MonoBehaviour
 
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "leicht"))
         {
-            Application.LoadLevel("submarine");
+            Application.LoadLevel("StorySequence");
         }
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "mittel"))
         {
-            Application.LoadLevel("submarine");
+            Application.LoadLevel("StorySequence");
         }
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "schwer"))
         {
-            Application.LoadLevel("submarine");
+            Application.LoadLevel("StorySequence");
         }
         if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
         {
