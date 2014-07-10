@@ -16,11 +16,12 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-        if(moveAllowed) Move();
+		if(moveAllowed && networkView.isMine) Move();
+		if(moveAllowed && NetworkManagerScript.networkActive==false) Move ();
     }
 
     void Move()
-    {
+    {				
         if (Input.GetAxis("Vertical") > 0) 
         {
             rigidbody2D.AddForce(transform.right * speedForwards);

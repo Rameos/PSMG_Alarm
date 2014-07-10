@@ -5,6 +5,7 @@ public class PlayerShooting : MonoBehaviour
 {
     public GameObject[] rocket;
     public GameObject[] laser;
+	public GameObject damdam;
     private GameOverScript gameOver; 
     public float speed = 19f;
     public enum weaponTyps { rocket, laser };
@@ -54,32 +55,55 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Waffe2Gewechselt" + weaponTyp);
         }
 
-        if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver())
+		if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine||Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive==false)
         {
             switch (weaponTyp)
             {
                 case (weaponTyps.rocket):
+				if(NetworkManagerScript.networkActive && networkView.isMine){
                     int ammoIndex = 0;
-                    GameObject bulletInstance = (GameObject)Instantiate(rocket[ammoIndex], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                    bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+					GameObject bulletInstance = (GameObject)Network.Instantiate(damdam, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)), 2);
+					bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
                     bulletInstance.rigidbody2D.AddForce(bulletInstance.transform.right * 1000);
                     Debug.Log("bulletForce: " + bulletInstance.transform.right + "bulletForce forward" + bulletInstance.transform.forward);
-                    Destroy(bulletInstance, 2);
-                    break;
-
-                case (weaponTyps.laser):
+                    Destroy(bulletInstance, 2);                    
+				}
+				if(NetworkManagerScript.networkActive==false){
+					int ammoIndex = 0;
+					GameObject bulletInstance = (GameObject)Instantiate(rocket[ammoIndex], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+					bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+					bulletInstance.rigidbody2D.AddForce(bulletInstance.transform.right * 1000);
+					Debug.Log("bulletForce: " + bulletInstance.transform.right + "bulletForce forward" + bulletInstance.transform.forward);
+					Destroy(bulletInstance, 2);                    
+				}
+				
+				break;
+				
+			case (weaponTyps.laser):
+				if(NetworkManagerScript.networkActive && networkView.isMine){
                     Debug.Log("Laser");
                     int ammoIndexLaser=0;
-                    GameObject laserInstance = (GameObject)Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                    laserInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+                    //GameObject laserInstance = (GameObject)Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+					GameObject laserInstance = (GameObject)Network.Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)),3);
+					laserInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
                     laserInstance.rigidbody2D.AddForce(laserInstance.transform.right * 1000);
-                    Destroy(laserInstance, 2);
-                    break;
-
-
-            }
-
-        }
-    }
-   
-}
+                    Destroy(laserInstance, 2);                    
+				}
+				if(NetworkManagerScript.networkActive==false){
+					Debug.Log("Laser");
+					int ammoIndexLaser=0;
+					GameObject laserInstance = (GameObject)Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+					laserInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+					laserInstance.rigidbody2D.AddForce(laserInstance.transform.right * 1000);
+					Destroy(laserInstance, 2);                    
+				}
+					
+					break;
+					
+					}
+					
+					}
+					}
+					
+					}
+					
