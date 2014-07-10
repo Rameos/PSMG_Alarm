@@ -3,8 +3,6 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour
 {
-	/*public ParticleSystem movementParticlesLeft; 
-	public ParticleSystem movementParticlesRight;*/ 
     public float speedForwards = 20;
     public float speedBackwards = 15;
     public float rotationSpeed = 2;
@@ -22,22 +20,9 @@ public class MovePlayer : MonoBehaviour
 		if(moveAllowed && NetworkManagerScript.networkActive==false) Move ();
     }
 
-	/* void Move()
-    {				
-
-		if (moveAllowed)Move (); 
-		if (moveAllowed) {
-			Move ();
-			movementParticlesRight.Play(); 
-			movementParticlesRight.enableEmission = true; 
-		}
-		else {
-			movementParticlesRight.enableEmission = false; 
-		}
-    }*/
-
     void Move()
     {
+		
         if (Input.GetAxis("Vertical") > 0) 
         {
             rigidbody2D.AddForce(transform.right * speedForwards);
@@ -57,6 +42,7 @@ public class MovePlayer : MonoBehaviour
         {
             transform.Rotate(-Vector3.forward * rotationSpeed);
         }
+		
     }
 
     public void stopPlayerMovement() {
