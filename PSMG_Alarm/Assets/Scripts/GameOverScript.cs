@@ -3,41 +3,33 @@ using System.Collections;
 
 public class GameOverScript : MonoBehaviour {
 
-	//private GUIText gameOverText;
-	//private GUITexture tryAgainBut;
-	//private GUITexture mainMenuBut;
-	private GameObject[] enemies, powerUps; 
+	private GameObject[] enemies, powerUps,particleEmitter;
     private MovePlayer movePlayer;
     private bool gameOver;
 
     private bool mainMenu, modiMenu, levelsOfDifficulty, highscores;
     private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
-	// Use this for initialization
 	void Start () {
-		//gameOverText.enabled = false;
         gameOver = false;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-	
 	}
 
 	public void endOfGame() {
-
         gameOver = true;
        
-       // gameOverText.enabled = true;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp"); 
-        movePlayer = GameObject.Find("Submarine").GetComponent<MovePlayer>();
+        movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
+		particleEmitter = GameObject.FindGameObjectsWithTag("MovementParticles");
         
         movePlayer.stopPlayerMovement();
 		stopEnemies (); 
-		stopPowerUps (); 
-        
+		stopPowerUps ();
+		stopParticles ();
 	}
 
 	void stopEnemies() {
@@ -45,6 +37,12 @@ public class GameOverScript : MonoBehaviour {
 		for (int i = 0; i < enemies.Length; i++) {
 			enemyMovement = enemies [i].GetComponent<EnemyMovement> ();
 			enemyMovement.stopEnemyMovement (); 
+		}
+	}
+
+	void stopParticles() {
+		for (int i = 0; i < particleEmitter.Length; i++) {
+			particleEmitter[i].GetComponent<ParticleSystem>().Stop(); 
 		}
 	}
 

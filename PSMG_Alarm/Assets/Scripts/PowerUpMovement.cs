@@ -20,7 +20,7 @@ public class PowerUpMovement : MonoBehaviour
         spawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();
 		powerUpEffectScript = GameObject.FindObjectOfType(typeof(PowerUpEffectScript)) as PowerUpEffectScript;
 		powerUpSlowEnemyEffectScript = GameObject.FindObjectOfType (typeof(PowerUpSlowEnemyEffectScript)) as PowerUpSlowEnemyEffectScript;
-        GetNewTargetLocation();
+		GetNewTargetLocation();
     }
 
     // Update is called once per frame
@@ -46,23 +46,35 @@ public class PowerUpMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+		Debug.Log (this.gameObject.name); 
+		Debug.Log (col.gameObject.tag); 
         if (col.gameObject.tag == "Player")
         {
+			Debug.Log (this.gameObject.name); 
 			if(this.gameObject.name == "SlowEnemyPowerUp(Clone)") {
 				powerUpSlowEnemyEffectScript.slowEnemies();
+				Debug.Log ("slow"); 
 			}
 			if(this.gameObject.name == "PowerUp(Clone)") {
 				powerUpEffectScript.shield();
+				Debug.Log("fast"); 
+			} else {
+				Debug.Log ("else"); 
 			}
 			Destroy(gameObject);
 			spawner.removePowerUp();
+
         }
     }
 
     public void stopPowerUpMovement()
     {
         moveAllowed = false;
-    }
+	}
+	public void startPowerUpMovement()
+	{
+		moveAllowed = true;
+	}
 
     public bool getMoveAllowed()
     {
