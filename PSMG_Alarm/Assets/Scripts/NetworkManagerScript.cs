@@ -49,9 +49,9 @@ public class NetworkManagerScript : MonoBehaviour {
 		return gotHostData;
 	}
 
-	public void Client_connectToHost() { 
-		//Network.Connect(data);
-		Network.Connect ("132.199.184.52", 25000);
+	public void Client_connectToHost(HostData data) { 
+		Network.Connect(data);
+		//Network.Connect ("132.199.184.52", 25000);
 	}
 
 	//Messages
