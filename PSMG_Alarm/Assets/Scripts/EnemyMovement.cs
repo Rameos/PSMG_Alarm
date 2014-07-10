@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour {
     private Vector3 targetLocation;
 
     public GameObject camera2d;
+	public GameObject explosion; 
 
     private EnemySpawner spawner;
 	private HighscoreScript highscorecontroller;
@@ -66,6 +67,7 @@ public class EnemyMovement : MonoBehaviour {
 		} else if (col.gameObject.tag == "Player") {
 			highscorecontroller.addScoreValue(100);
 			submarineLifeControl.decrementLife ();
+			Instantiate(explosion, transform.position, transform.rotation);
 			Destroy (gameObject);
 			if(!gameOver.getGameOver())spawner.SpawnEnemy();
 		} else if (col.gameObject.tag == "Shield") {
