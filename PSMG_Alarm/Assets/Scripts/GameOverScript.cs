@@ -13,6 +13,9 @@ public class GameOverScript : MonoBehaviour {
     private bool mainMenu, modiMenu, levelsOfDifficulty, highscores;
     private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
+	public ParticleSystem movementParticlesLeft; 
+	public ParticleSystem movementParticlesRight;
+
 	// Use this for initialization
 	void Start () {
 		//gameOverText.enabled = false;
@@ -38,6 +41,7 @@ public class GameOverScript : MonoBehaviour {
 		stopEnemies (); 
 		stopPowerUps (); 
         
+		if(movementParticlesRight == null) movementParticlesRight.Stop();
 	}
 
 	void stopEnemies() {
@@ -78,6 +82,8 @@ public class GameOverScript : MonoBehaviour {
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Nochmal"))
         {
             Application.LoadLevel("submarine");
+			if(movementParticlesRight != null) movementParticlesRight.Play();
+
         }
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Haupmenü"))
         {
