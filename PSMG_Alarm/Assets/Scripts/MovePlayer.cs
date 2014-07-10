@@ -16,7 +16,7 @@ public class MovePlayer : MonoBehaviour
 
     void Update()
     {
-		if(moveAllowed && networkView.isMine) Move();
+		if(moveAllowed && networkView.isMine && NetworkManagerScript.networkActive) Move();
 		if(moveAllowed && NetworkManagerScript.networkActive==false) Move ();
     }
 

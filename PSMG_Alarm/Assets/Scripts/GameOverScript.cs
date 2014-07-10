@@ -41,6 +41,7 @@ public class GameOverScript : MonoBehaviour {
 	}
 
 	void stopParticles() {
+		Debug.Log ("stopping particles");
 		for (int i = 0; i < particleEmitter.Length; i++) {
 			particleEmitter[i].GetComponent<ParticleSystem>().Stop(); 
 		}
