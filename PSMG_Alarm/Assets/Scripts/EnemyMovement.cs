@@ -85,8 +85,12 @@ public class EnemyMovement : MonoBehaviour {
     public void stopEnemyMovement()
     {
         moveAllowed = false;
-		Debug.Log ("stop"); 
     }
+
+	public void startEnemyMovement()
+	{
+		moveAllowed = true;
+	}
 
     public bool getMoveAllowed()
     {

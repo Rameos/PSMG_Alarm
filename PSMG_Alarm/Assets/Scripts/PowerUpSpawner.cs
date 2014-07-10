@@ -14,6 +14,7 @@ public class PowerUpSpawner : MonoBehaviour
 	private int randomPowerUpNumber; 
     private int powerUpsCount;
     private const int MAX_POWERUPS_COUNT = 3;
+	private bool powerUpsCanSpawn = true;
 
     // Use this for initialization
     void Start()
@@ -27,7 +28,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         updateCount++;
         randomNumber = Random.Range(100, 200);
-        if (updateCount % randomNumber == 0 && powerUpsCount < MAX_POWERUPS_COUNT && !gameOver.getGameOver())
+        if (updateCount % randomNumber == 0 && powerUpsCount < MAX_POWERUPS_COUNT && !gameOver.getGameOver() && powerUpsCanSpawn)
         {
             SpawnPowerup();
             updateCount = 0;
@@ -57,5 +58,15 @@ public class PowerUpSpawner : MonoBehaviour
     {
         powerUpsCount--;
     }
+
+	public void stopSpawning()
+	{
+		powerUpsCanSpawn = false;
+	}
+	
+	public void startSpawning()
+	{
+		powerUpsCanSpawn = true;
+	}
 }
 

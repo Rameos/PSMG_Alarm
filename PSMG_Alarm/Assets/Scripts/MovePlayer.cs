@@ -48,4 +48,8 @@ public class MovePlayer : MonoBehaviour
     public void stopPlayerMovement() {
         moveAllowed = false;
     }
+
+	public void startPlayerMovement() {
+		moveAllowed = true;
+	}
 }

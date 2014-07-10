@@ -70,7 +70,11 @@ public class PowerUpMovement : MonoBehaviour
     public void stopPowerUpMovement()
     {
         moveAllowed = false;
-    }
+	}
+	public void startPowerUpMovement()
+	{
+		moveAllowed = true;
+	}
 
     public bool getMoveAllowed()
     {

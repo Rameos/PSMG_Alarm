@@ -133,15 +133,15 @@ public class Menu : MonoBehaviour
 			networkScript.Server_startServer();
 		}
 		if (GUI.Button (new Rect (centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Spiele anzeigen")) {
-			//networkScript.Client_refreshHostList();
-			networkScript.Client_connectToHost();
+			networkScript.Client_refreshHostList();
+			//networkScript.Client_connectToHost();
 		}
 		if (networkScript.Client_getHostDataStatus()) {
 			HostData[] list = networkScript.Client_getHostData();
 			for(int i = 0; i < list.Length; i++){
 				if (GUI.Button (new Rect (centerX - buttonWidth / 2, guiBoxY + (2+i+1) * buttonHeight, buttonWidth, buttonHeight), list[i].gameName)) {
 					Debug.Log("hit the game dude!");
-					//networkScript.Client_connectToHost(list[i]);
+					networkScript.Client_connectToHost(list[i]);
 				}
 			}
 		}
