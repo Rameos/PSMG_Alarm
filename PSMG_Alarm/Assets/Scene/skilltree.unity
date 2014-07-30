@@ -181,7 +181,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &31405867
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &61907426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &154241500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -571,7 +571,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &292677926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &326750831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -931,7 +931,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &412000666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &980107174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1641,7 +1641,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1071471831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1221622869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1867,6 +1867,7 @@ GameObject:
   - 124: {fileID: 1223763481}
   - 81: {fileID: 1223763480}
   - 114: {fileID: 1223763485}
+  - 114: {fileID: 1223763486}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2187,6 +2188,17 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+--- !u!114 &1223763486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1223763479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c9f8793c452944893600b2610493d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1254574068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,7 +2256,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1254574072
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2519,7 +2531,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1458501706
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2699,7 +2711,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1659510899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2779,7 +2791,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1683149678
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2909,7 +2921,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1821605160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3016,7 +3028,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1866677970
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3119,7 +3131,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1906911673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3199,7 +3211,7 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  id: 
+  id: 0
 --- !u!212 &1950126178
 SpriteRenderer:
   m_ObjectHideFlags: 0

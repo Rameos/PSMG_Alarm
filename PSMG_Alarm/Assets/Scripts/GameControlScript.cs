@@ -6,7 +6,7 @@ public class GameControlScript : MonoBehaviour {
 	public float maxNoGazeDataTime = 1;
 	public bool blockWhenNoGazeData = true;
 	
-	private GameObject[] enemies, powerUps;
+	private GameObject[] powerUps;
 	private PowerUpSpawner powerUpSpawner;
 	private PlayerShooting shooting;
 	private MovePlayer movePlayer;
@@ -36,11 +36,11 @@ public class GameControlScript : MonoBehaviour {
 	
 	public void pauseGame()
 	{
-		enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 		
 		paused = true;
-		movePlayer.stopPlayerMovement();
+
+        movePlayer.stopPlayerMovement();
 		shooting.blockShooting();
 		stopEnemies();
 		stopPowerUps();
@@ -57,12 +57,13 @@ public class GameControlScript : MonoBehaviour {
 	
 	void stopEnemies()
 	{
-		EnemyMovement enemyMovement;
-		for (int i = 0; i < enemies.Length; i++)
-		{
-			enemyMovement = enemies[i].GetComponent<EnemyMovement>();
-			enemyMovement.stopEnemyMovement();
-		}
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            Enemy controller = enemy.GetComponent<Enemy>();
+            controller.stopEnemyMovement();
+        }
 	}
 	
 	void stopPowerUps()
@@ -79,12 +80,12 @@ public class GameControlScript : MonoBehaviour {
 	
 	void startEnemies()
 	{
-		EnemyMovement enemyMovement;
-		for (int i = 0; i < enemies.Length; i++)
-		{
-			enemyMovement = enemies[i].GetComponent<EnemyMovement>();
-			enemyMovement.startEnemyMovement();
-		}
+        Enemy[] enemies = GetComponents<Enemy>();
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].stopEnemyMovement();
+        }
 	}
 	
 	void startPowerUps()

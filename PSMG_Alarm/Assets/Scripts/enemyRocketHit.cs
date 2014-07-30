@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class enemyRocketHit : MonoBehaviour {
-
-
+public class EnemyRocketHit : MonoBehaviour
+{
     private SubmarineLifeControl submarineLifeControl;
-	// Use this for initialization
-	void Start () {
+
+    void Start()
+    {
         submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    }
+
+    void Update()
+    {
+
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -22,17 +22,13 @@ public class enemyRocketHit : MonoBehaviour {
         {
             Destroy(gameObject);
             submarineLifeControl.decrementLife();
-           
-
         }
-       
+
         else if (col.gameObject.tag == "Shield")
         {
             Destroy(col.gameObject);
             Destroy(gameObject);
-
-        
-    }
+        }
 
     }
 }

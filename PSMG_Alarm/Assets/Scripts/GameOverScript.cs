@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameOverScript : MonoBehaviour {
 
-	private GameObject[] enemies, powerUps,particleEmitter;
+	private GameObject[] powerUps,particleEmitter;
     private MovePlayer movePlayer;
     private bool gameOver;
 
@@ -19,9 +19,7 @@ public class GameOverScript : MonoBehaviour {
 
 	public void endOfGame() {
         gameOver = true;
-       
 
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp"); 
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
 		particleEmitter = GameObject.FindGameObjectsWithTag("MovementParticles");
@@ -33,11 +31,13 @@ public class GameOverScript : MonoBehaviour {
 	}
 
 	void stopEnemies() {
-		EnemyMovement enemyMovement;
-		for (int i = 0; i < enemies.Length; i++) {
-			enemyMovement = enemies [i].GetComponent<EnemyMovement> ();
-			enemyMovement.stopEnemyMovement (); 
-		}
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            Enemy controller = enemy.GetComponent<Enemy>();
+            controller.stopEnemyMovement();
+        }
 	}
 
 	void stopParticles() {

@@ -9,7 +9,7 @@ public class HandleUpgrade : MonoBehaviour {
     public string title;
     public string description;
     public int cost;
-    public string id;
+    public UpgradeController.upgradeID id;
     
     private Sprite s_nonHighlighted;
 
@@ -20,11 +20,6 @@ public class HandleUpgrade : MonoBehaviour {
     {
         s_nonHighlighted = GetComponent<SpriteRenderer>().sprite;
         skillGUI = GameObject.Find("Main Camera").GetComponent<SkilltreeGui>();
-	}
-	
-	void Update () 
-    {
-	
 	}
 
     void OnMouseEnter()
