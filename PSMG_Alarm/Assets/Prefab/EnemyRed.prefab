@@ -15,7 +15,7 @@ GameObject:
   - 148: {fileID: 14800000}
   m_Layer: 0
   m_Name: EnemyRed
-  m_TagString: RocketEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera2d: {fileID: 0}
+  explosion: {fileID: 100000, guid: cb55ad3d5c910fc498c744148a6addb6, type: 2}
+  speed: 1
   enemyBullet: {fileID: 100000, guid: 7abebc5f5ac9d104e852543c6129d6aa, type: 2}
+  minBulletTimer: 5
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

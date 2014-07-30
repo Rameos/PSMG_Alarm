@@ -8,13 +8,13 @@ public class Enemy : MonoBehaviour
 
     public GameObject camera2d;
     public GameObject explosion;
+    public float speed = 2;
 
     private EnemySpawner spawner;
     private HighscoreScript highscorecontroller;
     private SubmarineLifeControl submarineLifeControl;
     private GameOverScript gameOver;
     private bool moveAllowed = true;
-    private float speed = 2;
 
     void Start()
     {

@@ -46,8 +46,6 @@ public class PowerUpMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(this.gameObject.name);
-        Debug.Log(col.gameObject.tag);
         if (col.gameObject.tag == "Player")
         {
             if (this.gameObject.name == "SlowEnemyPowerUp(Clone)")
