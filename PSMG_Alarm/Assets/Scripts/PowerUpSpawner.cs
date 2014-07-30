@@ -6,15 +6,14 @@ public class PowerUpSpawner : MonoBehaviour
 {
 
     public GameObject powerUp;
-	public GameObject slowEnemyPowerUp;
+    public GameObject slowEnemyPowerUp;
     public GameObject camera2d;
-    private GameOverScript gameOver; 
+    private GameOverScript gameOver;
     private int updateCount;
     private int randomNumber;
-	private int randomPowerUpNumber; 
     private int powerUpsCount;
     private const int MAX_POWERUPS_COUNT = 3;
-	private bool powerUpsCanSpawn = true;
+    private bool powerUpsCanSpawn = true;
 
     // Use this for initialization
     void Start()
@@ -49,8 +48,14 @@ public class PowerUpSpawner : MonoBehaviour
     public void SpawnPowerup()
     {
         Vector3 pos = GetRandomPosition();
-		randomPowerUpNumber = Random.Range (1, 3); 
-		GameObject clone = randomPowerUpNumber == 1 ? (Instantiate(powerUp, pos, Quaternion.Euler(0, 0, 0)) as GameObject) : (Instantiate(slowEnemyPowerUp, pos, Quaternion.Euler(0, 0, 0)) as GameObject);
+        if (Random.Range(1, 3) == 1)
+        {
+            Instantiate(powerUp, pos, Quaternion.Euler(0, 0, 0));
+        }
+        else
+        {
+            Instantiate(slowEnemyPowerUp, pos, Quaternion.Euler(0, 0, 0));
+        }
         powerUpsCount++;
     }
 
@@ -59,14 +64,14 @@ public class PowerUpSpawner : MonoBehaviour
         powerUpsCount--;
     }
 
-	public void stopSpawning()
-	{
-		powerUpsCanSpawn = false;
-	}
-	
-	public void startSpawning()
-	{
-		powerUpsCanSpawn = true;
-	}
+    public void stopSpawning()
+    {
+        powerUpsCanSpawn = false;
+    }
+
+    public void startSpawning()
+    {
+        powerUpsCanSpawn = true;
+    }
 }
 

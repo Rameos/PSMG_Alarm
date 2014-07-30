@@ -1,64 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameOverScript : MonoBehaviour {
-
-	private GameObject[] powerUps,particleEmitter;
+public class GameOverScript : MonoBehaviour
+{
     private MovePlayer movePlayer;
     private bool gameOver;
-
-    private bool mainMenu, modiMenu, levelsOfDifficulty, highscores;
+    private GameControlScript controller;
     private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
-	void Start () {
+    void Start()
+    {
         gameOver = false;
-	}
+        controller = GameObject.Find("GameController").GetComponent<GameControlScript>();
+    }
 
-	void Update () {
-	}
-
-	public void endOfGame() {
+    public void endOfGame()
+    {
         gameOver = true;
-
-        powerUps = GameObject.FindGameObjectsWithTag("PowerUp"); 
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
-		particleEmitter = GameObject.FindGameObjectsWithTag("MovementParticles");
-        
+
         movePlayer.stopPlayerMovement();
-		stopEnemies (); 
-		stopPowerUps ();
-		stopParticles ();
-	}
-
-	void stopEnemies() {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject enemy in enemies)
-        {
-            Enemy controller = enemy.GetComponent<Enemy>();
-            controller.stopEnemyMovement();
-        }
-	}
-
-	void stopParticles() {
-		Debug.Log ("stopping particles");
-		for (int i = 0; i < particleEmitter.Length; i++) {
-			particleEmitter[i].GetComponent<ParticleSystem>().Stop(); 
-		}
-	}
-
-	void stopPowerUps() {
-		PowerUpMovement powerUpMovement;
-		for (int i = 0; i < powerUps.Length; i++)
-		{
-			powerUpMovement = powerUps[i].GetComponent<PowerUpMovement>(); 
-			powerUpMovement.stopPowerUpMovement(); 
-		}
-	}
+        controller.stopEnemies();
+        controller.stopPowerUps();
+        controller.stopParticles();
+    }
 
     void OnGUI()
     {
-        if (gameOver) showGameOverMenu(); 
+        if (gameOver) showGameOverMenu();
     }
 
     void showGameOverMenu()
@@ -86,6 +55,6 @@ public class GameOverScript : MonoBehaviour {
 
     public bool getGameOver()
     {
-        return gameOver; 
+        return gameOver;
     }
 }

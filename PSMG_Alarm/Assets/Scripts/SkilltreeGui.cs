@@ -9,18 +9,15 @@ public class SkilltreeGui : MonoBehaviour {
     public GUIStyle upgradeDescription;
     public GUIStyle descriptionText;
 
-    private readonly int optimizedWidth = 1024;
     private readonly int optimizedHeight = 768;
 
     private string description;
     private string cost;
-    private string name;
+    private string title;
 
     private int standardTitleSize;
     private int standardCointextSize;
-
     private bool hovering;
-    private GameObject canvas;
 
     void Start()
     {
@@ -30,7 +27,6 @@ public class SkilltreeGui : MonoBehaviour {
 
     void OnGUI()
     {
-        float ratioX = (float)Screen.width / (float)optimizedWidth;
         float ratioY = (float)Screen.height / (float)optimizedHeight;
 
         titleStyle.fontSize = Mathf.RoundToInt(standardTitleSize * ratioY);
@@ -50,7 +46,7 @@ public class SkilltreeGui : MonoBehaviour {
             {
                 GUILayout.BeginVertical(upgradeDescription); // also can put width in here
                 {
-                    GUILayout.Label(name + " (" + cost +")", descriptionText);
+                    GUILayout.Label(title + " (" + cost +")", descriptionText);
                     GUILayout.Label(description, descriptionText);
                 }
                 GUILayout.EndVertical();
@@ -59,10 +55,10 @@ public class SkilltreeGui : MonoBehaviour {
         }
     }
 
-    public void hoverUpgrade(string description, int cost, string name)
+    public void hoverUpgrade(string description, int cost, string title)
     {
         this.description = description;
-        this.name = name;
+        this.title = title;
         this.cost = cost.ToString();
 
         hovering = true;

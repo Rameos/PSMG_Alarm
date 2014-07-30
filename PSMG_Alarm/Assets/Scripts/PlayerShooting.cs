@@ -12,15 +12,11 @@ public class PlayerShooting : MonoBehaviour
     public weaponTyps weaponTyp = weaponTyps.rocket;
 	private bool shootingBlocked;
     
-    
-
-    private MovePlayer uboot;
 
     // Use this for initialization
     void Awake()
     {
         gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
-        uboot = transform.root.GetComponent<MovePlayer>();
     }
 
     // Update is called once per frame
@@ -62,11 +58,9 @@ public class PlayerShooting : MonoBehaviour
             {
                 case (weaponTyps.rocket):
 				if(NetworkManagerScript.networkActive && networkView.isMine){
-                    int ammoIndex = 0;
 					GameObject bulletInstance = (GameObject)Network.Instantiate(damdam, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)), 2);
 					bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
                     bulletInstance.rigidbody2D.AddForce(bulletInstance.transform.right * 1000);
-                    Debug.Log("bulletForce: " + bulletInstance.transform.right + "bulletForce forward" + bulletInstance.transform.forward);
                     Destroy(bulletInstance, 2);                    
 				}
 				if(NetworkManagerScript.networkActive==false){
@@ -74,7 +68,6 @@ public class PlayerShooting : MonoBehaviour
 					GameObject bulletInstance = (GameObject)Instantiate(rocket[ammoIndex], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 					bulletInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
 					bulletInstance.rigidbody2D.AddForce(bulletInstance.transform.right * 1000);
-					Debug.Log("bulletForce: " + bulletInstance.transform.right + "bulletForce forward" + bulletInstance.transform.forward);
 					Destroy(bulletInstance, 2);                    
 				}
 				
@@ -82,16 +75,13 @@ public class PlayerShooting : MonoBehaviour
 				
 			case (weaponTyps.laser):
 				if(NetworkManagerScript.networkActive && networkView.isMine){
-                    Debug.Log("Laser");
                     int ammoIndexLaser=0;
-                    //GameObject laserInstance = (GameObject)Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 					GameObject laserInstance = (GameObject)Network.Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)),3);
 					laserInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
                     laserInstance.rigidbody2D.AddForce(laserInstance.transform.right * 1000);
                     Destroy(laserInstance, 2);                    
 				}
 				if(NetworkManagerScript.networkActive==false){
-					Debug.Log("Laser");
 					int ammoIndexLaser=0;
 					GameObject laserInstance = (GameObject)Instantiate(laser[ammoIndexLaser], transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 					laserInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
