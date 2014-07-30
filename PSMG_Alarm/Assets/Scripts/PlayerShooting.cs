@@ -44,12 +44,10 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             weaponTyp = weaponTyps.rocket;
-            Debug.Log("Waffe gewechselt" + weaponTyp);
         }
         else if (Input.GetKeyDown("2"))
         {
             weaponTyp = weaponTyps.laser;
-            Debug.Log("Waffe2Gewechselt" + weaponTyp);
         }
 
 		if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked||Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive==false && !shootingBlocked)

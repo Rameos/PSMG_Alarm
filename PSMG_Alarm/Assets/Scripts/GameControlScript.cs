@@ -70,6 +70,7 @@ public class GameControlScript : MonoBehaviour
     public void stopPowerUps()
     {
         powerUpSpawner.stopSpawning();
+        powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 
         PowerUpMovement powerUpMovement;
         for (int i = 0; i < powerUps.Length; i++)

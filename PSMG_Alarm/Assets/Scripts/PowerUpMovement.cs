@@ -58,7 +58,6 @@ public class PowerUpMovement : MonoBehaviour
             }
             Destroy(gameObject);
             spawner.removePowerUp();
-
         }
     }
 

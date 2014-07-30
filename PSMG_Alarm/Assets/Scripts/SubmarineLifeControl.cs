@@ -40,7 +40,6 @@ public class SubmarineLifeControl : MonoBehaviour {
 			updateLife ();	
 		}
 		if (life <= 0) {
-			Debug.Log("You lose!");
 			gameOverScript.endOfGame();
 		}
 	}
