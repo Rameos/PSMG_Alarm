@@ -20,11 +20,11 @@ public class Enemy : MonoBehaviour
     {
         camera2d = GameObject.Find("2D Camera");
         spawner = GameObject.Find("GameController").GetComponent<EnemySpawner>();
-        GetNewTargetLocation();
         highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
         submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
         gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
 
+        GetNewTargetLocation();
         FindOtherObjects();
     }
 
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         // Override if shooting necessary
     }
 
-    public void Move()
+    public virtual void Move()
     {
         if (moveAllowed && Network.isServer && NetworkManagerScript.networkActive || moveAllowed && NetworkManagerScript.networkActive == false)
         {

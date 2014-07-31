@@ -15,14 +15,12 @@ public class PowerUpSpawner : MonoBehaviour
     private const int MAX_POWERUPS_COUNT = 3;
     private bool powerUpsCanSpawn = true;
 
-    // Use this for initialization
     void Start()
     {
         updateCount = 0;
         gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         updateCount++;
@@ -32,7 +30,6 @@ public class PowerUpSpawner : MonoBehaviour
             SpawnPowerup();
             updateCount = 0;
         }
-
     }
 
     private Vector3 GetRandomPosition()

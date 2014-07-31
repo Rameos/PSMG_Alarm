@@ -72,11 +72,11 @@ public class GameControlScript : MonoBehaviour
         powerUpSpawner.stopSpawning();
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 
-        PowerUpMovement powerUpMovement;
+        PowerUp powerUp;
         for (int i = 0; i < powerUps.Length; i++)
         {
-            powerUpMovement = powerUps[i].GetComponent<PowerUpMovement>();
-            powerUpMovement.stopPowerUpMovement();
+            powerUp = powerUps[i].GetComponent<PowerUp>();
+            powerUp.stopPowerUpMovement();
         }
     }
 
@@ -93,13 +93,14 @@ public class GameControlScript : MonoBehaviour
 
     public void startPowerUps()
     {
-        powerUpSpawner.startSpawning();
+        powerUpSpawner.stopSpawning();
+        powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 
-        PowerUpMovement powerUpMovement;
+        PowerUp powerUp;
         for (int i = 0; i < powerUps.Length; i++)
         {
-            powerUpMovement = powerUps[i].GetComponent<PowerUpMovement>();
-            powerUpMovement.startPowerUpMovement();
+            powerUp = powerUps[i].GetComponent<PowerUp>();
+            powerUp.startPowerUpMovement();
         }
     }
 

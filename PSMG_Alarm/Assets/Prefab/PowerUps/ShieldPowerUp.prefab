@@ -11,9 +11,9 @@ GameObject:
   - 212: {fileID: 21200000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
-  - 61: {fileID: 6100000}
+  - 58: {fileID: 5800000}
   m_Layer: 0
-  m_Name: SlowEnemyPowerUp
+  m_Name: ShieldPowerUp
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.149391264, y: -79.0006485, z: -3.72566271}
+  m_LocalPosition: {x: -5.78715706, y: -2.03310132, z: 4.6319952}
   m_LocalScale: {x: .0500000007, y: .0500000007, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,8 +46,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6100000
-BoxCollider2D:
+--- !u!58 &5800000
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -55,7 +55,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
+  m_Radius: 4.17000008
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -65,13 +65,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b32843b74ab20845bf6df1738de3603, type: 3}
+  m_Script: {fileID: 11500000, guid: eb06edcb3e3432845bfb71bd0db96e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera2d: {fileID: 0}
-  powerUpEffectScript: {fileID: 0}
-  powerUpSlowEnemyEffectScript: {fileID: 0}
-  speed: 0
+  speed: .200000003
+  shieldPrefab: {fileID: 100000, guid: 6919348ebaaa0f441bcb9108e0c94cad, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -92,7 +90,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84da3aaab935a7e44b86d39f96e74c63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0f10207b483ef043949fe528fba5264, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
