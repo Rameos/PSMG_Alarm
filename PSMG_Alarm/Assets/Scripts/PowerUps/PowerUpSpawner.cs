@@ -5,8 +5,8 @@ using System.Threading;
 public class PowerUpSpawner : MonoBehaviour
 {
 
-    public GameObject powerUp;
-    public GameObject slowEnemyPowerUp;
+    public GameObject[] powerUps;
+
     public GameObject camera2d;
     private GameOverScript gameOver;
     private int updateCount;
@@ -45,20 +45,16 @@ public class PowerUpSpawner : MonoBehaviour
     public void SpawnPowerup()
     {
         Vector3 pos = GetRandomPosition();
-        if (Random.Range(1, 3) == 1)
-        {
-            Instantiate(powerUp, pos, Quaternion.Euler(0, 0, 0));
-        }
-        else
-        {
-            Instantiate(slowEnemyPowerUp, pos, Quaternion.Euler(0, 0, 0));
-        }
+
+        Instantiate(powerUps[Random.Range(0, powerUps.Length)], pos, Quaternion.Euler(0, 0, 0));
+
         powerUpsCount++;
     }
 
     public void removePowerUp()
     {
         powerUpsCount--;
+        updateCount = 0;
     }
 
     public void stopSpawning()

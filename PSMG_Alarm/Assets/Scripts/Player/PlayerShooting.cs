@@ -6,17 +6,20 @@ public class PlayerShooting : MonoBehaviour
     public GameObject[] rocket;
     public GameObject[] laser;
 	public GameObject damdam;
-    private GameOverScript gameOver; 
+
+    private GameOverScript gameOver;
+    private GameObject crosshair;
+
     public float speed = 19f;
     public enum weaponTyps { rocket, laser };
     public weaponTyps weaponTyp = weaponTyps.rocket;
 	private bool shootingBlocked;
-    
 
     // Use this for initialization
     void Awake()
     {
         gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
+        crosshair = GameObject.Find("Crosshair");
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
         
         //Vector3 aimPositon = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
         Vector3 aimPositon = Input.mousePosition;
+        crosshair.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(aimPositon.x, aimPositon.y, 1));
 
         aimPositon.z = 0.0f;
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
@@ -34,7 +38,6 @@ public class PlayerShooting : MonoBehaviour
       	aimPositon.y = aimPositon.y - ubootposition.y;
         //Für Eyetracking
         //aimPositon.y = (Screen.height-aimPositon.y) - ubootposition.y;
-
 
         float angle = Mathf.Atan2(aimPositon.y, aimPositon.x) * Mathf.Rad2Deg - 90;
 

@@ -7,8 +7,12 @@ public class PowerUp : MonoBehaviour
     private Vector3 targetLocation;
     private GameObject camera2d;
     private PowerUpSpawner spawner;
+
     public float speed = .2f;
+
     private bool moveAllowed = true;
+    private float despawnTime = 15;
+    private float lifeTime = 0;
 
     void Start()
     {
@@ -22,6 +26,7 @@ public class PowerUp : MonoBehaviour
     void Update()
     {
         Move();
+        CheckDespawn();
     }
 
     public virtual void FindOtherObjects()
@@ -37,6 +42,17 @@ public class PowerUp : MonoBehaviour
     public virtual void ApplyPowerUp()
     {
         // override this
+    }
+
+    private void CheckDespawn()
+    {
+        lifeTime += Time.deltaTime;
+
+        if (lifeTime > despawnTime)
+        {
+            Destroy(this.gameObject);
+            spawner.removePowerUp();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)

@@ -16,6 +16,8 @@ public class GameControlScript : MonoBehaviour
 
     void Start()
     {
+        Screen.showCursor = false;
+
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
         shooting = GameObject.Find("gun").GetComponent<PlayerShooting>();
         powerUpSpawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();

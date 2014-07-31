@@ -22,9 +22,6 @@ public class SkilltreeGui : MonoBehaviour
     private int standardTitleSize;
     private int standardCointextSize;
 
-    private float standardCanvasSizeY;
-    private float standardCanvasSizeX;
-
     private bool hovering;
 
     void Start()
