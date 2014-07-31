@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: eb06edcb3e3432845bfb71bd0db96e19
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - shieldPrefab: {fileID: 100000, guid: bf0cff6cb8d7c004f9927ffa051f321c, type: 2}
+  - player: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
