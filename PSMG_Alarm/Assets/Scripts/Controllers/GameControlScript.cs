@@ -6,6 +6,7 @@ public class GameControlScript : MonoBehaviour
 
     public float maxNoGazeDataTime = 1;
     public bool blockWhenNoGazeData = true;
+    public static float timeElapsed;
 
     private GameObject[] powerUps;
     private PowerUpSpawner powerUpSpawner;
@@ -17,6 +18,7 @@ public class GameControlScript : MonoBehaviour
     void Start()
     {
         Screen.showCursor = false;
+        timeElapsed = 0;
 
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
         shooting = GameObject.Find("gun").GetComponent<PlayerShooting>();
@@ -25,6 +27,8 @@ public class GameControlScript : MonoBehaviour
 
     void Update()
     {
+        timeElapsed += Time.deltaTime;
+
         if (!checkGazeDataAvailable() && blockWhenNoGazeData)
             noGazeDataTimer += Time.deltaTime;
         else

@@ -10,19 +10,15 @@ public class Enemy : MonoBehaviour
     public GameObject explosion;
     public float speed = 2;
 
-    private EnemySpawner spawner;
     private HighscoreScript highscorecontroller;
     private SubmarineLifeControl submarineLifeControl;
-    private GameOverScript gameOver;
     private bool moveAllowed = true;
 
     void Start()
     {
         camera2d = GameObject.Find("2D Camera");
-        spawner = GameObject.Find("GameController").GetComponent<EnemySpawner>();
         highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
         submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
-        gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
 
         GetNewTargetLocation();
         FindOtherObjects();
@@ -73,7 +69,6 @@ public class Enemy : MonoBehaviour
             highscorecontroller.addScoreValue(100);
             Destroy(gameObject);
             Destroy(col.gameObject);
-            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
         }
         else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
         {
@@ -81,20 +76,17 @@ public class Enemy : MonoBehaviour
             submarineLifeControl.decrementLife();
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
-            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
         }
         else if (col.gameObject.tag == "Shield")
         {
             Destroy(GameObject.Find("Shield(Clone)"));
             highscorecontroller.addScoreValue(100);
             Destroy(gameObject);
-            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
         }
         else if (col.gameObject.tag == "Wave")
         {
             highscorecontroller.addScoreValue(100);
             Destroy(gameObject);
-            if (!gameOver.getGameOver()) spawner.SpawnEnemy();
         }
     }
 
