@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
                 {
                     tempAdd.Add(new SpawnWave((int)(GameControlScript.timeElapsed + wave.repeatTime), wave.repeatTime, wave.size, wave.type));
                 }
-
             }
         }
 
