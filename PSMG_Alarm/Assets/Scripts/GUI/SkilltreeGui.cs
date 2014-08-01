@@ -19,6 +19,10 @@ public class SkilltreeGui : MonoBehaviour
     private string cost;
     private string title;
 
+    private int coins;
+    private int phaserAmmo;
+    private int rocketAmmo;
+
     private int standardTitleSize;
     private int standardCointextSize;
 
@@ -26,12 +30,17 @@ public class SkilltreeGui : MonoBehaviour
 
     void Start()
     {
+        Screen.showCursor = true;
+
         standardTitleSize = titleStyle.fontSize;
         standardCointextSize = coinsCountStyle.fontSize;
 
         ammoPhaser = GameObject.Find("AmmoItemPhaser");
         ammoRocket = GameObject.Find("AmmoItemRocket");
         coin = GameObject.Find("Coin");
+
+        UpdateAmmo();
+        coins = PlayerPrefsManager.GetCoins();
     }
 
 
@@ -46,17 +55,17 @@ public class SkilltreeGui : MonoBehaviour
 
         GUI.Box(new Rect(camera.WorldToScreenPoint(coin.transform.position).x + 30 * Screen.height / 500,
             Screen.height - camera.WorldToScreenPoint(coin.transform.position).y - 15 + Screen.height / 500, 50, 30),
-            "x 134", coinsCountStyle);
+            "x " + coins, coinsCountStyle);
 
         coinsCountStyle.alignment = TextAnchor.UpperLeft;
 
         GUI.Box(new Rect(camera.WorldToScreenPoint(ammoPhaser.transform.position).x - 15 * Screen.height / 500,
             camera.WorldToScreenPoint(ammoPhaser.transform.position).y + 50 * Screen.height / 500, 50, 30),
-            "34", coinsCountStyle);
+            "" + phaserAmmo, coinsCountStyle);
 
         GUI.Box(new Rect(camera.WorldToScreenPoint(ammoRocket.transform.position).x - 15 * Screen.height / 500,
             camera.WorldToScreenPoint(ammoRocket.transform.position).y + 50 * Screen.height / 500, 50, 30),
-            "34", coinsCountStyle);
+            "" + rocketAmmo, coinsCountStyle);
 
         GUI.Box(new Rect(Screen.width / 13, Screen.height / 20, 300, 100), "Prepare For Your Next Mission...", titleStyle);
 
@@ -64,7 +73,7 @@ public class SkilltreeGui : MonoBehaviour
         {
             GUILayout.BeginArea(new Rect(Input.mousePosition.x - 30, Screen.height - Input.mousePosition.y - 170, 250, 250));
             {
-                GUILayout.BeginVertical(upgradeDescription); // also can put width in here
+                GUILayout.BeginVertical(upgradeDescription);
                 {
                     GUILayout.Label(title + " (" + cost + ")", descriptionText);
                     GUILayout.Label(description, descriptionText);
@@ -75,7 +84,7 @@ public class SkilltreeGui : MonoBehaviour
         }
     }
 
-    public void hoverUpgrade(string description, int cost, string title)
+    public void HoverUpgrade(string description, int cost, string title)
     {
         this.description = description;
         this.title = title;
@@ -84,7 +93,13 @@ public class SkilltreeGui : MonoBehaviour
         hovering = true;
     }
 
-    public void stopHover()
+    public void UpdateAmmo()
+    {
+        phaserAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.PHASER_AMMO);
+        rocketAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.ROCKET_AMMO);
+    }
+
+    public void StopHover()
     {
         hovering = false;
     }

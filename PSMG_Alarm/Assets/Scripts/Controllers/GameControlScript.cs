@@ -3,9 +3,9 @@ using System.Collections;
 
 public class GameControlScript : MonoBehaviour
 {
-
     public float maxNoGazeDataTime = 1;
     public bool blockWhenNoGazeData = true;
+
     public static float timeElapsed;
 
     private GameObject[] powerUps;
@@ -15,10 +15,15 @@ public class GameControlScript : MonoBehaviour
     private float noGazeDataTimer;
     private bool paused = false;
 
+    public static int coins;
+
     void Start()
     {
         Screen.showCursor = false;
         timeElapsed = 0;
+
+        coins = PlayerPrefsManager.GetCoins();
+        GameObject.Find("Highscore").GetComponent<HighscoreScript>().updateCoins(coins);
 
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
         shooting = GameObject.Find("gun").GetComponent<PlayerShooting>();
@@ -131,5 +136,11 @@ public class GameControlScript : MonoBehaviour
         {
             unpauseGame();
         }
+    }
+
+    public static void addCoins(int value)
+    {
+        coins += value;
+        PlayerPrefsManager.SetCoins(coins);
     }
 }

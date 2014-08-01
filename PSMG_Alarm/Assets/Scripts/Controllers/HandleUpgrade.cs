@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HandleUpgrade : MonoBehaviour {
+public class HandleUpgrade : MonoBehaviour
+{
 
     public Sprite s_highlighted;
     public Sprite s_upgraded;
@@ -9,25 +10,59 @@ public class HandleUpgrade : MonoBehaviour {
     public string title;
     public string description;
     public int cost;
-    public UpgradeController.upgradeID id;
-    
-    private Sprite s_nonHighlighted;
 
-    private bool upgraded;
+    public bool not_upgradeable = false;
+    public bool upgraded;
+    public UpgradeController.upgradeID preCondition;
+    public UpgradeController.upgradeID id;
+
+    private Sprite s_nonHighlighted;
+    private GameObject[] upgrades;
     private SkilltreeGui skillGUI;
 
-	void Start () 
+    void Start()
     {
         s_nonHighlighted = GetComponent<SpriteRenderer>().sprite;
         skillGUI = GameObject.Find("Main Camera").GetComponent<SkilltreeGui>();
-	}
+
+        int upgradedInt = PlayerPrefsManager.GetUpgrade(id);
+        upgrades = GameObject.FindGameObjectsWithTag("Upgrade");
+
+        if (upgradedInt == 1 && !not_upgradeable)
+        {
+            upgraded = true;
+            GetComponent<SpriteRenderer>().sprite = s_upgraded;
+        }
+    }
 
     void OnMouseEnter()
     {
-        if (!upgraded)
+        bool available = false;
+
+        if (preCondition != UpgradeController.upgradeID.NONE)
+        {
+            foreach (GameObject upgrade in upgrades)
+            {
+                HandleUpgrade handle = upgrade.GetComponent<HandleUpgrade>();
+                if (handle.id == preCondition)
+                {
+                    if (handle.upgraded == true)
+                    {
+                        available = true;
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            available = true;
+        }
+
+        if (!upgraded && available)
         {
             GetComponent<SpriteRenderer>().sprite = s_highlighted;
-            skillGUI.hoverUpgrade(description, cost, title);
+            skillGUI.HoverUpgrade(description, cost, title);
         }
     }
 
@@ -38,12 +73,21 @@ public class HandleUpgrade : MonoBehaviour {
             GetComponent<SpriteRenderer>().sprite = s_nonHighlighted;
         }
 
-        skillGUI.stopHover();
+        skillGUI.StopHover();
     }
 
     void OnMouseDown()
     {
-        upgraded = true;
-        GetComponent<SpriteRenderer>().sprite = s_upgraded;
+        if (GetComponent<SpriteRenderer>().sprite == s_highlighted)
+        {
+            if (!not_upgradeable)
+            {
+                upgraded = true;
+                GetComponent<SpriteRenderer>().sprite = s_upgraded;
+            }
+            PlayerPrefsManager.SetUpgrade(1, id);
+
+            Camera.main.GetComponent<SkilltreeGui>().UpdateAmmo();
+        }
     }
 }

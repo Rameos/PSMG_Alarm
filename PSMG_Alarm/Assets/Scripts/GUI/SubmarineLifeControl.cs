@@ -10,19 +10,12 @@ public class SubmarineLifeControl : MonoBehaviour {
 
 	private int [] lifeArray = new int[4];
 	private int life;
-
-	// Use this for initialization
 	void Start () {
 		life = 4;
 		for (int i = 0; i < lifeArray.Length; i++) {
 			lifeArray[i] = 1;
 		}
 		updateLife ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	public void incrementLife(){

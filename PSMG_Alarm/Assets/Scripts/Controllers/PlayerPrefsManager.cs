@@ -22,6 +22,11 @@ public class PlayerPrefsManager : MonoBehaviour
 
     // store bought upgrades
     private static readonly string MG_UPGRADE_1 = "mg_upgrade_1";
+    private static readonly string MG_UPGRADE_2 = "mg_upgrade_2";
+    private static readonly string PHASER_UPGRADE = "phaser_upgrade";
+    private static readonly string ROCKET_UPGRADE = "rocket_upgrade";
+    private static readonly string PHASER_AMMO = "phaser_ammo";
+    private static readonly string ROCKET_AMMO = "rocket_ammo";
     private static readonly string MAX_LIVE_UPGRADE = "max_live_upgrade";
 
     public static void Reset()
@@ -69,6 +74,49 @@ public class PlayerPrefsManager : MonoBehaviour
             case UpgradeController.upgradeID.MACHINE_GUN_1:
                 PlayerPrefs.SetInt(MG_UPGRADE_1, value);
                 break;
+            case UpgradeController.upgradeID.MACHINE_GUN_2:
+                PlayerPrefs.SetInt(MG_UPGRADE_2, value);
+                break;
+            case UpgradeController.upgradeID.PHASER:
+                PlayerPrefs.SetInt(PHASER_UPGRADE, value);
+                break;
+            case UpgradeController.upgradeID.ROCKET:
+                PlayerPrefs.SetInt(ROCKET_UPGRADE, value);
+                break;
+            case UpgradeController.upgradeID.ROCKET_AMMO:
+                PlayerPrefs.SetInt(ROCKET_AMMO, GetUpgrade(UpgradeController.upgradeID.ROCKET_AMMO) + 1);
+                break;
+            case UpgradeController.upgradeID.PHASER_AMMO:
+                PlayerPrefs.SetInt(PHASER_AMMO, GetUpgrade(UpgradeController.upgradeID.PHASER_AMMO) + 1);
+                break;
         }
+    }
+
+    public static int GetUpgrade(UpgradeController.upgradeID id)
+    {
+        switch (id)
+        {
+            case UpgradeController.upgradeID.MAX_LIVE:
+                return PlayerPrefs.GetInt(MAX_LIVE_UPGRADE);
+            case UpgradeController.upgradeID.MACHINE_GUN_1:
+                return PlayerPrefs.GetInt(MG_UPGRADE_1);
+            case UpgradeController.upgradeID.MACHINE_GUN_2:
+                return PlayerPrefs.GetInt(MG_UPGRADE_2);
+            case UpgradeController.upgradeID.PHASER:
+                return PlayerPrefs.GetInt(PHASER_UPGRADE);
+            case UpgradeController.upgradeID.ROCKET:
+                return PlayerPrefs.GetInt(ROCKET_UPGRADE);
+            case UpgradeController.upgradeID.PHASER_AMMO:
+                return PlayerPrefs.GetInt(PHASER_AMMO);
+            case UpgradeController.upgradeID.ROCKET_AMMO:
+                return PlayerPrefs.GetInt(ROCKET_AMMO);
+            default:
+                return 0;
+        }
+    }
+
+    public static int GetCoins()
+    {
+        return PlayerPrefs.GetInt(CURRENT_COINS);
     }
 }

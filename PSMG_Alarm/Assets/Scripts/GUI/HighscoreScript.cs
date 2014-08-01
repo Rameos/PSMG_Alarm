@@ -1,29 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HighscoreScript : MonoBehaviour {
+public class HighscoreScript : MonoBehaviour
+{
 
-	public GUIText scoreText;
+    public GUIText scoreText;
+    public GUIText coinText;
 
-	private int score;
-    
+    private int score;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void addScoreValue(int value)
+    {
+        score = score + value;
+        changeScoreText();
+    }
+    public void updateCoins(int coins)
+    {
+        coinText.text = "x " + coins;
+    }
 
-	public void addScoreValue(int value) {
-		score = score + value;
-		changeScoreText ();
-	}
+    void changeScoreText()
+    {
+        scoreText.text = "" + score;
+    }
 
-	void changeScoreText() {
-		scoreText.text = "" + score;
-	}
 }

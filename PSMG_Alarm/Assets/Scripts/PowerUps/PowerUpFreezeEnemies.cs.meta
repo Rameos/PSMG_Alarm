@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 854265bcb3bbf534a919c1687f6a6b72
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - iceBlock: {fileID: 100000, guid: 8911bd1b625b21249bfcdafda715c071, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

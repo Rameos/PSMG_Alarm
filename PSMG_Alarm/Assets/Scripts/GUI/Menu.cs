@@ -11,15 +11,13 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefsManager.Reset();
+        Screen.showCursor = true;
+
         mainMenu = true;
         modiMenu = false;
         levelsOfDifficulty = false;
         highscores = false;
-    }
-
-    void Update()
-    {
-
     }
 
     void OnGUI()

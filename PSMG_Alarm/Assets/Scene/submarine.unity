@@ -266,6 +266,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &205493321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 205493323}
+  - 131: {fileID: 205493322}
+  m_Layer: 0
+  m_Name: Coin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &205493322
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205493321}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 80ade8cf497e3ed4f9eba73e130472fc, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 30
+    height: 30
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &205493323
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205493321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .790000021, y: -.0199999996, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 653787100}
+  m_RootOrder: 5
 --- !u!1 &223584607
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +528,8 @@ Transform:
   - {fileID: 1424806437}
   - {fileID: 1995478121}
   - {fileID: 545883205}
+  - {fileID: 205493323}
+  - {fileID: 1602729551}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!114 &653787101
@@ -538,10 +587,18 @@ MonoBehaviour:
   camera2d: {fileID: 1434523117}
   waves:
   - time: 5
-    repeatTime: 4
-    size: 2
+    repeatTime: 20
+    size: 10
     type: 0
   - time: 10
+    repeatTime: 0
+    size: 4
+    type: 1
+  - time: 20
+    repeatTime: 0
+    size: 4
+    type: 1
+  - time: 50
     repeatTime: 0
     size: 4
     type: 1
@@ -571,6 +628,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: 100000, guid: 4a8e2991649bd674eb4f31740b0a6685, type: 2}
   - {fileID: 100000, guid: bf0cff6cb8d7c004f9927ffa051f321c, type: 2}
+  - {fileID: 100000, guid: 05e13c768020e5b4f84ebddd9b898a31, type: 2}
   camera2d: {fileID: 1434523117}
 --- !u!114 &665831172
 MonoBehaviour:
@@ -1066,7 +1124,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1405926343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .0287985206, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1348,6 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1585346957}
+  coinText: {fileID: 1602729552}
 --- !u!132 &1585346957
 GUIText:
   m_ObjectHideFlags: 0
@@ -1384,6 +1443,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 653787100}
   m_RootOrder: 0
+--- !u!1 &1602729550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1602729551}
+  - 132: {fileID: 1602729552}
+  m_Layer: 0
+  m_Name: GUI Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1602729551
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602729550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .75999999, y: -.0199999996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 653787100}
+  m_RootOrder: 6
+--- !u!132 &1602729552
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1602729550}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: x 0
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 20
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1621637080
 GameObject:
   m_ObjectHideFlags: 0

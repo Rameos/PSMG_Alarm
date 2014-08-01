@@ -137,7 +137,7 @@ GameObject:
   - 61: {fileID: 31405865}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +181,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &31405867
 SpriteRenderer:
@@ -267,7 +270,7 @@ GameObject:
   - 61: {fileID: 61907424}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,6 +314,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &61907426
 SpriteRenderer:
@@ -397,7 +403,7 @@ GameObject:
   - 61: {fileID: 154241498}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,7 +447,10 @@ MonoBehaviour:
   title: Raketenwerfer
   description: Raketenwerfer der massiven Schaden verursacht
   cost: 60
-  id: 0
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
+  id: 6
 --- !u!212 &154241500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -605,7 +614,7 @@ GameObject:
   - 61: {fileID: 292677924}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,6 +658,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &292677926
 SpriteRenderer:
@@ -712,7 +724,7 @@ GameObject:
   - 61: {fileID: 326750829}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,6 +768,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &326750831
 SpriteRenderer:
@@ -992,7 +1007,7 @@ GameObject:
   - 61: {fileID: 412000664}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1036,6 +1051,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &412000666
 SpriteRenderer:
@@ -1498,7 +1516,7 @@ GameObject:
   - 61: {fileID: 827196529}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1542,6 +1560,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 1
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &827196531
 SpriteRenderer:
@@ -1778,7 +1799,7 @@ GameObject:
   - 61: {fileID: 1071471829}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1822,6 +1843,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1071471831
 SpriteRenderer:
@@ -1968,7 +1992,7 @@ GameObject:
   - 61: {fileID: 1221622867}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2012,6 +2036,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1221622869
 SpriteRenderer:
@@ -2451,7 +2478,7 @@ GameObject:
   - 61: {fileID: 1280667536}
   m_Layer: 0
   m_Name: AmmoItemPhaser
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2463,7 +2490,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1280667534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6125717, y: -3.74052262, z: 0}
+  m_LocalPosition: {x: -10.5513411, y: -3.74052238, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1405113307}
@@ -2495,7 +2522,10 @@ MonoBehaviour:
   title: Munition Phaser
   description: "Eine Ladung f\xFCr den Mega Phaser"
   cost: 30
-  id: 0
+  not_upgradeable: 1
+  upgraded: 0
+  preCondition: 5
+  id: 7
 --- !u!212 &1280667538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2678,7 +2708,7 @@ GameObject:
   - 61: {fileID: 1458501704}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2722,6 +2752,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1458501706
 SpriteRenderer:
@@ -2928,7 +2961,7 @@ GameObject:
   - 61: {fileID: 1659510897}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2972,6 +3005,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1659510899
 SpriteRenderer:
@@ -3008,7 +3044,7 @@ GameObject:
   - 61: {fileID: 1683149676}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3052,6 +3088,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1683149678
 SpriteRenderer:
@@ -3138,7 +3177,7 @@ GameObject:
   - 61: {fileID: 1704436294}
   m_Layer: 0
   m_Name: AmmoItemRocket
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3182,7 +3221,10 @@ MonoBehaviour:
   title: Munition Raketenwerfer
   description: "Eine Rakete f\xFCr den Raketenwerfer"
   cost: 15
-  id: 0
+  not_upgradeable: 1
+  upgraded: 0
+  preCondition: 6
+  id: 8
 --- !u!212 &1704436296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3318,7 +3360,7 @@ GameObject:
   - 61: {fileID: 1821605158}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3362,6 +3404,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1821605160
 SpriteRenderer:
@@ -3448,7 +3493,7 @@ GameObject:
   - 61: {fileID: 1866677972}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3469,7 +3514,10 @@ MonoBehaviour:
   title: Mega Phaser
   description: "Ultimativer Laser der alles aus dem Weg r\xE4umt!"
   cost: 150
-  id: 0
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
+  id: 5
 --- !u!212 &1866677970
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3528,7 +3576,7 @@ GameObject:
   - 61: {fileID: 1950126176}
   m_Layer: 0
   m_Name: UpgradeItem
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3572,6 +3620,9 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
+  not_upgradeable: 0
+  upgraded: 0
+  preCondition: 0
   id: 0
 --- !u!212 &1950126178
 SpriteRenderer:

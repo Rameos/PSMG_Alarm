@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PowerUpFreezeEnemies : PowerUp {
-
+public class PowerUpFreezeEnemies : PowerUp
+{
     public override void ApplyPowerUp()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -12,5 +12,4 @@ public class PowerUpFreezeEnemies : PowerUp {
             enemy.GetComponent<Enemy>().stopEnemyMovement();
         }
     }
-
 }
