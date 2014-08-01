@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CoinPowerUp
   m_TagString: PowerUp
   m_Icon: {fileID: 0}

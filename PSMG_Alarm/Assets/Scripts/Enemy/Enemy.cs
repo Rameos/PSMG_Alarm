@@ -63,7 +63,8 @@ public class Enemy : MonoBehaviour
 
     private void DestroyEnemy()
     {
-
+        Instantiate(explosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
     public Vector3 GetNewTargetLocation()
@@ -134,5 +135,10 @@ public class Enemy : MonoBehaviour
     public void setSpeed(float value)
     {
         speed = value;
+    }
+
+    public void TakeDamage(int value)
+    {
+        life -= value;
     }
 }

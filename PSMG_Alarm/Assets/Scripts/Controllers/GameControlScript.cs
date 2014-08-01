@@ -115,15 +115,6 @@ public class GameControlScript : MonoBehaviour
         }
     }
 
-    public void stopParticles()
-    {
-        GameObject[] particleEmitter = GameObject.FindGameObjectsWithTag("MovementParticles");
-
-        for (int i = 0; i < particleEmitter.Length; i++)
-        {
-            particleEmitter[i].GetComponent<ParticleSystem>().Stop();
-        }
-    }
 
     bool checkGazeDataAvailable()
     {

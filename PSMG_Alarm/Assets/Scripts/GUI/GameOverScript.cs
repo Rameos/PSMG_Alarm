@@ -22,7 +22,6 @@ public class GameOverScript : MonoBehaviour
         movePlayer.stopPlayerMovement();
         controller.stopEnemies();
         controller.stopPowerUps();
-        controller.stopParticles();
     }
 
     void OnGUI()

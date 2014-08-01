@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 212: {fileID: 21200000}
   - 148: {fileID: 14800000}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -104,6 +104,8 @@ MonoBehaviour:
   camera2d: {fileID: 0}
   explosion: {fileID: 100000, guid: cb55ad3d5c910fc498c744148a6addb6, type: 2}
   speed: 2
+  life: 100
+  value: 100
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
