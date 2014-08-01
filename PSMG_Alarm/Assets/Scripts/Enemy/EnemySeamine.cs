@@ -5,6 +5,11 @@ public class EnemySeamine : Enemy
 {
     private Vector3 target;
 
+    public override void FindOtherObjects()
+    {
+        target = GetNewTargetLocation();
+    }
+
     public override void Move()
     {
         transform.Rotate(0, 0, 2);

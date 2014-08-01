@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject camera2d;
     public GameObject explosion;
+    public GameObject spark;
     
     public float speed = 2;
     public int life = 100;
@@ -79,32 +80,34 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.tag == "MachineGun")
+        {
+            highscorecontroller.addScoreValue(value);
+            Instantiate(spark, transform.position, transform.rotation);
+            col.gameObject.SendMessage("DoDamage", this.gameObject);
+        }
         if (col.gameObject.tag == "Rocket")
         {
             highscorecontroller.addScoreValue(value);
             Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
-            Destroy(col.gameObject);
+            col.gameObject.SendMessage("DoDamage", this.gameObject);
         }
         else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
         {
             highscorecontroller.addScoreValue(value);
             submarineLifeControl.decrementLife();
-            Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            DestroyEnemy();
         }
         else if (col.gameObject.tag == "Shield")
         {
             Destroy(GameObject.Find("Shield(Clone)"));
             highscorecontroller.addScoreValue(100);
-            Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            DestroyEnemy();
         }
         else if (col.gameObject.tag == "Wave")
         {
             highscorecontroller.addScoreValue(100);
-            Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            col.gameObject.SendMessage("DoDamage", this.gameObject);
         }
     }
 

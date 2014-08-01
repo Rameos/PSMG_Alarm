@@ -3,7 +3,7 @@ using System.Collections;
 [RequireComponent(typeof(LineRenderer))]
 public class PlayerShooting : MonoBehaviour
 {
-    public GameObject[] weapon;
+    public WeaponObject[] weapon;
     public bool useGazeControl = false;
 
     private GameOverScript gameOver;
@@ -11,10 +11,13 @@ public class PlayerShooting : MonoBehaviour
 
     public enum weaponTyps { rocket, laser, mg };
     public weaponTyps weaponTyp = weaponTyps.rocket;
+
+    private float fireTimer;
     private bool shootingBlocked;
 
-    void Awake()
+    void Start()
     {
+        fireTimer = weapon[0].fireRate;
         gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
         crosshair = GameObject.Find("Crosshair");
     }
@@ -23,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
     {
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 aimPosition;
+
+        fireTimer += Time.deltaTime;
 
         if (useGazeControl)
         {
@@ -48,31 +53,60 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButtonDown("Machine Gun"))
         {
             weaponTyp = weaponTyps.rocket;
+            fireTimer = weapon[(int)weaponTyp].fireRate;
         }
         else if (Input.GetButtonDown("Rocket"))
         {
             weaponTyp = weaponTyps.laser;
+            fireTimer = weapon[(int)weaponTyp].fireRate;
         }
         else if (Input.GetButtonDown("Laser"))
         {
             weaponTyp = weaponTyps.mg;
+            fireTimer = weapon[(int)weaponTyp].fireRate;
         }
 
-        if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
-            Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
+        if (fireTimer >= weapon[(int)weaponTyp].fireRate)
         {
-            GameObject bulletInstance;
-
-            if (NetworkManagerScript.networkActive && networkView.isMine)
+            if (Input.GetButton("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
+                Input.GetButton("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
             {
-                bulletInstance = (GameObject)Network.Instantiate(weapon[(int)weaponTyp], transform.position, transform.rotation, (int)weaponTyp);
-            }
-            else
-            {
-                bulletInstance = (GameObject)Instantiate(weapon[(int)weaponTyp], transform.position, transform.rotation);
-            }
+                GameObject bulletInstance;
 
-            bulletInstance.SendMessage("Fire", aimPosition);
+                if (NetworkManagerScript.networkActive && networkView.isMine)
+                {
+                    bulletInstance = (GameObject)Network.Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, (int)weaponTyp);
+                }
+                else
+                {
+                    bulletInstance = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation);
+                }
+
+                bulletInstance.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage);
+                bulletInstance.SendMessage("Fire", aimPosition);
+                fireTimer = 0;
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
+                Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
+            {
+                GameObject bulletInstance;
+
+                if (NetworkManagerScript.networkActive && networkView.isMine)
+                {
+                    bulletInstance = (GameObject)Network.Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, (int)weaponTyp);
+                }
+                else
+                {
+                    bulletInstance = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation);
+                }
+
+                bulletInstance.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage);
+                bulletInstance.SendMessage("Fire", aimPosition);
+                fireTimer = 0;
+            }
         }
     }
     public void blockShooting()
@@ -83,5 +117,13 @@ public class PlayerShooting : MonoBehaviour
     public void unblockShooting()
     {
         shootingBlocked = false;
+    }
+
+    [System.Serializable]
+    public class WeaponObject
+    {
+        public GameObject weapon;
+        public float fireRate;
+        public int damage;
     }
 }

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera2d: {fileID: 0}
   explosion: {fileID: 100000, guid: aede7e1229eefd1468d603e233daf5b5, type: 2}
+  spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   speed: .5
   life: 100
   value: 100

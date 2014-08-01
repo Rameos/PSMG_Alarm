@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 6d9a5cf4c95cc7c4c9ac02852ac368b3
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - camera2d: {instanceID: 0}
+  - explosion: {instanceID: 0}
+  - spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

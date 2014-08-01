@@ -161,9 +161,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon:
-  - {fileID: 100000, guid: 2877870f458c99249ab7672f6460b39f, type: 2}
-  - {fileID: 100002, guid: 9079ef230b118e54189502a33151bae4, type: 2}
-  - {fileID: 100000, guid: 0853c2c6649c6044c97b102518db6f7c, type: 2}
+  - weapon: {fileID: 100000, guid: 2877870f458c99249ab7672f6460b39f, type: 2}
+    fireRate: .200000003
+    damage: 25
+  - weapon: {fileID: 100002, guid: 9079ef230b118e54189502a33151bae4, type: 2}
+    fireRate: .5
+    damage: 100
+  - weapon: {fileID: 100000, guid: 0853c2c6649c6044c97b102518db6f7c, type: 2}
+    fireRate: .5
+    damage: 100
   useGazeControl: 0
   weaponTyp: 0
 --- !u!114 &11400004
