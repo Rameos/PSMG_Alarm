@@ -4,12 +4,10 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
-    public GameObject enemyRed;
     public GameObject camera2d;
     public List<SpawnWave> waves = new List<SpawnWave>();
 
-    public enum enemyType { smallEnemy, bigEnemy }
+    public enum enemyType { SMALL_ENEMY, BIG_ENEMY, SEA_MINE }
 
     private List<SpawnWave> tempRemove = new List<SpawnWave>();
     private List<SpawnWave> tempAdd = new List<SpawnWave>();
@@ -25,13 +23,13 @@ public class EnemySpawner : MonoBehaviour
             {
                 for (int i = 0; i < wave.size; i++)
                 {
-                    SpawnEnemy(wave.type);
+                    SpawnEnemy(wave.enemy);
                 }
                 tempRemove.Add(wave);
 
                 if (wave.repeatTime > 0)
                 {
-                    tempAdd.Add(new SpawnWave((int)(GameControlScript.timeElapsed + wave.repeatTime), wave.repeatTime, wave.size, wave.type));
+                    tempAdd.Add(new SpawnWave((int)(GameControlScript.timeElapsed + wave.repeatTime), wave.repeatTime, wave.size, wave.enemy));
                 }
             }
         }
@@ -80,33 +78,17 @@ public class EnemySpawner : MonoBehaviour
         return randomPos;
     }
 
-    public void SpawnEnemy(enemyType type)
+    public void SpawnEnemy(GameObject type)
     {
         Vector3 pos = GetRandomPosition();
 
         if (NetworkManagerScript.networkActive && Network.isServer)
         {
-            switch (type)
-            {
-                case enemyType.bigEnemy:
-                    Network.Instantiate(enemyRed, pos, Quaternion.Euler(0, 0, 0), 6);
-                    break;
-                case enemyType.smallEnemy:
-                    Network.Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0), 5);
-                    break;
-            }
+            Network.Instantiate(type, pos, Quaternion.Euler(0, 0, 0), 5);
         }
         if (NetworkManagerScript.networkActive == false)
         {
-            switch (type)
-            {
-                case enemyType.bigEnemy:
-                    Instantiate(enemyRed, pos, Quaternion.Euler(0, 0, 0));
-                    break;
-                case enemyType.smallEnemy:
-                    Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0));
-                    break;
-            }
+            Instantiate(type, pos, Quaternion.Euler(0, 0, 0));
         }
     }
 
@@ -116,13 +98,13 @@ public class EnemySpawner : MonoBehaviour
         public int time;
         public int repeatTime;
         public int size;
-        public EnemySpawner.enemyType type;
-        public SpawnWave(int time, int repeatTime, int size, EnemySpawner.enemyType type)
+        public GameObject enemy;
+        public SpawnWave(int time, int repeatTime, int size, GameObject enemy)
         {
             this.time = time;
             this.repeatTime = repeatTime;
             this.size = size;
-            this.type = type;
+            this.enemy = enemy;
         }
     }
 }

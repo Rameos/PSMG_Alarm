@@ -29,8 +29,5 @@ public class InGameNetworking : MonoBehaviour {
 		} else {
 			Network.Instantiate(player2Prefab, spawn2.position,  Quaternion.identity, 1);	
 		}
-
-			
-
 	}
 }

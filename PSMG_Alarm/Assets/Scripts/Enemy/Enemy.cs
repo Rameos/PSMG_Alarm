@@ -3,12 +3,14 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-
     private Vector3 targetLocation;
 
     public GameObject camera2d;
     public GameObject explosion;
+    
     public float speed = 2;
+    public int life = 100;
+    public int value = 100;
 
     private HighscoreScript highscorecontroller;
     private SubmarineLifeControl submarineLifeControl;
@@ -20,7 +22,7 @@ public class Enemy : MonoBehaviour
         highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
         submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
 
-        GetNewTargetLocation();
+        targetLocation = GetNewTargetLocation();
         FindOtherObjects();
     }
 
@@ -28,6 +30,11 @@ public class Enemy : MonoBehaviour
     {
         Shoot();
         Move();
+
+        if (life <= 0)
+        {
+            DestroyEnemy();
+        }
     }
 
     public virtual void FindOtherObjects()
@@ -49,30 +56,38 @@ public class Enemy : MonoBehaviour
             transform.position = transform.position + transform.right * speed * Time.deltaTime;
             if (Vector3.Distance(transform.position, targetLocation) < 1)
             {
-                GetNewTargetLocation();
+                targetLocation = GetNewTargetLocation();
             }
         }
     }
 
-    void GetNewTargetLocation()
+    private void DestroyEnemy()
+    {
+
+    }
+
+    public Vector3 GetNewTargetLocation()
     {
         float screenX = Random.Range(0.0f, camera2d.camera.pixelWidth);
         float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
-        targetLocation = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
-        targetLocation.z = 9;
+        Vector3 target = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
+        target.z = 9;
+
+        return target;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Rocket")
         {
-            highscorecontroller.addScoreValue(100);
+            highscorecontroller.addScoreValue(value);
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
             Destroy(col.gameObject);
         }
         else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
         {
-            highscorecontroller.addScoreValue(100);
+            highscorecontroller.addScoreValue(value);
             submarineLifeControl.decrementLife();
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
@@ -81,11 +96,13 @@ public class Enemy : MonoBehaviour
         {
             Destroy(GameObject.Find("Shield(Clone)"));
             highscorecontroller.addScoreValue(100);
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         else if (col.gameObject.tag == "Wave")
         {
             highscorecontroller.addScoreValue(100);
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
