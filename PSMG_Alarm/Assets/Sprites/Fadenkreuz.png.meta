@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: f9111b29e0da0d843a6295379790ff5d
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Fadenkreuz
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
