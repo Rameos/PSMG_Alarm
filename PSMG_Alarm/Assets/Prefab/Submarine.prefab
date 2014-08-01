@@ -160,12 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5ff1aa88d3d41489af81e31706f352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket:
+  weapon:
+  - {fileID: 100000, guid: 2877870f458c99249ab7672f6460b39f, type: 2}
   - {fileID: 100002, guid: 9079ef230b118e54189502a33151bae4, type: 2}
-  laser:
   - {fileID: 100000, guid: 0853c2c6649c6044c97b102518db6f7c, type: 2}
-  damdam: {fileID: 100002, guid: 9079ef230b118e54189502a33151bae4, type: 2}
-  speed: 19
+  useGazeControl: 0
   weaponTyp: 0
 --- !u!114 &11400004
 MonoBehaviour:

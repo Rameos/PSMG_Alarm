@@ -658,10 +658,10 @@ MonoBehaviour:
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 10
-  not_upgradeable: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
-  id: 0
+  id: 3
 --- !u!212 &292677926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2039,7 +2039,7 @@ MonoBehaviour:
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
-  id: 0
+  id: 1
 --- !u!212 &1221622869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3008,7 +3008,7 @@ MonoBehaviour:
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
-  id: 0
+  id: 1
 --- !u!212 &1659510899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3622,8 +3622,8 @@ MonoBehaviour:
   cost: 10
   not_upgradeable: 0
   upgraded: 0
-  preCondition: 0
-  id: 0
+  preCondition: 1
+  id: 2
 --- !u!212 &1950126178
 SpriteRenderer:
   m_ObjectHideFlags: 0
