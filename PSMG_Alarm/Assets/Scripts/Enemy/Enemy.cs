@@ -81,8 +81,8 @@ public class Enemy : MonoBehaviour
 
     public Vector3 GetNewTargetLocation()
     {
-        float screenX = Random.Range(0.0f, camera2d.camera.pixelWidth);
-        float screenY = Random.Range(0.0f, camera2d.camera.pixelHeight);
+        float screenX = Random.Range(20, camera2d.camera.pixelWidth - 20);
+        float screenY = Random.Range(20, camera2d.camera.pixelHeight - 20);
         Vector3 target = camera2d.camera.ScreenToWorldPoint(new Vector3(screenX, screenY, 9));
         target.z = 9;
 

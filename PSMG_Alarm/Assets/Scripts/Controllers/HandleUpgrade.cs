@@ -78,7 +78,7 @@ public class HandleUpgrade : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (GetComponent<SpriteRenderer>().sprite == s_highlighted)
+        if (GetComponent<SpriteRenderer>().sprite == s_highlighted && PlayerPrefsManager.GetCoins() > cost)
         {
             PlayerPrefsManager.SetCoins(PlayerPrefsManager.GetCoins() - cost);
             skillGUI.SendMessage("UpdateCoins");
