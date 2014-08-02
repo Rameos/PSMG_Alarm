@@ -85,7 +85,20 @@ public class HandleUpgrade : MonoBehaviour
                 upgraded = true;
                 GetComponent<SpriteRenderer>().sprite = s_upgraded;
             }
-            PlayerPrefsManager.SetUpgrade(1, id);
+
+            if (id != UpgradeController.upgradeID.REPAIR)
+            {
+                PlayerPrefsManager.SetUpgrade(1, id);
+            }
+            else
+            {
+                //if (PlayerPrefsManager.GetCurrentLife() < PlayerPrefsManager.GetMaxLife())
+                if (PlayerPrefsManager.GetCurrentLife() < 4)
+                {
+                    PlayerPrefsManager.SetCurrentLive(PlayerPrefsManager.GetCurrentLife() + 1);
+                    skillGUI.SendMessage("UpdateLife");
+                }
+            }
 
             Camera.main.GetComponent<SkilltreeGui>().UpdateAmmo();
         }

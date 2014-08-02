@@ -22,7 +22,7 @@ public class SkilltreeGui : MonoBehaviour
 
     private int coins;
     private int health;
-    private int maxHealth = 4;
+    private int maxHealth;
     private int phaserAmmo;
     private int rocketAmmo;
 
@@ -44,8 +44,8 @@ public class SkilltreeGui : MonoBehaviour
         coin = GameObject.Find("Coin");
 
         UpdateAmmo();
+        UpdateLife();
 
-        health = PlayerPrefsManager.GetCurrentLife();
         coins = PlayerPrefsManager.GetCoins();
     }
 
@@ -58,6 +58,7 @@ public class SkilltreeGui : MonoBehaviour
         titleStyle.alignment = TextAnchor.UpperCenter;
 
         coinsCountStyle.fontSize = Mathf.RoundToInt(standardCointextSize * ratioY);
+        coinsCountStyle.normal.textColor = Color.white;
 
         GUI.Box(new Rect(camera.WorldToScreenPoint(coin.transform.position).x + 30 * Screen.height / 500,
             Screen.height - camera.WorldToScreenPoint(coin.transform.position).y - 15 + Screen.height / 500, 50, 30),
@@ -73,9 +74,12 @@ public class SkilltreeGui : MonoBehaviour
             camera.WorldToScreenPoint(ammoRocket.transform.position).y + 50 * Screen.height / 500, 50, 30),
             "" + rocketAmmo, coinsCountStyle);
 
+        float currentPercentage = ((float)health / (float)maxHealth);
+        coinsCountStyle.normal.textColor = new Color(1 - currentPercentage / 1, currentPercentage / 1, 0);
+
         GUI.Box(new Rect(camera.WorldToScreenPoint(repair.transform.position).x - 15 * Screen.height / 500,
-            camera.WorldToScreenPoint(repair.transform.position).y + 50 * Screen.height / 500, 50, 30),
-            "" + health, coinsCountStyle);
+            Screen.height - (camera.WorldToScreenPoint(repair.transform.position).y - 30 * Screen.height / 500), 50, 30),
+            "" + (int)(currentPercentage * 100) + "%", coinsCountStyle);
 
         GUI.Box(new Rect(Screen.width / 13, Screen.height / 20, 300, 100), "Prepare For Your Next Mission...", titleStyle);
 
@@ -107,6 +111,13 @@ public class SkilltreeGui : MonoBehaviour
     {
         phaserAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.PHASER_AMMO);
         rocketAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.ROCKET_AMMO);
+    }
+
+    public void UpdateLife()
+    {
+        health = PlayerPrefsManager.GetCurrentLife();
+        maxHealth = 4;
+        //maxHealth = PlayerPrefsManager.GetMaxLife();
     }
 
     public void StopHover()
