@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public GameObject camera2d;
     public GameObject explosion;
     public GameObject spark;
-    
+
     public float speed = 2;
     public int life = 100;
     public int value = 100;
@@ -30,7 +30,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Shoot();
-        Move();
+
+        if (moveAllowed)
+        {
+            Move();
+        }
 
         if (life <= 0)
         {
@@ -50,15 +54,12 @@ public class Enemy : MonoBehaviour
 
     public virtual void Move()
     {
-        if (moveAllowed && Network.isServer && NetworkManagerScript.networkActive || moveAllowed && NetworkManagerScript.networkActive == false)
-        {
-            TurnToTarget();
+        TurnToTarget();
 
-            transform.position = transform.position + transform.right * speed * Time.deltaTime;
-            if (Vector3.Distance(transform.position, targetLocation) < 1)
-            {
-                targetLocation = GetNewTargetLocation();
-            }
+        transform.position = transform.position + transform.right * speed * Time.deltaTime;
+        if (Vector3.Distance(transform.position, targetLocation) < 1)
+        {
+            targetLocation = GetNewTargetLocation();
         }
     }
 

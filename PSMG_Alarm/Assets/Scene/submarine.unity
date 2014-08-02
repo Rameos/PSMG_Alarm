@@ -667,6 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67a0c8ef9470b04e91798db4ea0eac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destoyedPieces: {fileID: 100014, guid: 46e916a22c7d428418cc2c139f5c3a3e, type: 2}
 --- !u!114 &665831174
 MonoBehaviour:
   m_ObjectHideFlags: 0

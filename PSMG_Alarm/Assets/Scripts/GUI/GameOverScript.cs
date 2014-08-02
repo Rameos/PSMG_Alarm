@@ -3,23 +3,27 @@ using System.Collections;
 
 public class GameOverScript : MonoBehaviour
 {
-    private MovePlayer movePlayer;
+    public GameObject destoyedPieces;
+
     private bool gameOver;
+    private GameObject player;
     private GameControlScript controller;
     private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
     void Start()
     {
         gameOver = false;
+        player = GameObject.FindGameObjectWithTag("Player");
         controller = GameObject.Find("GameController").GetComponent<GameControlScript>();
     }
 
     public void endOfGame()
     {
         gameOver = true;
-        movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
 
-        movePlayer.stopPlayerMovement();
+        Instantiate(destoyedPieces, player.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+
+        Destroy(player);
         controller.stopEnemies();
         controller.stopPowerUps();
     }
