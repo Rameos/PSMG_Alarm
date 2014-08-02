@@ -178,10 +178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -311,10 +311,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -765,10 +765,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -1048,10 +1048,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -1557,9 +1557,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
   s_upgraded: {fileID: 21300002, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
   not_upgradeable: 1
   upgraded: 0
   preCondition: 0
@@ -1840,10 +1840,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -2033,13 +2033,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
-  id: 1
+  id: 0
 --- !u!212 &1221622869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2749,10 +2749,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -3000,11 +3000,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 2ddd4ebf48fc2aa48bece98bdbef7911, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 2ddd4ebf48fc2aa48bece98bdbef7911, type: 3}
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
+  cost: 100
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -3029,7 +3029,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ddd4ebf48fc2aa48bece98bdbef7911, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1683149674
 GameObject:
@@ -3085,10 +3085,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -3401,10 +3401,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
   s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
-  not_upgradeable: 0
+  title: NOT IMPLEMENTED
+  description: Dieses Upgrade wurde noch nicht implementiert
+  cost: 0
+  not_upgradeable: 1
   upgraded: 0
   preCondition: 0
   id: 0
@@ -3615,11 +3615,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
-  title: Maschinengewehr +1
-  description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 10
+  s_highlighted: {fileID: 21300004, guid: d43b8f8b8b454f742aee165c1f2a7751, type: 3}
+  s_upgraded: {fileID: 21300002, guid: d43b8f8b8b454f742aee165c1f2a7751, type: 3}
+  title: Maschinengewehr +2
+  description: "F\xFCgt 2 weitere Kugeln zu jeder MG Salve hinzu."
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 1
@@ -3644,7 +3644,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4d8c34e46a8ed6247b0c24826a476c58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d43b8f8b8b454f742aee165c1f2a7751, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1959884952
 GameObject:

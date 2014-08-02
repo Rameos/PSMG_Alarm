@@ -59,11 +59,11 @@ public class HandleUpgrade : MonoBehaviour
             available = true;
         }
 
-        if (!upgraded && available)
+        if (!upgraded && available && PlayerPrefsManager.GetCoins() > cost)
         {
             GetComponent<SpriteRenderer>().sprite = s_highlighted;
-            skillGUI.HoverUpgrade(description, cost, title);
         }
+            skillGUI.HoverUpgrade(description, cost, title);
     }
 
     void OnMouseExit()
@@ -80,6 +80,9 @@ public class HandleUpgrade : MonoBehaviour
     {
         if (GetComponent<SpriteRenderer>().sprite == s_highlighted)
         {
+            PlayerPrefsManager.SetCoins(PlayerPrefsManager.GetCoins() - cost);
+            skillGUI.SendMessage("UpdateCoins");
+
             if (!not_upgradeable)
             {
                 upgraded = true;

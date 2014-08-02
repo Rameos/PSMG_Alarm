@@ -6,22 +6,34 @@ public class HighscoreScript : MonoBehaviour
 
     public GUIText scoreText;
     public GUIText coinText;
+    public GUIText ammoText;
 
     private int score;
 
-    public void addScoreValue(int value)
+    public void AddScoreValue(int value)
     {
         score = score + value;
-        changeScoreText();
+        ChangeScoreText();
     }
-    public void updateCoins(int coins)
+    public void UpdateCoins(int coins)
     {
         coinText.text = "x " + coins;
     }
 
-    void changeScoreText()
+    public void UpdateAmmo(int ammo)
+    {
+        if (ammo > -1)
+        {
+            ammoText.text = "Ammo: " + ammo;
+        }
+        else
+        {
+            ammoText.text = "Ammo: --";
+        }
+    }
+
+    void ChangeScoreText()
     {
         scoreText.text = "" + score;
     }
-
 }

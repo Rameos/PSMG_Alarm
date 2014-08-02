@@ -4,21 +4,35 @@ using System.Collections;
 public class SubmarineLifeControl : MonoBehaviour {
 
 	public GUITexture [] sub = new GUITexture[4];
+	public GameOverScript gameOverScript;
 	public Texture2D red;
 	public Texture2D grey;
-	public GameOverScript gameOverScript;
 
     private GameObject player;
 	private int [] lifeArray = new int[4];
-	private int life;
+	private int life = 4;
 	void Start () {
-		life = 4;
 		for (int i = 0; i < lifeArray.Length; i++) {
 			lifeArray[i] = 1;
 		}
-		UpdateLife ();
+
+        int currentLife = PlayerPrefsManager.GetCurrentLife();
+        if (currentLife == 0)
+        {
+            PlayerPrefsManager.SetCurrentLive(4);
+            currentLife = 4;
+        }
+
+        Debug.Log(currentLife + " " + life);
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        for (int i = 0; i < life - currentLife; i++)
+        {
+            DecrementLife();
+        }
+
+		UpdateLife ();
 	}
 
 	public void IncrementLife(){

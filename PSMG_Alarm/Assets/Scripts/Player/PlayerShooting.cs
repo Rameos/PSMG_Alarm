@@ -14,17 +14,25 @@ public class PlayerShooting : MonoBehaviour
 
     private float fireTimer;
     private bool shootingBlocked;
+    private HighscoreScript highscore;
 
-    private int mg_upgrade = 0;
+    private int rocketAmmo;
+    private int laserAmmo;
+
+    private int mgUpgrade = 0;
 
     void Start()
     {
-        mg_upgrade += PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.MACHINE_GUN_1);
-        mg_upgrade += PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.MACHINE_GUN_2);
+        mgUpgrade += PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.MACHINE_GUN_1);
+        mgUpgrade += PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.MACHINE_GUN_2);
 
         fireTimer = weapon[0].fireRate;
         gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
         crosshair = GameObject.Find("Crosshair");
+        highscore = GameObject.Find("Highscore").GetComponent<HighscoreScript>();
+
+        rocketAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.ROCKET_AMMO);
+        laserAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.PHASER_AMMO);
     }
 
     void Update()
@@ -59,16 +67,19 @@ public class PlayerShooting : MonoBehaviour
         {
             weaponTyp = weaponTyps.mg;
             fireTimer = weapon[(int)weaponTyp].fireRate;
+            UpdateAmmo();
         }
-        else if (Input.GetButtonDown("Rocket"))
+        else if (Input.GetButtonDown("Rocket") && rocketAmmo > 0)
         {
             weaponTyp = weaponTyps.rocket;
             fireTimer = weapon[(int)weaponTyp].fireRate;
+            UpdateAmmo();
         }
-        else if (Input.GetButtonDown("Laser"))
+        else if (Input.GetButtonDown("Laser") && laserAmmo > 0)
         {
             weaponTyp = weaponTyps.laser;
             fireTimer = weapon[(int)weaponTyp].fireRate;
+            UpdateAmmo();
         }
 
         if (fireTimer >= weapon[(int)weaponTyp].fireRate)
@@ -76,6 +87,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetButton("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
                 Input.GetButton("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
             {
+                CheckAmmo();
                 FireBullet(aimPosition);
             }
         }
@@ -84,6 +96,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
                 Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
             {
+                CheckAmmo();
                 FireBullet(aimPosition);
             }
         }
@@ -102,11 +115,11 @@ public class PlayerShooting : MonoBehaviour
         {
             bulletInstance = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation);
 
-            if (weaponTyp == weaponTyps.mg && mg_upgrade > 0)
+            if (weaponTyp == weaponTyps.mg && mgUpgrade > 0)
             {
                 bonusDamage = 20;
 
-                if (mg_upgrade == 2)
+                if (mgUpgrade == 2)
                 {
                     GameObject bulletInstance1 = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, 3f));
                     GameObject bulletInstance2 = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, -3f));
@@ -123,14 +136,51 @@ public class PlayerShooting : MonoBehaviour
         bulletInstance.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage + bonusDamage);
         bulletInstance.SendMessage("Fire", aimPosition);
         fireTimer = 0;
+
+        UpdateAmmo();
     }
 
-    public void blockShooting()
+    private void CheckAmmo()
+    {
+        switch (weaponTyp)
+        {
+            case weaponTyps.rocket:
+                if (rocketAmmo <= 0)
+                    weaponTyp = weaponTyps.mg;
+                else
+                    rocketAmmo--;
+                break;
+            case weaponTyps.laser:
+                if (laserAmmo <= 0)
+                    weaponTyp = weaponTyps.mg;
+                else
+                    laserAmmo--;
+                break;
+        }
+    }
+
+    private void UpdateAmmo()
+    {
+        switch (weaponTyp)
+        {
+            case weaponTyps.rocket:
+                highscore.UpdateAmmo(rocketAmmo);
+                break;
+            case weaponTyps.laser:
+                highscore.UpdateAmmo(laserAmmo);
+                break;
+            case weaponTyps.mg:
+                highscore.UpdateAmmo(-1);
+                break;
+        }
+    }
+
+    public void BlockShooting()
     {
         shootingBlocked = true;
     }
 
-    public void unblockShooting()
+    public void UnblockShooting()
     {
         shootingBlocked = false;
     }
@@ -141,5 +191,11 @@ public class PlayerShooting : MonoBehaviour
         public GameObject weapon;
         public float fireRate;
         public int damage;
+    }
+
+    public void SaveAmmo()
+    {
+        PlayerPrefsManager.SetUpgrade(rocketAmmo, UpgradeController.upgradeID.ROCKET_AMMO_ABS);
+        PlayerPrefsManager.SetUpgrade(laserAmmo, UpgradeController.upgradeID.PHASER_AMMO_ABS);
     }
 }

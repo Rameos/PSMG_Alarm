@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
 
     private void DestroyEnemy()
     {
-        highscorecontroller.addScoreValue(value);
+        highscorecontroller.AddScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
 
         if (Random.Range(0, 4) == 0 && drop != null)

@@ -31,15 +31,15 @@ public class Menu : MonoBehaviour
         guiBoxX = centerX - guiBoxWidth / 2;
         guiBoxY = centerY - guiBoxHeight / 2;
 
-        if (mainMenu) initMainMenu();
-        if (modiMenu) initModiMenu();
-        if (levelsOfDifficulty) initLevelsOfDifficultyMenu();
-        if (highscores) initHighscores();
-        if (multiplayer) initMultiplayer();
+        if (mainMenu) InitMainMenu();
+        if (modiMenu) InitModiMenu();
+        if (levelsOfDifficulty) InitLevelsOfDifficultyMenu();
+        if (highscores) InitHighscores();
+        if (multiplayer) InitMultiplayer();
 
     }
 
-    void initMainMenu()
+    void InitMainMenu()
     {
 
         GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Hauptmenü");
@@ -64,7 +64,7 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void initModiMenu()
+    void InitModiMenu()
     {
         GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Modi");
 
@@ -89,7 +89,7 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void initLevelsOfDifficultyMenu()
+    void InitLevelsOfDifficultyMenu()
     {
         GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Schwierigkeitsstufen");
 
@@ -112,7 +112,7 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void initHighscores()
+    void InitHighscores()
     {
         GUI.Label(new Rect(centerX, guiBoxY, buttonWidth, buttonHeight * 2), "Highscores");
         if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
@@ -122,7 +122,7 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void initMultiplayer()
+    void InitMultiplayer()
     {
         GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Server");
 

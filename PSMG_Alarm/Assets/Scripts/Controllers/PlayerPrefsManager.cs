@@ -89,6 +89,12 @@ public class PlayerPrefsManager : MonoBehaviour
             case UpgradeController.upgradeID.PHASER_AMMO:
                 PlayerPrefs.SetInt(PHASER_AMMO, GetUpgrade(UpgradeController.upgradeID.PHASER_AMMO) + 1);
                 break;
+            case UpgradeController.upgradeID.ROCKET_AMMO_ABS:
+                PlayerPrefs.SetInt(ROCKET_AMMO, value);
+                break;
+            case UpgradeController.upgradeID.PHASER_AMMO_ABS:
+                PlayerPrefs.SetInt(PHASER_AMMO, value);
+                break;
         }
     }
 

@@ -45,8 +45,7 @@ public class SkilltreeGui : MonoBehaviour
 
         UpdateAmmo();
         UpdateLife();
-
-        coins = PlayerPrefsManager.GetCoins();
+        UpdateCoins();
     }
 
 
@@ -83,6 +82,11 @@ public class SkilltreeGui : MonoBehaviour
 
         GUI.Box(new Rect(Screen.width / 13, Screen.height / 20, 300, 100), "Prepare For Your Next Mission...", titleStyle);
 
+        if (GUI.Button(new Rect(Screen.width - 450, Screen.height / 20, 100, 30), "Fertig"))
+        {
+            Application.LoadLevel("submarine");
+        }
+
         if (hovering)
         {
             GUILayout.BeginArea(new Rect(Input.mousePosition.x - 30, Screen.height - Input.mousePosition.y - 170, 250, 250));
@@ -118,6 +122,11 @@ public class SkilltreeGui : MonoBehaviour
         health = PlayerPrefsManager.GetCurrentLife();
         maxHealth = 4;
         //maxHealth = PlayerPrefsManager.GetMaxLife();
+    }
+
+    public void UpdateCoins()
+    {
+        coins = PlayerPrefsManager.GetCoins();
     }
 
     public void StopHover()

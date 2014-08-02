@@ -8,7 +8,7 @@ public class PowerUpCoin : PowerUp
     public override void ApplyPowerUp()
     {
         GameControlScript.AddCoins(value);
-        GameObject.Find("Highscore").GetComponent<HighscoreScript>().updateCoins(PlayerPrefsManager.GetCoins());
+        GameObject.Find("Highscore").GetComponent<HighscoreScript>().UpdateCoins(PlayerPrefsManager.GetCoins());
     }
 
     public override void Move()
