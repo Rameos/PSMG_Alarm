@@ -12,7 +12,7 @@ GameObject:
   - 12: {fileID: 1200000}
   - 26: {fileID: 2600000}
   m_Layer: 0
-  m_Name: Sparks
+  m_Name: Sparks2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

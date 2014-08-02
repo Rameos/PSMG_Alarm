@@ -5,7 +5,7 @@ MonoImporter:
   defaultReferences:
   - camera2d: {instanceID: 0}
   - explosion: {instanceID: 0}
-  - spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
+  - spark: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
