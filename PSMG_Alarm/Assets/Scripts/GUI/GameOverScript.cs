@@ -21,6 +21,8 @@ public class GameOverScript : MonoBehaviour
     {
         gameOver = true;
 
+        Screen.showCursor = true;
+
         Instantiate(destoyedPieces, player.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 
         Destroy(player);
