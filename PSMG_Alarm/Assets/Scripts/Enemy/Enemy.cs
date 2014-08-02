@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        highscorecontroller.addScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -83,31 +84,26 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "MachineGun")
         {
-            highscorecontroller.addScoreValue(value);
             Instantiate(spark, transform.position, transform.rotation);
             col.gameObject.SendMessage("DoDamage", this.gameObject);
         }
         if (col.gameObject.tag == "Rocket")
         {
-            highscorecontroller.addScoreValue(value);
             Instantiate(explosion, transform.position, transform.rotation);
             col.gameObject.SendMessage("DoDamage", this.gameObject);
         }
         else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
         {
-            highscorecontroller.addScoreValue(value);
             submarineLifeControl.decrementLife();
             DestroyEnemy();
         }
         else if (col.gameObject.tag == "Shield")
         {
             Destroy(GameObject.Find("Shield(Clone)"));
-            highscorecontroller.addScoreValue(100);
             DestroyEnemy();
         }
         else if (col.gameObject.tag == "Wave")
         {
-            highscorecontroller.addScoreValue(100);
             col.gameObject.SendMessage("DoDamage", this.gameObject);
         }
     }
