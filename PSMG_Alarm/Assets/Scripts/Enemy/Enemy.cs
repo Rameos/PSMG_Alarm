@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
         }
         else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
         {
-            submarineLifeControl.decrementLife();
+            submarineLifeControl.DecrementLife();
             DestroyEnemy();
         }
         else if (col.gameObject.tag == "Shield")

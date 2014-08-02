@@ -13,6 +13,7 @@ public class SkilltreeGui : MonoBehaviour
 
     private GameObject ammoPhaser;
     private GameObject ammoRocket;
+    private GameObject repair;
     private GameObject coin;
 
     private string description;
@@ -20,6 +21,8 @@ public class SkilltreeGui : MonoBehaviour
     private string title;
 
     private int coins;
+    private int health;
+    private int maxHealth = 4;
     private int phaserAmmo;
     private int rocketAmmo;
 
@@ -37,9 +40,12 @@ public class SkilltreeGui : MonoBehaviour
 
         ammoPhaser = GameObject.Find("AmmoItemPhaser");
         ammoRocket = GameObject.Find("AmmoItemRocket");
+        repair = GameObject.Find("Repair");
         coin = GameObject.Find("Coin");
 
         UpdateAmmo();
+
+        health = PlayerPrefsManager.GetCurrentLife();
         coins = PlayerPrefsManager.GetCoins();
     }
 
@@ -66,6 +72,10 @@ public class SkilltreeGui : MonoBehaviour
         GUI.Box(new Rect(camera.WorldToScreenPoint(ammoRocket.transform.position).x - 15 * Screen.height / 500,
             camera.WorldToScreenPoint(ammoRocket.transform.position).y + 50 * Screen.height / 500, 50, 30),
             "" + rocketAmmo, coinsCountStyle);
+
+        GUI.Box(new Rect(camera.WorldToScreenPoint(repair.transform.position).x - 15 * Screen.height / 500,
+            camera.WorldToScreenPoint(repair.transform.position).y + 50 * Screen.height / 500, 50, 30),
+            "" + health, coinsCountStyle);
 
         GUI.Box(new Rect(Screen.width / 13, Screen.height / 20, 300, 100), "Prepare For Your Next Mission...", titleStyle);
 

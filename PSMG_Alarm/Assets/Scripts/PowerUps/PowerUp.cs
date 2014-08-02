@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PowerUp : MonoBehaviour
 {
-
     private Vector3 targetLocation;
     private GameObject camera2d;
     private PowerUpSpawner spawner;
@@ -64,7 +63,6 @@ public class PowerUp : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             ApplyPowerUp();
-
             Destroy(gameObject);
 
             if (!drop)

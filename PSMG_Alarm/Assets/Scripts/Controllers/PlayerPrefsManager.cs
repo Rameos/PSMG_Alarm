@@ -115,6 +115,16 @@ public class PlayerPrefsManager : MonoBehaviour
         }
     }
 
+    public static int GetCurrentLife()
+    {
+        return PlayerPrefs.GetInt(PLAYER_CURRENT_LIFES);
+    }
+
+    public static int GetMaxLife()
+    {
+        return PlayerPrefs.GetInt(PLAYER_MAX_LIFES);
+    }
+
     public static int GetCoins()
     {
         return PlayerPrefs.GetInt(CURRENT_COINS);

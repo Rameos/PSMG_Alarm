@@ -21,7 +21,7 @@ public class EnemyRocketHit : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            submarineLifeControl.decrementLife();
+            submarineLifeControl.DecrementLife();
         }
 
         else if (col.gameObject.tag == "Shield")

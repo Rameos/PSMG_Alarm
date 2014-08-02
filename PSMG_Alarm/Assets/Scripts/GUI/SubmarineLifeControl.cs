@@ -16,24 +16,24 @@ public class SubmarineLifeControl : MonoBehaviour {
 		for (int i = 0; i < lifeArray.Length; i++) {
 			lifeArray[i] = 1;
 		}
-		updateLife ();
+		UpdateLife ();
 
         player = GameObject.FindGameObjectWithTag("Player");
 	}
 
-	public void incrementLife(){
+	public void IncrementLife(){
 		if (life > 0 && life < 4) {
 			life++;
 			lifeArray [life - 1] = 1;
-			updateLife ();
+			UpdateLife ();
 		}
 	}
 
-	public void decrementLife(){
+	public void DecrementLife(){
 		if (life > 0 && life <= 4) {
 			life--;
 			lifeArray[life] = 0;
-			updateLife ();
+			UpdateLife ();
 
             player.SendMessage("LightAnimation");
 		}
@@ -42,7 +42,7 @@ public class SubmarineLifeControl : MonoBehaviour {
 		}
 	}
 
-	void updateLife() {
+	void UpdateLife() {
 
 		for (int i = 0; i < lifeArray.Length; i++) {
 			if(lifeArray[i] == 1){
@@ -52,7 +52,11 @@ public class SubmarineLifeControl : MonoBehaviour {
 				sub[i].texture = grey;
 			}
 		}
-
 	}
+
+    public int GetLifes()
+    {
+        return life;
+    }
 
 }

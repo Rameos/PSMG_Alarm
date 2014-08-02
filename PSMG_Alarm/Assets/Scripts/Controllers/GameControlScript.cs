@@ -6,8 +6,12 @@ public class GameControlScript : MonoBehaviour
     public float maxNoGazeDataTime = 1;
     public bool blockWhenNoGazeData = true;
 
+    public static int coins;
     public static float timeElapsed;
+    public float timeUntilLevelEnd;
 
+    private GUIText countDown;
+    private SubmarineLifeControl lifeControl;
     private GameObject[] powerUps;
     private PowerUpSpawner powerUpSpawner;
     private PlayerShooting shooting;
@@ -15,7 +19,6 @@ public class GameControlScript : MonoBehaviour
     private float noGazeDataTimer;
     private bool paused = false;
 
-    public static int coins;
 
     void Start()
     {
@@ -25,6 +28,9 @@ public class GameControlScript : MonoBehaviour
         coins = PlayerPrefsManager.GetCoins();
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().updateCoins(coins);
 
+        countDown = GameObject.Find("CountDown").GetComponent<GUIText>();
+        lifeControl = GameObject.FindGameObjectWithTag("MainGUI").GetComponent<SubmarineLifeControl>();
+
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
         shooting = GameObject.Find("gun").GetComponent<PlayerShooting>();
         powerUpSpawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();
@@ -33,20 +39,34 @@ public class GameControlScript : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
+        timeUntilLevelEnd -= Time.deltaTime;
 
-        if (!checkGazeDataAvailable() && blockWhenNoGazeData)
+        countDown.text = ((int)timeUntilLevelEnd / 60).ToString() + ":" + ((int)timeUntilLevelEnd % 60).ToString();
+        if (timeUntilLevelEnd <= 0)
+        {
+            SaveAndFinishLevel();
+        }
+
+        if (!CheckGazeDataAvailable() && blockWhenNoGazeData)
             noGazeDataTimer += Time.deltaTime;
         else
             noGazeDataTimer = 0;
 
         if (noGazeDataTimer > maxNoGazeDataTime)
-            pauseGame();
+            PauseGame();
 
         if (paused)
-            waitForInput();
+            WaitForInput();
     }
 
-    public void pauseGame()
+    private void SaveAndFinishLevel()
+    {
+        PlayerPrefsManager.SetCurrentLive(lifeControl.GetLifes());
+
+        Application.LoadLevel("skilltree");
+    }
+
+    public void PauseGame()
     {
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 
@@ -54,20 +74,20 @@ public class GameControlScript : MonoBehaviour
 
         movePlayer.stopPlayerMovement();
         shooting.blockShooting();
-        stopEnemies();
-        stopPowerUps();
+        StopEnemies();
+        StopPowerUps();
     }
 
-    public void unpauseGame()
+    public void UnpauseGame()
     {
-        startPowerUps();
-        startEnemies();
+        StartPowerUps();
+        StartEnemies();
         shooting.unblockShooting();
         movePlayer.startPlayerMovement();
         paused = false;
     }
 
-    public void stopEnemies()
+    public void StopEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -78,7 +98,7 @@ public class GameControlScript : MonoBehaviour
         }
     }
 
-    public void stopPowerUps()
+    public void StopPowerUps()
     {
         powerUpSpawner.stopSpawning();
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
@@ -91,7 +111,7 @@ public class GameControlScript : MonoBehaviour
         }
     }
 
-    public void startEnemies()
+    public void StartEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -102,7 +122,7 @@ public class GameControlScript : MonoBehaviour
         }
     }
 
-    public void startPowerUps()
+    public void StartPowerUps()
     {
         powerUpSpawner.stopSpawning();
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
@@ -116,20 +136,20 @@ public class GameControlScript : MonoBehaviour
     }
 
 
-    bool checkGazeDataAvailable()
+    bool CheckGazeDataAvailable()
     {
         return !(gazeModel.posGazeLeft.x == 0 && gazeModel.posGazeRight.x == 0);
     }
 
-    void waitForInput()
+    void WaitForInput()
     {
-        if (Input.anyKey && checkGazeDataAvailable())
+        if (Input.anyKey && CheckGazeDataAvailable())
         {
-            unpauseGame();
+            UnpauseGame();
         }
     }
 
-    public static void addCoins(int value)
+    public static void AddCoins(int value)
     {
         coins += value;
         PlayerPrefsManager.SetCoins(coins);

@@ -27,8 +27,8 @@ public class GameOverScript : MonoBehaviour
         Instantiate(destoyedPieces, player.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 
         Destroy(player);
-        controller.stopEnemies();
-        controller.stopPowerUps();
+        controller.StopEnemies();
+        controller.StopPowerUps();
     }
 
     void OnGUI()
