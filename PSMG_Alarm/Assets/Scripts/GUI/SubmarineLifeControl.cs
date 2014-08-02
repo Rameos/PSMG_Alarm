@@ -8,6 +8,7 @@ public class SubmarineLifeControl : MonoBehaviour {
 	public Texture2D grey;
 	public GameOverScript gameOverScript;
 
+    private GameObject player;
 	private int [] lifeArray = new int[4];
 	private int life;
 	void Start () {
@@ -16,6 +17,8 @@ public class SubmarineLifeControl : MonoBehaviour {
 			lifeArray[i] = 1;
 		}
 		updateLife ();
+
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	public void incrementLife(){
@@ -30,7 +33,9 @@ public class SubmarineLifeControl : MonoBehaviour {
 		if (life > 0 && life <= 4) {
 			life--;
 			lifeArray[life] = 0;
-			updateLife ();	
+			updateLife ();
+
+            player.SendMessage("LightAnimation");
 		}
 		if (life <= 0) {
 			gameOverScript.endOfGame();

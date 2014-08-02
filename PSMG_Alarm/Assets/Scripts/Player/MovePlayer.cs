@@ -8,11 +8,7 @@ public class MovePlayer : MonoBehaviour
     public float rotationSpeed = 2;
 
     private bool moveAllowed = true;
-
-    void Start()
-    {
-
-    }
+    public GameObject[] lights;
 
     void Update()
     {
@@ -52,4 +48,12 @@ public class MovePlayer : MonoBehaviour
 	public void startPlayerMovement() {
 		moveAllowed = true;
 	}
+
+    public void LightAnimation()
+    {
+        foreach (GameObject light in lights)
+        {
+            light.GetComponent<Animator>().SetTrigger("TookDamage");
+        }
+    }
 }
