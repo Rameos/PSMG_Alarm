@@ -12,7 +12,7 @@ public class PowerUpSpawner : MonoBehaviour
     private int updateCount;
     private int randomNumber;
     private int powerUpsCount;
-    private const int MAX_POWERUPS_COUNT = 3;
+    private const int MAX_POWERUPS_COUNT = 1;
     private bool powerUpsCanSpawn = true;
 
     void Start()

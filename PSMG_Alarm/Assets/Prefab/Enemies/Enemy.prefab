@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd0fa303071b204da0a19182ac7b119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera2d: {fileID: 0}
   explosion: {fileID: 100000, guid: cb55ad3d5c910fc498c744148a6addb6, type: 2}
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
+  drop: {fileID: 100000, guid: 05e13c768020e5b4f84ebddd9b898a31, type: 2}
   speed: 2
   life: 100
   value: 100

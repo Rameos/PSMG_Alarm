@@ -22,6 +22,7 @@ public class GameOverScript : MonoBehaviour
         gameOver = true;
 
         Screen.showCursor = true;
+        PlayerPrefsManager.Reset();
 
         Instantiate(destoyedPieces, player.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
 

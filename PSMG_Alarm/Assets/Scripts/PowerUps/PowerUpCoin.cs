@@ -10,4 +10,11 @@ public class PowerUpCoin : PowerUp
         GameControlScript.addCoins(value);
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().updateCoins(PlayerPrefsManager.GetCoins());
     }
+
+    public override void Move()
+    {
+        base.Move();
+
+        transform.Rotate(new Vector3(0, 2, 0));
+    }
 }

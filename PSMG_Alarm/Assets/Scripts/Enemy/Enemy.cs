@@ -5,21 +5,24 @@ public class Enemy : MonoBehaviour
 {
     private Vector3 targetLocation;
 
-    public GameObject camera2d;
     public GameObject explosion;
     public GameObject spark;
+    public GameObject drop;
 
     public float speed = 2;
     public int life = 100;
     public int value = 100;
 
+    private GameObject camera2d;
     private HighscoreScript highscorecontroller;
     private SubmarineLifeControl submarineLifeControl;
     private bool moveAllowed = true;
+    private GameObject player;
 
     void Start()
     {
         camera2d = GameObject.Find("2D Camera");
+        player = GameObject.FindGameObjectWithTag("Player");
         highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
         submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
 
@@ -67,6 +70,12 @@ public class Enemy : MonoBehaviour
     {
         highscorecontroller.addScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
+
+        if (Random.Range(0, 4) == 0 && drop != null)
+        {
+            Instantiate(drop, transform.position, Quaternion.Euler(Vector3.zero));
+        }
+
         Destroy(gameObject);
     }
 
@@ -99,6 +108,7 @@ public class Enemy : MonoBehaviour
         }
         else if (col.gameObject.tag == "Shield")
         {
+            player.SendMessage("DestroyShield");
             Destroy(GameObject.Find("Shield(Clone)"));
             DestroyEnemy();
         }

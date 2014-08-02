@@ -9,16 +9,17 @@ public class PowerUp : MonoBehaviour
     private PowerUpSpawner spawner;
 
     public float speed = .2f;
+    public bool drop;
 
     private bool moveAllowed = true;
-    private float despawnTime = 15;
+    private float despawnTime = 10;
     private float lifeTime = 0;
 
     void Start()
     {
         camera2d = GameObject.Find("2D Camera");
         spawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();
-        
+
         GetNewTargetLocation();
         FindOtherObjects();
     }
@@ -51,7 +52,10 @@ public class PowerUp : MonoBehaviour
         if (lifeTime > despawnTime)
         {
             Destroy(this.gameObject);
-            spawner.removePowerUp();
+            if (!drop)
+            {
+                spawner.removePowerUp();
+            }
         }
     }
 
@@ -62,7 +66,11 @@ public class PowerUp : MonoBehaviour
             ApplyPowerUp();
 
             Destroy(gameObject);
-            spawner.removePowerUp();
+
+            if (!drop)
+            {
+                spawner.removePowerUp();
+            }
         }
     }
 

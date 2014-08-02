@@ -678,7 +678,6 @@ MonoBehaviour:
   powerUps:
   - {fileID: 100000, guid: 4a8e2991649bd674eb4f31740b0a6685, type: 2}
   - {fileID: 100000, guid: bf0cff6cb8d7c004f9927ffa051f321c, type: 2}
-  - {fileID: 100000, guid: 05e13c768020e5b4f84ebddd9b898a31, type: 2}
   camera2d: {fileID: 1434523117}
 --- !u!114 &665831172
 MonoBehaviour:
