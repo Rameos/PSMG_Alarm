@@ -5,6 +5,8 @@ public class NetworkManagerScript : MonoBehaviour
 {
     public static bool networkActive = false;
 
+	public Menu Menu;
+
     public string gameName;
 
     private bool refresh;
@@ -13,7 +15,7 @@ public class NetworkManagerScript : MonoBehaviour
 
     void Start()
     {
-        gameName = "UFight_test_game";
+        gameName = "SubFight";
         refresh = false;
         gotHostData = false;
     }
@@ -22,7 +24,7 @@ public class NetworkManagerScript : MonoBehaviour
     {
         if (refresh)
         {
-            if (MasterServer.PollHostList().Length > 0)
+            if (MasterServer.PollHostList().Length != 0)
             {
                 refresh = false;
                 hostData = MasterServer.PollHostList();
@@ -70,17 +72,22 @@ public class NetworkManagerScript : MonoBehaviour
         return null;
     }
 
-    public void Server_startServer()
+	public void Server_startServer(string serverName,string serverDescription)
     {
         bool useNat = !Network.HavePublicAddress();
         Network.InitializeServer(2, 25000, useNat);
-        MasterServer.RegisterHost(gameName, "Noob pwning zone 554", "This is the epic first glance in our new Multiplayer");
-        Debug.Log(Network.player.ipAddress);
-        Debug.Log(Network.player.port);
+        MasterServer.RegisterHost(gameName, serverName, serverDescription);
     }
+
+	public void Server_UnregisterServer (){
+		Network.Disconnect();
+		MasterServer.UnregisterHost();
+	}
 
     public void Client_refreshHostList()
     {
+		gotHostData = false;
+		MasterServer.ClearHostList ();
         MasterServer.RequestHostList(gameName);
         Debug.Log("start refreshing..");
         refresh = true;
@@ -113,6 +120,7 @@ public class NetworkManagerScript : MonoBehaviour
         Debug.Log("inmasterserverevent");
         if (mse == MasterServerEvent.RegistrationSucceeded)
         {
+			Menu.ChangeHostFeedBackText("Server Registered.. Waiting for player to join!");
             Debug.Log("Registered Server!");
         }
         if (mse == MasterServerEvent.RegistrationFailedNoServer)
@@ -130,16 +138,18 @@ public class NetworkManagerScript : MonoBehaviour
         if (mse == MasterServerEvent.HostListReceived)
         {
             Debug.Log("Host list received!");
+			gotHostData = true;
         }
     }
 
     void OnPlayerConnected()
     {
         Debug.Log("player came in!");
-        loadLevel();
+		Menu.EnableStartButton ();
+		Menu.ChangeHostFeedBackText("A player joined the game! You can now start");
     }
 
-    public void loadLevel()
+    public void Server_LoadLevel()
     {
         if (Network.isServer)
         {
@@ -156,11 +166,11 @@ public class NetworkManagerScript : MonoBehaviour
         if (Network.isServer)
         {
             Transform root = transform.root;
-            recursiveNetworkInstantiate(root);
+		Server_RecursiveNetworkInstantiate(root);
         }
     }
 
-    private void recursiveNetworkInstantiate(Transform node)
+    private void Server_RecursiveNetworkInstantiate(Transform node)
     {
         if (node.networkView != null)
         {
@@ -170,7 +180,7 @@ public class NetworkManagerScript : MonoBehaviour
         for (int i = 0; i < node.childCount; ++i)
         {
             Transform child = node.GetChild(i);
-            recursiveNetworkInstantiate(child);
+            Server_RecursiveNetworkInstantiate(child);
         }
     }
 

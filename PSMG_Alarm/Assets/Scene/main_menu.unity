@@ -295,7 +295,7 @@ GameObject:
   - 114: {fileID: 1010077490}
   - 148: {fileID: 1010077492}
   m_Layer: 0
-  m_Name: Net Work Manager
+  m_Name: NetWorkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c1d5d43bca3e243806f5aede9a23f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Menu: {fileID: 319393022}
   gameName: 
 --- !u!4 &1010077491
 Transform:
