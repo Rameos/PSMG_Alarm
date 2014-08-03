@@ -104,7 +104,7 @@ public class Enemy : MonoBehaviour
             Instantiate(explosion, transform.position, transform.rotation);
             col.gameObject.SendMessage("DoDamage", this.gameObject);
         }
-        else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
+        else if (col.gameObject.tag == "Player")
         {
             submarineLifeControl.DecrementLife();
             DestroyEnemy();

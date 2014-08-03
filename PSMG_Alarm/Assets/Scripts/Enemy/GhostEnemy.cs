@@ -33,7 +33,7 @@ public class GhostEnemy : Enemy
                 col.gameObject.SendMessage("DoDamage", this.gameObject);
             }
         }
-        else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
+        if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false)
         {
             submarineLifeControl.DecrementLife();
             DestroyEnemy();
@@ -67,12 +67,12 @@ public class GhostEnemy : Enemy
             invisible = !invisible;
         }
 
-        if (invisible && gameObject.renderer.material.color.a > 0.2)
+        if (invisible && gameObject.renderer.material.color.a > 0.3)
         {
             gameObject.renderer.material.color = new Color(gameObject.renderer.material.color.r, gameObject.renderer.material.color.g,
                 gameObject.renderer.material.color.b, gameObject.renderer.material.color.a - 0.1f);
         }
-        else if (!invisible && gameObject.renderer.material.color.a < 0.95)
+        else if (!invisible && gameObject.renderer.material.color.a < 1)
         {
             gameObject.renderer.material.color = new Color(gameObject.renderer.material.color.r, gameObject.renderer.material.color.g,
                 gameObject.renderer.material.color.b, gameObject.renderer.material.color.a + 0.1f);
