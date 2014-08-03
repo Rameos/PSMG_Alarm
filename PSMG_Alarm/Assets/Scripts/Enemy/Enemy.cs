@@ -15,8 +15,10 @@ public class Enemy : MonoBehaviour
 
     private GameObject camera2d;
     private HighscoreScript highscorecontroller;
-    private SubmarineLifeControl submarineLifeControl;
-    private GameObject player;
+    [HideInInspector]
+    public SubmarineLifeControl submarineLifeControl;
+    [HideInInspector]
+    public GameObject player;
     private bool moveAllowed = true;
     private bool slowed = false;
 
