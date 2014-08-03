@@ -13,7 +13,7 @@ public class InGameNetworking : MonoBehaviour {
 		if (NetworkManagerScript.networkActive) {
 			spawnPlayer ();
 		} else {
-			Instantiate(playerPrefab, spawn1.position, Quaternion.identity);
+			NetworkManagerScript.NetworkInstantiate(playerPrefab, spawn1.position, Quaternion.identity);
 		}
 	}
 	
@@ -25,9 +25,9 @@ public class InGameNetworking : MonoBehaviour {
 	void spawnPlayer () {
 		Debug.Log ("spawnin player");
 		if (Network.isServer) {
-			Network.Instantiate (playerPrefab, spawn1.position,  Quaternion.identity, 0);
+            NetworkManagerScript.NetworkInstantiate(playerPrefab, spawn1.position, Quaternion.identity);
 		} else {
-			Network.Instantiate(player2Prefab, spawn2.position,  Quaternion.identity, 1);	
+            NetworkManagerScript.NetworkInstantiate(player2Prefab, spawn2.position, Quaternion.identity);	
 		}
 	}
 }

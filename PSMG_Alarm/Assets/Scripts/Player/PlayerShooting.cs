@@ -93,8 +93,7 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
-                Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
+            if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && !shootingBlocked)
             {
                 CheckAmmo();
                 FireBullet(aimPosition);
@@ -107,29 +106,22 @@ public class PlayerShooting : MonoBehaviour
         GameObject bulletInstance;
         int bonusDamage = 0;
 
-        if (NetworkManagerScript.networkActive && networkView.isMine)
-        {
-            bulletInstance = (GameObject)Network.Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, (int)weaponTyp);
-        }
-        else
-        {
-            bulletInstance = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation);
+        bulletInstance = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, false, true);
 
-            if (weaponTyp == weaponTyps.mg && mgUpgrade > 0)
+        if (weaponTyp == weaponTyps.mg && mgUpgrade > 0)
+        {
+            bonusDamage = 20;
+
+            if (mgUpgrade == 2)
             {
-                bonusDamage = 20;
+                GameObject bulletInstance1 = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, 3f), false, true);
+                GameObject bulletInstance2 = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, -3f), false, true);
 
-                if (mgUpgrade == 2)
-                {
-                    GameObject bulletInstance1 = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, 3f));
-                    GameObject bulletInstance2 = (GameObject)Instantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, -3f));
+                bulletInstance1.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage + bonusDamage);
+                bulletInstance1.SendMessage("Fire", aimPosition);
 
-                    bulletInstance1.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage + bonusDamage);
-                    bulletInstance1.SendMessage("Fire", aimPosition);
-
-                    bulletInstance2.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage + bonusDamage);
-                    bulletInstance2.SendMessage("Fire", aimPosition);
-                }
+                bulletInstance2.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage + bonusDamage);
+                bulletInstance2.SendMessage("Fire", aimPosition);
             }
         }
 

@@ -82,14 +82,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 pos = GetRandomPosition();
 
-        if (NetworkManagerScript.networkActive && Network.isServer)
-        {
-            Network.Instantiate(type, pos, Quaternion.Euler(0, 0, 0), 5);
-        }
-        if (NetworkManagerScript.networkActive == false)
-        {
-            Instantiate(type, pos, Quaternion.Euler(0, 0, 0));
-        }
+        NetworkManagerScript.NetworkInstantiate(type, pos, Quaternion.Euler(0, 0, 0));
     }
 
     [System.Serializable]

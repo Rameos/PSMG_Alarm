@@ -1,129 +1,186 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NetworkManagerScript : MonoBehaviour {
-	public static bool networkActive = false;
+public class NetworkManagerScript : MonoBehaviour
+{
+    public static bool networkActive = false;
 
-	public string gameName;
+    public string gameName;
 
-	private bool refresh;
-	private HostData[] hostData;
-	private bool gotHostData;
-	
-	void Start () {
-		gameName = "UFight_test_game";
-		refresh = false;
-		gotHostData = false;
-	}
+    private bool refresh;
+    private HostData[] hostData;
+    private bool gotHostData;
 
-	void Update () {
-		if (refresh) {
-			if(MasterServer.PollHostList().Length > 0) {
-				refresh = false;
-				hostData = MasterServer.PollHostList();
-				gotHostData = true;
-				Debug.Log ("got host data!");
-			}
-		}
-	}
+    void Start()
+    {
+        gameName = "UFight_test_game";
+        refresh = false;
+        gotHostData = false;
+    }
 
-	public void Server_startServer(){
-		bool useNat = !Network.HavePublicAddress();
-		Network.InitializeServer (2, 25000, useNat);
-		MasterServer.RegisterHost (gameName, "Noob pwning zone 554","This is the epic first glance in our new Multiplayer");
-		Debug.Log (Network.player.ipAddress);
-		Debug.Log (Network.player.port);
-	}
+    void Update()
+    {
+        if (refresh)
+        {
+            if (MasterServer.PollHostList().Length > 0)
+            {
+                refresh = false;
+                hostData = MasterServer.PollHostList();
+                gotHostData = true;
+                Debug.Log("got host data!");
+            }
+        }
+    }
 
-	public void Client_refreshHostList() {
-		MasterServer.RequestHostList (gameName);
-		Debug.Log ("start refreshing..");
-		refresh = true;
-	}
+    public static GameObject NetworkInstantiate(GameObject initObject, Vector3 position, Quaternion rotation,
+        bool spawnOnServer = false, bool hasToBeMine = false)
+    {
+        if (networkActive)
+        {
+            if (hasToBeMine)
+            {
+                if (spawnOnServer && initObject.networkView.isMine)
+                {
+                    if (Network.isServer)
+                        return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
+                }
+                else if (initObject.networkView.isMine)
+                {
+                    return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
+                }
+            }
+            else
+            {
+                if (spawnOnServer)
+                {
+                    if (Network.isServer)
+                        return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
+                }
+                else
+                {
+                    return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
+                }
+            }
+        }
+        else
+        {
+            return (GameObject)Instantiate(initObject, position, rotation);
+        }
 
-	public HostData[] Client_getHostData() {
-		return hostData;
-	}
+        return null;
+    }
 
-	public bool Client_getHostDataStatus() {
-		return gotHostData;
-	}
+    public void Server_startServer()
+    {
+        bool useNat = !Network.HavePublicAddress();
+        Network.InitializeServer(2, 25000, useNat);
+        MasterServer.RegisterHost(gameName, "Noob pwning zone 554", "This is the epic first glance in our new Multiplayer");
+        Debug.Log(Network.player.ipAddress);
+        Debug.Log(Network.player.port);
+    }
 
-	public void Client_connectToHost(HostData data) { 
-		Network.Connect(data);
-		//Network.Connect ("132.199.184.52", 25000);
-	}
+    public void Client_refreshHostList()
+    {
+        MasterServer.RequestHostList(gameName);
+        Debug.Log("start refreshing..");
+        refresh = true;
+    }
 
-	//Messages
-	void OnServerInitialized() {
-		Debug.Log ("Server initialized");
-	}
+    public HostData[] Client_getHostData()
+    {
+        return hostData;
+    }
 
-	void OnMasterServerEvent(MasterServerEvent mse) {
-		Debug.Log ("inmasterserverevent");
-		if (mse == MasterServerEvent.RegistrationSucceeded) {
-			Debug.Log("Registered Server!");		
-		}
-		if (mse == MasterServerEvent.RegistrationFailedNoServer) {
-			Debug.Log("Failed. No server!");		
-		}
-		if (mse == MasterServerEvent.RegistrationFailedGameName) {
-			Debug.Log("Failed. Game name error!");		
-		}
-		if (mse == MasterServerEvent.RegistrationFailedGameType) {
-			Debug.Log("Failed. Game type error!");		
-		}
-		if (mse == MasterServerEvent.HostListReceived) {
-			Debug.Log("Host list received!");		
-		}
-	}
+    public bool Client_getHostDataStatus()
+    {
+        return gotHostData;
+    }
 
-	void OnPlayerConnected(){
-		Debug.Log ("player came in!");
-		loadLevel ();
-	}
+    public void Client_connectToHost(HostData data)
+    {
+        Network.Connect(data);
+        //Network.Connect ("132.199.184.52", 25000);
+    }
 
-	public void loadLevel(){
-		if (Network.isServer)
-		{
-			networkView.RPC("NetworkLoadLevel", RPCMode.AllBuffered, "submarine");
-		}
-	}
+    //Messages
+    void OnServerInitialized()
+    {
+        Debug.Log("Server initialized");
+    }
 
-	[RPC]
-	void NetworkLoadLevel(string levelName)
-	{
-		networkActive = true;
-		Application.LoadLevel(levelName);
-		
-		if (Network.isServer)
-		{
-			Transform root = transform.root;
-			recursiveNetworkInstantiate(root);
-		}
-	}
+    void OnMasterServerEvent(MasterServerEvent mse)
+    {
+        Debug.Log("inmasterserverevent");
+        if (mse == MasterServerEvent.RegistrationSucceeded)
+        {
+            Debug.Log("Registered Server!");
+        }
+        if (mse == MasterServerEvent.RegistrationFailedNoServer)
+        {
+            Debug.Log("Failed. No server!");
+        }
+        if (mse == MasterServerEvent.RegistrationFailedGameName)
+        {
+            Debug.Log("Failed. Game name error!");
+        }
+        if (mse == MasterServerEvent.RegistrationFailedGameType)
+        {
+            Debug.Log("Failed. Game type error!");
+        }
+        if (mse == MasterServerEvent.HostListReceived)
+        {
+            Debug.Log("Host list received!");
+        }
+    }
 
-	private void recursiveNetworkInstantiate(Transform node)
-	{
-		if (node.networkView != null)
-		{
-			networkView.RPC("AssignViewID", RPCMode.AllBuffered, node.name, Network.AllocateViewID());
-		}
-		
-		for (int i = 0; i < node.childCount; ++i)
-		{
-			Transform child = node.GetChild(i);
-			recursiveNetworkInstantiate(child);
-		}
-	}
+    void OnPlayerConnected()
+    {
+        Debug.Log("player came in!");
+        loadLevel();
+    }
 
-	[RPC]
-	void AssignViewID(string nodeName, NetworkViewID nvid)
-	{
-		Transform target = transform.root.Find(nodeName);
-		if (target != null)
-		{
-			target.networkView.viewID = nvid;
-		}
-	}
+    public void loadLevel()
+    {
+        if (Network.isServer)
+        {
+            networkView.RPC("NetworkLoadLevel", RPCMode.AllBuffered, "submarine");
+        }
+    }
+
+    [RPC]
+    void NetworkLoadLevel(string levelName)
+    {
+        networkActive = true;
+        Application.LoadLevel(levelName);
+
+        if (Network.isServer)
+        {
+            Transform root = transform.root;
+            recursiveNetworkInstantiate(root);
+        }
+    }
+
+    private void recursiveNetworkInstantiate(Transform node)
+    {
+        if (node.networkView != null)
+        {
+            networkView.RPC("AssignViewID", RPCMode.AllBuffered, node.name, Network.AllocateViewID());
+        }
+
+        for (int i = 0; i < node.childCount; ++i)
+        {
+            Transform child = node.GetChild(i);
+            recursiveNetworkInstantiate(child);
+        }
+    }
+
+    [RPC]
+    void AssignViewID(string nodeName, NetworkViewID nvid)
+    {
+        Transform target = transform.root.Find(nodeName);
+        if (target != null)
+        {
+            target.networkView.viewID = nvid;
+        }
+    }
 }
