@@ -57,7 +57,7 @@ public class SubmarineLifeControl : MonoBehaviour
         }
         if (life <= 0)
         {
-            gameOverScript.endOfGame();
+            gameOverScript.EndOfGame();
         }
     }
 

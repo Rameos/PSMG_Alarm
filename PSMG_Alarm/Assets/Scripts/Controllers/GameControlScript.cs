@@ -95,7 +95,7 @@ public class GameControlScript : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             Enemy controller = enemy.GetComponent<Enemy>();
-            controller.stopEnemyMovement();
+            controller.StopEnemyMovement();
         }
     }
 
@@ -119,7 +119,7 @@ public class GameControlScript : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             Enemy controller = enemy.GetComponent<Enemy>();
-            controller.stopEnemyMovement();
+            controller.StopEnemyMovement();
         }
     }
 

@@ -51,5 +51,6 @@ public class MineTrigger : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("MainGUI").GetComponent<SubmarineLifeControl>().DecrementLife();
             }
         }
+        Destroy(this.gameObject);
     }
 }

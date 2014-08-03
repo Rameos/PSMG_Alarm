@@ -12,8 +12,20 @@ public class EnemySpawner : MonoBehaviour
     private List<SpawnWave> tempRemove = new List<SpawnWave>();
     private List<SpawnWave> tempAdd = new List<SpawnWave>();
 
+    private GameOverScript gameOver;
+
+    void Start()
+    {
+        gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
+    }
+
     void Update()
     {
+        if(gameOver.GetGameOver())
+        {
+            Destroy(this);
+        }
+
         tempRemove.Clear();
         tempAdd.Clear();
 

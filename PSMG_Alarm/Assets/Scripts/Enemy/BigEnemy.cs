@@ -14,7 +14,7 @@ public class BigEnemy : Enemy
         bulletTimer += Time.deltaTime;
         if (submarine != null)
         {
-            if (bulletTimer > minBulletTimer && Random.Range(0, 300) == 1 && getMoveAllowed())
+            if (bulletTimer > minBulletTimer && Random.Range(0, 300) == 1 && GetMoveAllowed())
             {
                 float angleEnemy = Mathf.Atan2(submarine.transform.position.y, submarine.transform.position.x) * Mathf.Rad2Deg - 90;
                 GameObject bullet = (GameObject)Instantiate(enemyBullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));

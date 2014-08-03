@@ -16,8 +16,9 @@ public class Enemy : MonoBehaviour
     private GameObject camera2d;
     private HighscoreScript highscorecontroller;
     private SubmarineLifeControl submarineLifeControl;
-    private bool moveAllowed = true;
     private GameObject player;
+    private bool moveAllowed = true;
+    private bool slowed = false;
 
     void Start()
     {
@@ -127,22 +128,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void stopEnemyMovement()
+    public void StopEnemyMovement()
     {
         moveAllowed = false;
     }
 
-    public void startEnemyMovement()
+    public void SlowEnemy()
+    {
+        if (!slowed)
+        {
+            SetSpeed(speed * 0.3f);
+        }
+    }
+
+    public void StartEnemyMovement()
     {
         moveAllowed = true;
     }
 
-    public bool getMoveAllowed()
+    public bool GetMoveAllowed()
     {
         return moveAllowed;
     }
 
-    public void setSpeed(float value)
+    public void SetSpeed(float value)
     {
         speed = value;
     }

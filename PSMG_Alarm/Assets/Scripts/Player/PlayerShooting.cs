@@ -84,8 +84,8 @@ public class PlayerShooting : MonoBehaviour
 
         if (fireTimer >= weapon[(int)weaponTyp].fireRate)
         {
-            if (Input.GetButton("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
-                Input.GetButton("Fire1") && !gameOver.getGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
+            if (Input.GetButton("Fire1") && !gameOver.GetGameOver() && NetworkManagerScript.networkActive && networkView.isMine && !shootingBlocked ||
+                Input.GetButton("Fire1") && !gameOver.GetGameOver() && NetworkManagerScript.networkActive == false && !shootingBlocked)
             {
                 CheckAmmo();
                 FireBullet(aimPosition);
@@ -93,7 +93,7 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && !shootingBlocked)
+            if (Input.GetButtonDown("Fire1") && !gameOver.GetGameOver() && !shootingBlocked)
             {
                 CheckAmmo();
                 FireBullet(aimPosition);

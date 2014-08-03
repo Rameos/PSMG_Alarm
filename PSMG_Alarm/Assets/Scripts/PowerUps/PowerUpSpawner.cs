@@ -25,7 +25,7 @@ public class PowerUpSpawner : MonoBehaviour
     {
         updateCount++;
         randomNumber = Random.Range(100, 200);
-        if (updateCount % randomNumber == 0 && powerUpsCount < MAX_POWERUPS_COUNT && !gameOver.getGameOver() && powerUpsCanSpawn)
+        if (updateCount % randomNumber == 0 && powerUpsCount < MAX_POWERUPS_COUNT && !gameOver.GetGameOver() && powerUpsCanSpawn)
         {
             SpawnPowerup();
             updateCount = 0;

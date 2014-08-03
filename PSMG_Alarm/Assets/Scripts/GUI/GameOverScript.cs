@@ -17,7 +17,7 @@ public class GameOverScript : MonoBehaviour
         controller = GameObject.Find("GameController").GetComponent<GameControlScript>();
     }
 
-    public void endOfGame()
+    public void EndOfGame()
     {
         gameOver = true;
 
@@ -33,10 +33,10 @@ public class GameOverScript : MonoBehaviour
 
     void OnGUI()
     {
-        if (gameOver) showGameOverMenu();
+        if (gameOver) ShowGameOverMenu();
     }
 
-    void showGameOverMenu()
+    void ShowGameOverMenu()
     {
         buttonWidth = Screen.width / 6;
         buttonHeight = Screen.height / 12;
@@ -59,7 +59,7 @@ public class GameOverScript : MonoBehaviour
         }
     }
 
-    public bool getGameOver()
+    public bool GetGameOver()
     {
         return gameOver;
     }
