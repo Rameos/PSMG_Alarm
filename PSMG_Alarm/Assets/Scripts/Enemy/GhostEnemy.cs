@@ -67,12 +67,12 @@ public class GhostEnemy : Enemy
             invisible = !invisible;
         }
 
-        if (invisible && gameObject.renderer.material.color.a > 0.3)
+        if (invisible && gameObject.renderer.material.color.a > 0.2)
         {
             gameObject.renderer.material.color = new Color(gameObject.renderer.material.color.r, gameObject.renderer.material.color.g,
                 gameObject.renderer.material.color.b, gameObject.renderer.material.color.a - 0.1f);
         }
-        else if (!invisible && gameObject.renderer.material.color.a < 0.9)
+        else if (!invisible && gameObject.renderer.material.color.a < 0.95)
         {
             gameObject.renderer.material.color = new Color(gameObject.renderer.material.color.r, gameObject.renderer.material.color.g,
                 gameObject.renderer.material.color.b, gameObject.renderer.material.color.a + 0.1f);
