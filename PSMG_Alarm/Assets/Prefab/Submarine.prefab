@@ -274,6 +274,7 @@ MonoBehaviour:
   speedForwards: 20
   speedBackwards: 15
   rotationSpeed: 2
+  maxShield: 30
   lights:
   - {fileID: 100010}
   - {fileID: 100008}

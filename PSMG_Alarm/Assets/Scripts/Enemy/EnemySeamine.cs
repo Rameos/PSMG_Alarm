@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemySeamine : Enemy
 {
     private Vector3 target;
+    public GameObject radius;
 
     public override void FindOtherObjects()
     {
@@ -21,5 +22,12 @@ public class EnemySeamine : Enemy
            target = GetNewTargetLocation();
         }
     }
+
+    public override void DestroyEnemy()
+    {
+        radius.SendMessage("TriggerNow");
+
+        base.DestroyEnemy();
+    } 
 
 }

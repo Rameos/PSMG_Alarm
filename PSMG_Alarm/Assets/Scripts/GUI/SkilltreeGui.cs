@@ -120,8 +120,7 @@ public class SkilltreeGui : MonoBehaviour
     public void UpdateLife()
     {
         health = PlayerPrefsManager.GetCurrentLife();
-        maxHealth = 4;
-        //maxHealth = PlayerPrefsManager.GetMaxLife();
+        maxHealth = PlayerPrefsManager.GetMaxLife();
     }
 
     public void UpdateCoins()

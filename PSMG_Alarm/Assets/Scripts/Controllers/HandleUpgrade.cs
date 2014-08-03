@@ -95,8 +95,7 @@ public class HandleUpgrade : MonoBehaviour
             }
             else
             {
-                //if (PlayerPrefsManager.GetCurrentLife() < PlayerPrefsManager.GetMaxLife())
-                if (PlayerPrefsManager.GetCurrentLife() < 4)
+                if(PlayerPrefsManager.GetCurrentLife() < PlayerPrefsManager.GetMaxLife())
                 {
                     PlayerPrefsManager.SetCurrentLive(PlayerPrefsManager.GetCurrentLife() + 1);
                     skillGUI.SendMessage("UpdateLife");

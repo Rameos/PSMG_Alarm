@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void DestroyEnemy()
+    public virtual void DestroyEnemy()
     {
         highscorecontroller.AddScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
