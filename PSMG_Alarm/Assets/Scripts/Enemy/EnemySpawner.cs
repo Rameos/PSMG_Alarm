@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject camera2d;
+    public GameObject egg;
     public List<SpawnWave> waves = new List<SpawnWave>();
 
     public enum enemyType { SMALL_ENEMY, BIG_ENEMY, SEA_MINE }
@@ -21,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if(gameOver.GetGameOver())
+        if (gameOver.GetGameOver())
         {
             Destroy(this);
         }
@@ -33,15 +34,28 @@ public class EnemySpawner : MonoBehaviour
         {
             if (wave.time < GameControlScript.timeElapsed)
             {
-                for (int i = 0; i < wave.size; i++)
+                if (!wave.spawnAsEgg)
                 {
-                    SpawnEnemy(wave.enemy);
-                }
-                tempRemove.Add(wave);
+                    for (int i = 0; i < wave.size; i++)
+                    {
+                        SpawnEnemy(wave.enemy);
+                    }
+                    tempRemove.Add(wave);
 
-                if (wave.repeatTime > 0)
+                    if (wave.repeatTime > 0)
+                    {
+                        tempAdd.Add(new SpawnWave((int)(GameControlScript.timeElapsed + wave.repeatTime), wave.repeatTime, wave.size, wave.enemy, wave.spawnAsEgg));
+                    }
+                }
+                else
                 {
-                    tempAdd.Add(new SpawnWave((int)(GameControlScript.timeElapsed + wave.repeatTime), wave.repeatTime, wave.size, wave.enemy));
+                    SpawnEgg(wave.enemy, wave.size);
+                    tempRemove.Add(wave);
+
+                    if (wave.repeatTime > 0)
+                    {
+                        tempAdd.Add(new SpawnWave((int)(GameControlScript.timeElapsed + wave.repeatTime), wave.repeatTime, wave.size, wave.enemy, wave.spawnAsEgg));
+                    }
                 }
             }
         }
@@ -97,6 +111,15 @@ public class EnemySpawner : MonoBehaviour
         NetworkManagerScript.NetworkInstantiate(type, pos, Quaternion.Euler(0, 0, 0));
     }
 
+    public void SpawnEgg(GameObject type, int count)
+    {
+        Vector3 pos = GetRandomPosition();
+
+        GameObject newEgg = NetworkManagerScript.NetworkInstantiate(egg, pos, Quaternion.Euler(0, 0, 0));
+        newEgg.SendMessage("Populate", count);
+        newEgg.SendMessage("GiveType", type);
+    }
+
     [System.Serializable]
     public class SpawnWave
     {
@@ -104,12 +127,14 @@ public class EnemySpawner : MonoBehaviour
         public int repeatTime;
         public int size;
         public GameObject enemy;
-        public SpawnWave(int time, int repeatTime, int size, GameObject enemy)
+        public bool spawnAsEgg;
+        public SpawnWave(int time, int repeatTime, int size, GameObject enemy, bool spawnAsEgg)
         {
             this.time = time;
             this.repeatTime = repeatTime;
             this.size = size;
             this.enemy = enemy;
+            this.spawnAsEgg = spawnAsEgg;
         }
     }
 }
