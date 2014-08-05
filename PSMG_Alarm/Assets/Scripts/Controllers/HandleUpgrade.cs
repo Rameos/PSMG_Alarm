@@ -59,7 +59,7 @@ public class HandleUpgrade : MonoBehaviour
             available = true;
         }
 
-        if (!upgraded && available && PlayerPrefsManager.GetCoins() > cost)
+        if (!upgraded && available && PlayerPrefsManager.GetCoins() >= cost)
         {
             GetComponent<SpriteRenderer>().sprite = s_highlighted;
         }

@@ -36,6 +36,8 @@ public class EggEnemy : Enemy
 
         if (surviveTime <= 0.5f && isOpen && !spawned)
         {
+            Destroy(GetComponent<CircleCollider2D>());
+
             for (int i = 0; i < enemyCount; i++)
             {
                 NetworkManagerScript.NetworkInstantiate(enemyType, transform.position, Quaternion.Euler(0, 0, 0));
