@@ -33,53 +33,17 @@ public class NetworkManagerScript : MonoBehaviour
         }
     }
 
-    public static GameObject NetworkInstantiate(GameObject initObject, Vector3 position, Quaternion rotation,
-        bool spawnOnServer = false, bool hasToBeMine = false)
-    {
-        if (networkActive)
-        {
-            if (hasToBeMine)
-            {
-                if (spawnOnServer && initObject.networkView.isMine)
-                {
-                    if (Network.isServer)
-                        return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-                else if (initObject.networkView.isMine)
-                {
-                    return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-            }
-            else
-            {
-                if (spawnOnServer)
-                {
-                    if (Network.isServer)
-                        return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-                else
-                {
-                    return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-            }
-        }
-        else
-        {
-            return (GameObject)Instantiate(initObject, position, rotation);
-        }
-
-        return null;
-    }
-
 	//Server methods
 	public void Server_startServer(string serverName,string serverDescription)
     {
         bool useNat = !Network.HavePublicAddress();
         Network.InitializeServer(2, 25000, useNat);
         MasterServer.RegisterHost(gameName, serverName, serverDescription);
+		networkActive = true;
     }
 
 	public void Server_UnregisterServer (){
+		networkActive = false;
 		Network.Disconnect();
 		MasterServer.UnregisterHost();
 	}
@@ -127,10 +91,12 @@ public class NetworkManagerScript : MonoBehaviour
 
     public void Client_connectToHost(HostData data)
     {
+		networkActive = true;
         Network.Connect(data);
     }
 
 	public void Client_disconnectFromHost(){
+		networkActive = false;
 		Network.CloseConnection(Network.connections[0], true);
 		networkView.RPC ("PlayerDisconnected", RPCMode.Server);
 	}

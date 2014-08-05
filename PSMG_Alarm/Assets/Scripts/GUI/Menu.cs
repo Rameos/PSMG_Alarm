@@ -187,6 +187,7 @@ public class Menu : MonoBehaviour
 		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Hosting Server");
 		if (GUI.Button(new Rect(guiBoxX, guiBoxY+guiBoxHeight-buttonHeight, buttonWidth, buttonHeight), "Abbrechen"))
 		{
+			DisableStartButton();
 			networkScript.Server_UnregisterServer();
 			lobby = false;
 			multiplayer = true;
