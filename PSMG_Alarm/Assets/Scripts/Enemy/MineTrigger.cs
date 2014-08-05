@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class MineTrigger : MonoBehaviour {
+public class MineTrigger : MonoBehaviour
+{
 
     private bool explosionTriggered;
     private float timer = 1f;
@@ -10,12 +11,16 @@ public class MineTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        insideObject.Add(col.gameObject);
-
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy")
         {
-            explosionTriggered = true;
-            this.gameObject.GetComponent<Animator>().SetTrigger("Triggered");
+            Debug.Log(col.gameObject);
+            insideObject.Add(col.gameObject);
+
+            if (col.gameObject.tag == "Player")
+            {
+                explosionTriggered = true;
+                this.gameObject.GetComponent<Animator>().SetTrigger("Triggered");
+            }
         }
     }
 
@@ -39,16 +44,28 @@ public class MineTrigger : MonoBehaviour {
 
     public void TriggerNow()
     {
-        foreach(GameObject ga in insideObject)
+        foreach (GameObject ga in insideObject)
         {
-            if (ga.tag == "Enemy")
+            if (ga != null)
             {
-                ga.SendMessage("TakeDamage", 100);
-            }
+                if (ga.tag == "Enemy")
+                {
+                    ga.SendMessage("TakeDamage", 100);
+                }
 
-            if (ga.tag == "Player")
-            {
-                GameObject.FindGameObjectWithTag("MainGUI").GetComponent<SubmarineLifeControl>().DecrementLife();
+                if (ga.tag == "Player")
+                {
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+                    if (player.GetComponent<MovePlayer>().GetShielded())
+                    {
+                        player.SendMessage("DestroyShield");
+                    }
+                    else
+                    {
+                        GameObject.FindGameObjectWithTag("MainGUI").GetComponent<SubmarineLifeControl>().DecrementLife();
+                    }
+                }
             }
         }
         Destroy(this.gameObject);

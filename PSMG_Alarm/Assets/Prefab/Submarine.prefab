@@ -260,6 +260,7 @@ MonoBehaviour:
     damage: 100
   useGazeControl: 0
   weaponTyp: 0
+  fakeEndlessAmmo: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

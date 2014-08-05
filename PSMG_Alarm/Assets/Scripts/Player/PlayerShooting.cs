@@ -20,6 +20,9 @@ public class PlayerShooting : MonoBehaviour
     private int rocketAmmo;
     private int laserAmmo;
 
+    //TODO: Remove this flag
+    public bool fakeEndlessAmmo;
+
     private int mgUpgrade = 0;
 
     void Start()
@@ -90,13 +93,13 @@ public class PlayerShooting : MonoBehaviour
             fireTimer = weapon[(int)weaponTyp].fireRate;
             UpdateAmmo();
         }
-        else if (Input.GetButtonDown("Rocket") && rocketAmmo > 0)
+        else if (Input.GetButtonDown("Rocket") && rocketAmmo > 0 || Input.GetButtonDown("Rocket") && fakeEndlessAmmo)
         {
             weaponTyp = weaponTyps.rocket;
             fireTimer = weapon[(int)weaponTyp].fireRate;
             UpdateAmmo();
         }
-        else if (Input.GetButtonDown("Laser") && laserAmmo > 0)
+        else if (Input.GetButtonDown("Laser") && laserAmmo > 0 || Input.GetButtonDown("Laser") && fakeEndlessAmmo)
         {
             weaponTyp = weaponTyps.laser;
             fireTimer = weapon[(int)weaponTyp].fireRate;
@@ -157,36 +160,42 @@ public class PlayerShooting : MonoBehaviour
 
     private void CheckAmmo()
     {
-        switch (weaponTyp)
+        if (!fakeEndlessAmmo)
         {
-            case weaponTyps.rocket:
-                if (rocketAmmo <= 0)
-                    weaponTyp = weaponTyps.mg;
-                else
-                    rocketAmmo--;
-                break;
-            case weaponTyps.laser:
-                if (laserAmmo <= 0)
-                    weaponTyp = weaponTyps.mg;
-                else
-                    laserAmmo--;
-                break;
+            switch (weaponTyp)
+            {
+                case weaponTyps.rocket:
+                    if (rocketAmmo <= 0)
+                        weaponTyp = weaponTyps.mg;
+                    else
+                        rocketAmmo--;
+                    break;
+                case weaponTyps.laser:
+                    if (laserAmmo <= 0)
+                        weaponTyp = weaponTyps.mg;
+                    else
+                        laserAmmo--;
+                    break;
+            }
         }
     }
 
     private void UpdateAmmo()
     {
-        switch (weaponTyp)
+        if (!fakeEndlessAmmo)
         {
-            case weaponTyps.rocket:
-                highscore.UpdateAmmo(rocketAmmo);
-                break;
-            case weaponTyps.laser:
-                highscore.UpdateAmmo(laserAmmo);
-                break;
-            case weaponTyps.mg:
-                highscore.UpdateAmmo(-1);
-                break;
+            switch (weaponTyp)
+            {
+                case weaponTyps.rocket:
+                    highscore.UpdateAmmo(rocketAmmo);
+                    break;
+                case weaponTyps.laser:
+                    highscore.UpdateAmmo(laserAmmo);
+                    break;
+                case weaponTyps.mg:
+                    highscore.UpdateAmmo(-1);
+                    break;
+            }
         }
     }
 
