@@ -199,7 +199,7 @@ public class NetworkManagerScript : MonoBehaviour
 
 	[RPC]
 	void PlayerDisconnected(){
-		Menu.ChangeHostFeedBackText ("Player disconnected! Waiting for player to connect...")
+		Menu.ChangeHostFeedBackText ("Player disconnected! Waiting for player to connect...");
 		Menu.DisableStartButton();
 	}
 }
