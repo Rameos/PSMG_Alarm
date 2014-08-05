@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RocketPraticels
   m_TagString: MovementParticles
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 60: {fileID: 6000000}
   - 148: {fileID: 14800000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rocket
   m_TagString: Rocket
   m_Icon: {fileID: 0}
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bb9cd2ab322f948a5940bd3bd190c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

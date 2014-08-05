@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 148: {fileID: 14800000}
   - 50: {fileID: 5000000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GhostEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

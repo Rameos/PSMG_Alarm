@@ -4711,7 +4711,7 @@ MonoBehaviour:
     repeatTime: 10
     size: 4
     enemy: {fileID: 100000, guid: 76f1edf4851378741a64264f95027a47, type: 2}
-    spawnAsEgg: 0
+    spawnAsEgg: 1
 --- !u!4 &665831170
 Transform:
   m_ObjectHideFlags: 0
@@ -7602,6 +7602,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1066602498}
   - 212: {fileID: 1066602497}
+  - 95: {fileID: 1066602499}
   m_Layer: 0
   m_Name: CamLayer
   m_TagString: Untagged
@@ -7643,6 +7644,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1183896718}
   m_RootOrder: 18
+--- !u!95 &1066602499
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1066602496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a19ad2595f18a894bbe3239da7de6b1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!1 &1081762689
 GameObject:
   m_ObjectHideFlags: 0

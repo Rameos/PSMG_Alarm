@@ -28,7 +28,7 @@ public class AttachNightLayer : MonoBehaviour {
             started = true;
         }
 
-        if(started)
+        if(started && layer != null)
         {
             layer.renderer.material.color = new Color(layer.renderer.material.color.r, layer.renderer.material.color.g,
                 layer.renderer.material.color.b, layer.renderer.material.color.a + Time.deltaTime * (1 / (startToGetDark - finalDarkness)));

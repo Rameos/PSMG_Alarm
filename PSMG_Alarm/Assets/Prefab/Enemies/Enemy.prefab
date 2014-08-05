@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 212: {fileID: 21200000}
   - 148: {fileID: 14800000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -107,6 +107,8 @@ MonoBehaviour:
   speed: 2
   life: 100
   value: 100
+  submarineLifeControl: {fileID: 0}
+  player: {fileID: 0}
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

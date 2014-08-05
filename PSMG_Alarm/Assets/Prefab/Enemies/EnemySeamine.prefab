@@ -12,7 +12,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 58: {fileID: 5800002}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DangerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
   - 148: {fileID: 14800000}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemySeamine
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,6 +116,8 @@ MonoBehaviour:
   speed: .5
   life: 100
   value: 100
+  submarineLifeControl: {fileID: 0}
+  player: {fileID: 0}
   radius: {fileID: 100000}
 --- !u!114 &11400002
 MonoBehaviour:

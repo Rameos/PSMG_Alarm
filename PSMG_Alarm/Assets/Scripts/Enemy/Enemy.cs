@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         return target;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public virtual void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "MachineGun")
         {

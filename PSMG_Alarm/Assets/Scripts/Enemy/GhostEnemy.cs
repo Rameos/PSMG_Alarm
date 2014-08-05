@@ -14,7 +14,7 @@ public class GhostEnemy : Enemy
         invTimer = Random.Range(5f, 10f);
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public override void OnTriggerEnter2D(Collider2D col)
     {
         if (!invisible)
         {
