@@ -6,7 +6,7 @@ public class Menu : MonoBehaviour
 {
     public NetworkManagerScript networkScript;
 
-    private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer, host, lobby, join, startGameButton;
+    private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer, host, lobby, cl_lobby, join, startGameButton;
     private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
 	private int serverSelection;
@@ -27,6 +27,7 @@ public class Menu : MonoBehaviour
 		startGameButton = false;
 		lobby = false;
 		join = false;
+		cl_lobby = false;
 
 		serverSelection = -1;
 
@@ -54,6 +55,7 @@ public class Menu : MonoBehaviour
 		if (host) InitHostServer ();
 		if (lobby) InitLobby ();
 		if (join) InitJoinServer ();
+		if (cl_lobby) InitClientLobby ();
 
 
     }
@@ -190,8 +192,10 @@ public class Menu : MonoBehaviour
 			multiplayer = true;
 			ChangeHostFeedBackText("Setting up the server..");
 		}
-		GUI.enabled = startGameButton;
+		GUI.enabled = false;
 		GUI.TextArea(new Rect (guiBoxX, guiBoxY+30, guiBoxWidth, guiBoxHeight-30-buttonHeight), hostFeedBackText);
+		GUI.enabled = true;	
+		GUI.enabled = startGameButton;
 		if (GUI.Button(new Rect(guiBoxX+buttonWidth, guiBoxY+guiBoxHeight-buttonHeight, buttonWidth, buttonHeight), "Spiel starten"))
 		{
 			networkScript.Server_LoadLevel();
@@ -201,8 +205,6 @@ public class Menu : MonoBehaviour
 
 	void InitJoinServer() {
 		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Joining Server");
-
-
 
 		if (networkScript.Client_getHostDataStatus())
 		{
@@ -230,7 +232,9 @@ public class Menu : MonoBehaviour
 		if (serverSelection != -1) {GUI.enabled = true;}
 		if (GUI.Button(new Rect(guiBoxX+buttonWidth, guiBoxY+guiBoxHeight-buttonHeight, buttonWidth, buttonHeight), "Beitreten"))
 		{
-			networkScript.Client_connectToHost(list[serverSelection]); 
+			networkScript.Client_connectToHost(list[serverSelection]);
+			join = false;
+			cl_lobby = true;
 		}
 		GUI.enabled = true;
 		if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
@@ -240,12 +244,29 @@ public class Menu : MonoBehaviour
 		}
 	}
 
+	void InitClientLobby() {
+		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Game Lobby");
+		if (GUI.Button(new Rect(guiBoxX, guiBoxY+guiBoxHeight-buttonHeight, buttonWidth, buttonHeight), "Abbrechen"))
+		{
+			networkScript.Client_disconnectFromHost();
+			cl_lobby = false;
+			multiplayer = true;
+		}
+		GUI.enabled = false;
+		GUI.TextArea(new Rect (guiBoxX, guiBoxY+30, guiBoxWidth, guiBoxHeight-30-buttonHeight), "Wait for server to start the game...");
+		GUI.enabled = true;
+	}
+
 	public void ChangeHostFeedBackText(string input) {
 		hostFeedBackText = input;
 	}
 
 	public void EnableStartButton(){
 		startGameButton = true;
+	}
+
+	public void DisableStartButton(){
+		startGameButton = false;
 	}
 }
 

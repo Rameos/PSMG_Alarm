@@ -29,7 +29,6 @@ public class NetworkManagerScript : MonoBehaviour
                 refresh = false;
                 hostData = MasterServer.PollHostList();
                 gotHostData = true;
-                Debug.Log("got host data!");
             }
         }
     }
@@ -72,6 +71,7 @@ public class NetworkManagerScript : MonoBehaviour
         return null;
     }
 
+	//Server methods
 	public void Server_startServer(string serverName,string serverDescription)
     {
         bool useNat = !Network.HavePublicAddress();
@@ -84,12 +84,34 @@ public class NetworkManagerScript : MonoBehaviour
 		MasterServer.UnregisterHost();
 	}
 
+	public void Server_LoadLevel()
+	{
+		if (Network.isServer)
+		{
+			networkView.RPC("NetworkLoadLevel", RPCMode.AllBuffered, "submarine");
+		}
+	}
+
+	private void Server_RecursiveNetworkInstantiate(Transform node)
+	{
+		if (node.networkView != null)
+		{
+			networkView.RPC("AssignViewID", RPCMode.AllBuffered, node.name, Network.AllocateViewID());
+		}
+		
+		for (int i = 0; i < node.childCount; ++i)
+		{
+			Transform child = node.GetChild(i);
+			Server_RecursiveNetworkInstantiate(child);
+		}
+	}
+
+	//Client methods
     public void Client_refreshHostList()
     {
 		gotHostData = false;
 		MasterServer.ClearHostList ();
         MasterServer.RequestHostList(gameName);
-        Debug.Log("start refreshing..");
         refresh = true;
     }
 
@@ -106,21 +128,23 @@ public class NetworkManagerScript : MonoBehaviour
     public void Client_connectToHost(HostData data)
     {
         Network.Connect(data);
-        //Network.Connect ("132.199.184.52", 25000);
     }
+
+	public void Client_disconnectFromHost(){
+		Network.CloseConnection(Network.connections[0], true);
+		networkView.RPC ("PlayerDisconnected", RPCMode.Server);
+	}
 
     //Messages
     void OnServerInitialized()
     {
-        Debug.Log("Server initialized");
+		Menu.ChangeHostFeedBackText("Server initialized.. Waiting for player to join!");
     }
 
     void OnMasterServerEvent(MasterServerEvent mse)
     {
-        Debug.Log("inmasterserverevent");
         if (mse == MasterServerEvent.RegistrationSucceeded)
         {
-			Menu.ChangeHostFeedBackText("Server Registered.. Waiting for player to join!");
             Debug.Log("Registered Server!");
         }
         if (mse == MasterServerEvent.RegistrationFailedNoServer)
@@ -148,15 +172,8 @@ public class NetworkManagerScript : MonoBehaviour
 		Menu.EnableStartButton ();
 		Menu.ChangeHostFeedBackText("A player joined the game! You can now start");
     }
-
-    public void Server_LoadLevel()
-    {
-        if (Network.isServer)
-        {
-            networkView.RPC("NetworkLoadLevel", RPCMode.AllBuffered, "submarine");
-        }
-    }
-
+    
+	//RPC calls
     [RPC]
     void NetworkLoadLevel(string levelName)
     {
@@ -168,21 +185,7 @@ public class NetworkManagerScript : MonoBehaviour
             Transform root = transform.root;
 		Server_RecursiveNetworkInstantiate(root);
         }
-    }
-
-    private void Server_RecursiveNetworkInstantiate(Transform node)
-    {
-        if (node.networkView != null)
-        {
-            networkView.RPC("AssignViewID", RPCMode.AllBuffered, node.name, Network.AllocateViewID());
-        }
-
-        for (int i = 0; i < node.childCount; ++i)
-        {
-            Transform child = node.GetChild(i);
-            Server_RecursiveNetworkInstantiate(child);
-        }
-    }
+    }    
 
     [RPC]
     void AssignViewID(string nodeName, NetworkViewID nvid)
@@ -193,4 +196,10 @@ public class NetworkManagerScript : MonoBehaviour
             target.networkView.viewID = nvid;
         }
     }
+
+	[RPC]
+	void PlayerDisconnected(){
+		Menu.ChangeHostFeedBackText ("Player disconnected! Waiting for player to connect...")
+		Menu.DisableStartButton();
+	}
 }
