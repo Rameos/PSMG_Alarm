@@ -106,7 +106,7 @@ public class PlayerShooting : MonoBehaviour
         GameObject bulletInstance;
         int bonusDamage = 0;
 
-        bulletInstance = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, false, true);
+        bulletInstance = InGameNetworking.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, false);
 
         if (weaponTyp == weaponTyps.mg && mgUpgrade > 0)
         {
@@ -114,8 +114,8 @@ public class PlayerShooting : MonoBehaviour
 
             if (mgUpgrade == 2)
             {
-                GameObject bulletInstance1 = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, 3f), false, true);
-                GameObject bulletInstance2 = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, -3f), false, true);
+                GameObject bulletInstance1 = InGameNetworking.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, 3f), false);
+                GameObject bulletInstance2 = InGameNetworking.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * Quaternion.Euler(0, 0, -3f), false);
 
                 bulletInstance1.SendMessage("AssignDamage", weapon[(int)weaponTyp].damage + bonusDamage);
                 bulletInstance1.SendMessage("Fire", aimPosition);

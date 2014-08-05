@@ -13,7 +13,7 @@ public class InGameNetworking : MonoBehaviour {
 		if (NetworkManagerScript.networkActive) {
 			spawnPlayer ();
 		} else {
-			NetworkInstantiate(playerPrefab, spawn1.position, Quaternion.identity);
+			NetworkInstantiate(playerPrefab, spawn1.position, Quaternion.identity, false);
 		}
 	}
 	
