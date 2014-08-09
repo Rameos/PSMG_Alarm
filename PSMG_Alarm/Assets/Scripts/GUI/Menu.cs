@@ -227,6 +227,7 @@ public class Menu : MonoBehaviour
 
 		if (GUI.Button(new Rect(guiBoxX, guiBoxY+guiBoxHeight-buttonHeight, buttonWidth, buttonHeight), "Aktualisieren"))
 		{
+			serverSelection = -1;
 			networkScript.Client_refreshHostList();
 		}
 		GUI.enabled = false;
@@ -236,12 +237,14 @@ public class Menu : MonoBehaviour
 			networkScript.Client_connectToHost(list[serverSelection]);
 			join = false;
 			cl_lobby = true;
+			serverSelection = -1;
 		}
 		GUI.enabled = true;
 		if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
 		{
 			join = false;
 			multiplayer = true;
+			serverSelection = -1;
 		}
 	}
 
