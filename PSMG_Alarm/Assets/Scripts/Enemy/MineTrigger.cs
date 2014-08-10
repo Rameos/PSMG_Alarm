@@ -17,6 +17,7 @@ public class MineTrigger : MonoBehaviour
 
             if (col.gameObject.tag == "Player")
             {
+                GetComponent<AudioSource>().Play();
                 explosionTriggered = true;
                 this.gameObject.GetComponent<Animator>().SetTrigger("Triggered");
             }

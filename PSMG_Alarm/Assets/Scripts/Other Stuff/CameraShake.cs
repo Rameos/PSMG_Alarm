@@ -37,12 +37,12 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    public void StartShaking()
+    public void StartShaking(float damp)
     {
         isShaking = true;
 
         hitTime = Time.time;
-        shakeDistance = startingShakeDistance;
+        shakeDistance = startingShakeDistance * damp;
         originalPosition = transform.position;
         shake = numberOfShakes;
     }

@@ -4726,7 +4726,7 @@ MonoBehaviour:
   - time: 0
     repeatTime: 15
     size: 4
-    enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 0
 --- !u!4 &665831170
 Transform:

@@ -17,6 +17,8 @@ public class PowerUpShield : PowerUp
 
     public override void ApplyPowerUp()
     {
+        AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
+
         if (!movePlayer.GetShielded())
         {
             GameObject clone = Instantiate(shieldPrefab, player.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;

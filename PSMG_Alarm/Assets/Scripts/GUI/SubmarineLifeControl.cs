@@ -12,8 +12,14 @@ public class SubmarineLifeControl : MonoBehaviour
     private GameObject player;
     private int[] lifeArray = new int[4];
     private int life;
+    private GameObject cam2D;
+    private GameObject cam3D;
+
     void Start()
     {
+        cam2D = GameObject.FindGameObjectWithTag("MainCamera");
+        cam3D = GameObject.FindGameObjectWithTag("3DCam");
+
         int currentLife = PlayerPrefsManager.GetCurrentLife();
 
         if (currentLife == 0)
@@ -53,6 +59,8 @@ public class SubmarineLifeControl : MonoBehaviour
             lifeArray[life] = 0;
             UpdateLife();
 
+            cam2D.SendMessage("StartShaking", 0.8f);
+            cam3D.SendMessage("StartShaking", 0.8f);
             player.SendMessage("LightAnimation");
         }
         if (life <= 0)

@@ -7,6 +7,7 @@ public class PowerUpCoin : PowerUp
 
     public override void ApplyPowerUp()
     {
+        AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
         GameControlScript.AddCoins(value);
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().UpdateCoins(PlayerPrefsManager.GetCoins());
     }

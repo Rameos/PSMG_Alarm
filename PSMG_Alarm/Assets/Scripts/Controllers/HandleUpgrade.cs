@@ -83,6 +83,8 @@ public class HandleUpgrade : MonoBehaviour
             PlayerPrefsManager.SetCoins(PlayerPrefsManager.GetCoins() - cost);
             skillGUI.SendMessage("UpdateCoins");
 
+            GetComponent<AudioSource>().Play();
+
             if (!not_upgradeable)
             {
                 upgraded = true;
