@@ -74,6 +74,8 @@ public class Enemy : MonoBehaviour
         highscorecontroller.AddScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
 
+        AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, new Vector3(transform.position.x, transform.position.y, -10), 1);
+
         if (Random.Range(0, 4) == 0 && drop != null)
         {
             Instantiate(drop, transform.position, Quaternion.Euler(Vector3.zero));

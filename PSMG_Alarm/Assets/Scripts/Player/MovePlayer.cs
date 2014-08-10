@@ -13,6 +13,7 @@ public class MovePlayer : MonoBehaviour
     private bool shielded;
     private GameObject shield;
     private SpriteRenderer shieldR;
+    private bool pitchUp;
 
     public GameObject[] lights;
 
@@ -41,6 +42,7 @@ public class MovePlayer : MonoBehaviour
 
     void Move()
     {
+        pitchUp = false;
 
         if (Input.GetAxis("Vertical") > 0)
         {
@@ -62,6 +64,12 @@ public class MovePlayer : MonoBehaviour
             transform.Rotate(-Vector3.forward * rotationSpeed);
         }
 
+        if (Input.GetButton("Up") || Input.GetButton("Down"))
+        {
+            pitchUp = true;
+        }
+
+        PitchSound();
     }
 
     public void stopPlayerMovement()
@@ -115,5 +123,17 @@ public class MovePlayer : MonoBehaviour
         }
 
         shieldTimer = 0;
+    }
+
+    private void PitchSound()
+    {
+        if (!pitchUp && GetComponent<AudioSource>().pitch > 0.3)
+        {
+            GetComponent<AudioSource>().pitch -= 0.5f * Time.deltaTime;
+        }
+        else if (pitchUp && GetComponent<AudioSource>().pitch < 0.5)
+        {
+            GetComponent<AudioSource>().pitch += 0.5f * Time.deltaTime;
+        }
     }
 }

@@ -880,6 +880,7 @@ GameObject:
   - 20: {fileID: 178948782}
   - 92: {fileID: 178948781}
   - 124: {fileID: 178948780}
+  - 114: {fileID: 178948779}
   m_Layer: 0
   m_Name: 3D Camera
   m_TagString: 3DCam
@@ -887,6 +888,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &178948779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 178948778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a67f0a4fea201d4aa45a1f64a1b064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingShakeDistance: .800000012
+  decreasePercentage: .5
+  shakeSpeed: 50
+  numberOfShakes: 10
 --- !u!124 &178948780
 Behaviour:
   m_ObjectHideFlags: 0
@@ -4708,7 +4724,7 @@ MonoBehaviour:
   egg: {fileID: 100000, guid: bbb0fd730bd05f143b608f0f8e48a779, type: 2}
   waves:
   - time: 0
-    repeatTime: 30
+    repeatTime: 15
     size: 4
     enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
     spawnAsEgg: 0
@@ -9722,6 +9738,7 @@ GameObject:
   - 124: {fileID: 1434523119}
   - 81: {fileID: 1434523118}
   - 114: {fileID: 1434523123}
+  - 114: {fileID: 1434523124}
   m_Layer: 0
   m_Name: 2D Camera
   m_TagString: MainCamera
@@ -9866,6 +9883,21 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+--- !u!114 &1434523124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1434523117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a67f0a4fea201d4aa45a1f64a1b064a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingShakeDistance: .300000012
+  decreasePercentage: .5
+  shakeSpeed: 40
+  numberOfShakes: 10
 --- !u!1 &1434655392
 GameObject:
   m_ObjectHideFlags: 0

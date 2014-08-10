@@ -26,6 +26,8 @@ public class EnemySeamine : Enemy
     public override void DestroyEnemy()
     {
         radius.SendMessage("TriggerNow");
+        Camera.main.GetComponent<CameraShake>().StartShaking();
+        GameObject.FindGameObjectWithTag("3DCam").GetComponent<CameraShake>().StartShaking();
 
         base.DestroyEnemy();
     } 

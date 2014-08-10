@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rocket : MonoBehaviour {
-
+public class Rocket : MonoBehaviour 
+{
     public int damage;
+    void Start()
+    {
+        AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, new Vector3(transform.position.x, transform.position.y, -10), 0.5f);
+    }
 
     public void Fire(Vector3 aimPosition)
     {

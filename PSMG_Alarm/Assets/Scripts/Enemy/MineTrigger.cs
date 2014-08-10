@@ -13,7 +13,6 @@ public class MineTrigger : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy")
         {
-            Debug.Log(col.gameObject);
             insideObject.Add(col.gameObject);
 
             if (col.gameObject.tag == "Player")
