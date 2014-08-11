@@ -127,11 +127,11 @@ public class MovePlayer : MonoBehaviour
 
     private void PitchSound()
     {
-        if (!pitchUp && GetComponent<AudioSource>().pitch > 0.3)
+        if (!pitchUp && GetComponent<AudioSource>().pitch > 1)
         {
             GetComponent<AudioSource>().pitch -= 0.5f * Time.deltaTime;
         }
-        else if (pitchUp && GetComponent<AudioSource>().pitch < 0.5)
+        else if (pitchUp && GetComponent<AudioSource>().pitch < 2)
         {
             GetComponent<AudioSource>().pitch += 0.5f * Time.deltaTime;
         }

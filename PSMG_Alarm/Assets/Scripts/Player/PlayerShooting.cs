@@ -19,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
 
     private int rocketAmmo;
     private int laserAmmo;
+    private GameObject xRay;
 
     //TODO: Remove this flag
     public bool fakeEndlessAmmo;
@@ -27,6 +28,9 @@ public class PlayerShooting : MonoBehaviour
 
     void Start()
     {
+        xRay = GameObject.FindGameObjectWithTag("XRay");
+        xRay.SetActive(false);
+
         mgUpgrade += PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.MACHINE_GUN_1);
         mgUpgrade += PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.MACHINE_GUN_2);
 
@@ -122,6 +126,16 @@ public class PlayerShooting : MonoBehaviour
                 CheckAmmo();
                 FireBullet(aimPosition);
             }
+        }
+
+        if(Input.GetButtonDown("Fire2"))
+        {
+            xRay.SetActive(true);
+        }
+
+        if (Input.GetButtonUp("Fire2"))
+        {
+            xRay.SetActive(false);
         }
     }
 
