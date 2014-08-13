@@ -136,6 +136,18 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButtonUp("Fire2"))
         {
             xRay.SetActive(false);
+            GameObject[] eggs = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject egg in eggs)
+            {
+                if (egg.name == "EggEnemy(Clone)")
+                {
+                    if (egg.GetComponent<EggEnemy>() != null)
+                    {
+                        egg.GetComponent<EggEnemy>().SetWhite();
+                    }
+                }
+            }
+
         }
     }
 
