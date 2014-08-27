@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 60: {fileID: 6000000}
   - 114: {fileID: 11400000}
+  - 148: {fileID: 14800000}
   m_Layer: 0
   m_Name: EnemyRocket
   m_TagString: RocketEnemy
@@ -171,6 +172,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee2e3ed22ffe6749abec0d219822856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!148 &14800000
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 400000}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

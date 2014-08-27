@@ -53,15 +53,17 @@ public class PlayerShooting : MonoBehaviour
             aimPosition.y = aimPosition.y - ubootposition.y;
         }
 
-        crosshair.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
-        crosshair.transform.position = new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 0);
-        aimPosition.z = 0.0f;
-        aimPosition.x = aimPosition.x - ubootposition.x;
+		if(NetworkManagerScript.networkActive && networkView.isMine || NetworkManagerScript.networkActive == false){
+	        crosshair.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+	        crosshair.transform.position = new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 0);
+	        aimPosition.z = 0.0f;
+	        aimPosition.x = aimPosition.x - ubootposition.x;
 
-        float angle = Mathf.Atan2(aimPosition.y, aimPosition.x) * Mathf.Rad2Deg - 90;
+	        float angle = Mathf.Atan2(aimPosition.y, aimPosition.x) * Mathf.Rad2Deg - 90;
 
-        Vector3 rotationVector = new Vector3(0, 0, angle);
-        transform.rotation = Quaternion.Euler(rotationVector);
+	        Vector3 rotationVector = new Vector3(0, 0, angle);
+	        transform.rotation = Quaternion.Euler(rotationVector);
+		}
 
         if (Input.GetButtonDown("Machine Gun"))
         {
@@ -93,7 +95,7 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && !shootingBlocked)
+			if (Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && !shootingBlocked && NetworkManagerScript.networkActive == false || Input.GetButtonDown("Fire1") && !gameOver.getGameOver() && !shootingBlocked && NetworkManagerScript.networkActive == true && networkView.isMine)
             {
                 CheckAmmo();
                 FireBullet(aimPosition);
@@ -106,7 +108,7 @@ public class PlayerShooting : MonoBehaviour
         GameObject bulletInstance;
         int bonusDamage = 0;
 
-        bulletInstance = InGameNetworking.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, false);
+		bulletInstance = InGameNetworking.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, true);
 
         if (weaponTyp == weaponTyps.mg && mgUpgrade > 0)
         {

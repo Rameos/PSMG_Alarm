@@ -38,30 +38,6 @@ public class InGameNetworking : MonoBehaviour {
 			if(spawnOnServer == false && Network.isClient) {
 				return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
 			}
-			/*if (hasToBeMine)
-			{
-				if (spawnOnServer && initObject.networkView.isMine)
-				{
-					if (Network.isServer)
-						return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-				}
-				else if (initObject.networkView.isMine)
-				{
-					return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-				}
-			}
-			else
-			{
-				if (spawnOnServer)
-				{
-					if (Network.isServer)
-						return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-				}
-				else
-				{
-					return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-				}
-			}*/
 		}
 		else
 		{
