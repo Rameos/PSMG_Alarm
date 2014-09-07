@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Update () 
     {
-        if(moveAllowed) MoveToTargetLocation();
+		if(moveAllowed && Network.isServer && NetworkManagerScript.networkActive || moveAllowed && NetworkManagerScript.networkActive == false) MoveToTargetLocation();
 	}
 
     void GetNewTargetLocation()
@@ -64,7 +64,7 @@ public class EnemyMovement : MonoBehaviour {
 			Destroy (gameObject);
 			Destroy (col.gameObject);
 			if(!gameOver.getGameOver()) spawner.SpawnEnemy ();
-		} else if (col.gameObject.tag == "Player") {
+		} else if (col.gameObject.tag == "Player" && networkView.isMine && NetworkManagerScript.networkActive || col.gameObject.tag == "Player" && NetworkManagerScript.networkActive == false) {
 			highscorecontroller.addScoreValue(100);
 			submarineLifeControl.decrementLife ();
 			Instantiate(explosion, transform.position, transform.rotation);
@@ -94,7 +94,6 @@ public class EnemyMovement : MonoBehaviour {
     }
 
 	public void setSpeed(float value) {
-		Debug.Log (value); 
 		speed = value; 
 	}
 }

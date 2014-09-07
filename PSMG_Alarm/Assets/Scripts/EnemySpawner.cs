@@ -57,9 +57,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-		Debug.Log ("spawn stuff");
-        Vector3 pos = GetRandomPosition();
-        GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+		Vector3 pos = GetRandomPosition(); 
+		if (NetworkManagerScript.networkActive && Network.isServer) {
+						GameObject clone = (GameObject)Network.Instantiate (enemy, pos, Quaternion.Euler (0, 0, 0), 4);
+		} 
+		if(NetworkManagerScript.networkActive == false){
+			GameObject clone = Instantiate(enemy, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+		}               
         enemiesAlive++;
     }
 

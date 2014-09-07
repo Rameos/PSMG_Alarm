@@ -4,9 +4,10 @@ using iViewX;
 
 public class Menu : MonoBehaviour
 {
+	public NetworkManagerScript networkScript;
 
-    bool mainMenu, modiMenu, levelsOfDifficulty, highscores;
-    int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
+    private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer;
+    private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
     //Use this for initialization
     void Start()
@@ -38,6 +39,7 @@ public class Menu : MonoBehaviour
         if (modiMenu) initModiMenu();
         if (levelsOfDifficulty) initLevelsOfDifficultyMenu();
         if (highscores) initHighscores();
+		if (multiplayer) initMultiplayer();
 
     }
 
@@ -78,7 +80,7 @@ public class Menu : MonoBehaviour
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Koop"))
         {
             modiMenu = false;
-            levelsOfDifficulty = true;
+            multiplayer = true;
         }
         if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "Versus"))
         {
@@ -123,5 +125,32 @@ public class Menu : MonoBehaviour
             mainMenu = true;
         }
     }
+
+	void initMultiplayer() {
+		GUI.Box (new Rect (guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Server");
+
+		if (GUI.Button (new Rect (centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Spiel Hosten")) {
+			networkScript.Server_startServer();
+		}
+		if (GUI.Button (new Rect (centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Spiele anzeigen")) {
+			//networkScript.Client_refreshHostList();
+			networkScript.Client_connectToHost();
+		}
+		if (networkScript.Client_getHostDataStatus()) {
+			HostData[] list = networkScript.Client_getHostData();
+			for(int i = 0; i < list.Length; i++){
+				if (GUI.Button (new Rect (centerX - buttonWidth / 2, guiBoxY + (2+i+1) * buttonHeight, buttonWidth, buttonHeight), list[i].gameName)) {
+					Debug.Log("hit the game dude!");
+					//networkScript.Client_connectToHost(list[i]);
+				}
+			}
+		}
+		if (GUI.Button (new Rect (guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<")) {
+				multiplayer = false;
+				modiMenu = true;
+				
+		}
+	}
+
 }
 

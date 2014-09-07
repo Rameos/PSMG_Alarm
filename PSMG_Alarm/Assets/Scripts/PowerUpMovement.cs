@@ -57,9 +57,6 @@ public class PowerUpMovement : MonoBehaviour
 			}
 			if(this.gameObject.name == "PowerUp(Clone)") {
 				powerUpEffectScript.shield();
-				Debug.Log("fast"); 
-			} else {
-				Debug.Log ("else"); 
 			}
 			Destroy(gameObject);
 			spawner.removePowerUp();

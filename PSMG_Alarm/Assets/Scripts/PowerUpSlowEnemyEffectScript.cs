@@ -20,7 +20,7 @@ public class PowerUpSlowEnemyEffectScript : MonoBehaviour {
 		for (int i = 0; i < enemies.Length; i++)
 		{
 			enemyMovement = enemies[i].GetComponent<EnemyMovement>();
-			enemyMovement.stopEnemyMovement(); 
+			enemyMovement.setSpeed(1); 
 		}
 	}
 }
