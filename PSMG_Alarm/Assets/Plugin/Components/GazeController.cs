@@ -9,7 +9,8 @@ namespace iViewX
 {
     public class GazeController
     {
-        
+        #pragma warning disable 0169
+
         //Sample Data
         private EyeTrackingController ET_Device;
         private EyeTrackingController.AccuracyStruct m_AccuracyData;
@@ -17,7 +18,7 @@ namespace iViewX
         private EyeTrackingController.SystemInfoStruct m_SystemData;
         private EyeTrackingController.CalibrationStruct m_CalibrationData;
         //private EyeTrackingController.Trackm_TrackingStatusData; 
-        
+
         //Sample callBack 
         private GetSampleCallBack m_samplecallBack;
         private delegate void GetSampleCallBack(EyeTrackingController.SampleStruct sampleData);
@@ -79,7 +80,7 @@ namespace iViewX
         public void loadCalibration(string id_Calibration)
         {
             int errorID = ET_Device.iV_LoadCalibration(new System.Text.StringBuilder(id_Calibration));
-            
+
             //ErrorMessage
             getLogdata(errorID, errorIDContainer.STATE_CALIBRATE);
         }
@@ -93,16 +94,16 @@ namespace iViewX
 
             //Load CalibrationSetup From the Eye Tracking Server
             errorID = ET_Device.iV_GetCalibrationParameter(ref m_CalibrationData);
-            Debug.Log("CalibrationSetup:/n DisplayDevice:" + m_CalibrationData.displayDevice+" Method: "+m_CalibrationData.method+"Calib To string: " +m_CalibrationData.ToString());
+            Debug.Log("CalibrationSetup:/n DisplayDevice:" + m_CalibrationData.displayDevice + " Method: " + m_CalibrationData.method + "Calib To string: " + m_CalibrationData.ToString());
             //ErrorMessage
             getLogdata(errorID, errorIDContainer.STATE_CALIBRATE);
 
 
             //Start the calibration
-           errorID = ET_Device.iV_Calibrate();
+            errorID = ET_Device.iV_Calibrate();
 
             //ErrorMessage
-           getLogdata(errorID, errorIDContainer.STATE_CALIBRATE);
+            getLogdata(errorID, errorIDContainer.STATE_CALIBRATE);
 
         }
 
@@ -213,22 +214,22 @@ namespace iViewX
             //Left Eye
             gazeModel.posLeftEye = new Vector3((float)sampleData.leftEye.eyePositionX, (float)sampleData.leftEye.eyePositionY, (float)sampleData.leftEye.eyePositionZ);
             gazeModel.posGazeLeft = new Vector2((float)sampleData.leftEye.gazeX, (float)sampleData.leftEye.gazeY);
-            
+
             //Right Eye
             gazeModel.posRightEye = new Vector3((float)sampleData.rightEye.eyePositionX, (float)sampleData.rightEye.eyePositionY, (float)sampleData.rightEye.eyePositionZ);
             gazeModel.posGazeRight = new Vector2((float)sampleData.rightEye.gazeX, (float)sampleData.rightEye.gazeY);
 
             //PupilData
-            gazeModel.diamLeftEye = (float) sampleData.leftEye.diam;
-            gazeModel.diamRightEye= (float) sampleData.leftEye.diam;
-             
+            gazeModel.diamLeftEye = (float)sampleData.leftEye.diam;
+            gazeModel.diamRightEye = (float)sampleData.leftEye.diam;
+
 
 
 #if UNITY_EDITOR
             Rect gameView = getOffsetFromGameView();
             Vector2 posGazeLeft = new Vector3(gazeModel.posGazeLeft.x, gazeModel.posGazeLeft.y - gameView.y);
             Vector2 posGazeRight = new Vector3(gazeModel.posGazeRight.x, gazeModel.posGazeRight.y - gameView.y);
-            
+
             gazeModel.posGazeLeft = posGazeLeft;
             gazeModel.posGazeRight = posGazeRight;
 
@@ -255,9 +256,9 @@ namespace iViewX
             //TimeStamp of the Sample
             gazeModel.timeStamp = sampleData.timestamp;
 
-            
-            
-            
+
+
+
 
 
         }
@@ -278,7 +279,7 @@ namespace iViewX
         /// <param name="state"></param>
         private void getLogdata(int errorID, int state)
         {
-            if (errorID >errorIDContainer.ACTION_COMPLETE)
+            if (errorID > errorIDContainer.ACTION_COMPLETE)
                 Debug.LogError("Error by " + errorIDContainer.getState(state) + ": " + errorIDContainer.getErrorMessage(errorID));
             else
                 Debug.Log(errorIDContainer.getState(state) + " finished");
