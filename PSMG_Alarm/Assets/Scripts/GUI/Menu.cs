@@ -7,7 +7,8 @@ public class Menu : MonoBehaviour
     public NetworkManagerScript networkScript;
 
     private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer;
-    private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
+	private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY, backbuttonWidth, backbuttonHeight;
+	private GUIStyle boxStyle, buttonStyle;
 
     void Start()
     {
@@ -21,14 +22,24 @@ public class Menu : MonoBehaviour
     }
 
     void OnGUI()
-    {
-        buttonWidth = Screen.width / 6;
+	{ 	GUI.backgroundColor = new Color(2,2,4,255);
+	 	boxStyle = new GUIStyle (GUI.skin.box);
+		boxStyle.fontSize = 25;
+		boxStyle.padding = new RectOffset(10,10,10,0);
+		boxStyle.margin = new RectOffset(20,20,20,0);
+		buttonStyle = new GUIStyle (GUI.skin.button);
+		buttonStyle.fontSize = 20;
+
+
+		buttonWidth = Screen.width / 3;
         buttonHeight = Screen.height / 12;
+		backbuttonWidth = buttonWidth / 5;
+		backbuttonHeight = buttonWidth / 5;
         centerX = Screen.width / 2;
         centerY = Screen.height / 2;
-        guiBoxWidth = Screen.width / 3;
-        guiBoxHeight = Screen.height / 2;
-        guiBoxX = centerX - guiBoxWidth / 2;
+        guiBoxWidth = Screen.width / 2;
+		guiBoxHeight = Screen.height / 2;
+		guiBoxX = centerX - guiBoxWidth / 2;
         guiBoxY = centerY - guiBoxHeight / 2;
 
         if (mainMenu) InitMainMenu();
@@ -41,24 +52,23 @@ public class Menu : MonoBehaviour
 
     void InitMainMenu()
     {
+		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Hauptmenü", boxStyle);
 
-        GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Hauptmenü");
-
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Spiel Starten"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Spiel Starten", buttonStyle))
         {
             mainMenu = false;
             modiMenu = true;
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Highscores"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Highscores", buttonStyle))
         {
             mainMenu = false;
             highscores = true;
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "Kalibrierung"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "Kalibrierung", buttonStyle))
         {
             GazeControlComponent.Instance.StartCalibration();
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 4 * buttonHeight, buttonWidth, buttonHeight), "Spiel beenden"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 4 * buttonHeight, buttonWidth, buttonHeight), "Spiel beenden", buttonStyle))
         {
             Application.Quit();
         }
@@ -66,23 +76,23 @@ public class Menu : MonoBehaviour
 
     void InitModiMenu()
     {
-        GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Modi");
+		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Modi", boxStyle);
 
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Einzelspieler"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Einzelspieler", buttonStyle))
         {
             modiMenu = false;
             levelsOfDifficulty = true;
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Koop"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Koop", buttonStyle))
         {
             modiMenu = false;
             multiplayer = true;
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "Versus"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "Versus", buttonStyle))
         {
             Application.LoadLevel("submarine");
         }
-        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+		if (GUI.Button(new Rect(guiBoxX, guiBoxY, backbuttonWidth, backbuttonHeight), "<"))
         {
             modiMenu = false;
             mainMenu = true;
@@ -91,21 +101,21 @@ public class Menu : MonoBehaviour
 
     void InitLevelsOfDifficultyMenu()
     {
-        GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Schwierigkeitsstufen");
+		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Schwierigkeitsstufen", boxStyle);
 
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "leicht"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "leicht", buttonStyle))
         {
             Application.LoadLevel("story_sequence");
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "mittel"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "mittel", buttonStyle))
         {
             Application.LoadLevel("story_sequence");
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "schwer"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight, buttonWidth, buttonHeight), "schwer", buttonStyle))
         {
             Application.LoadLevel("story_sequence");
         }
-        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+		if (GUI.Button(new Rect(guiBoxX, guiBoxY, backbuttonWidth, backbuttonHeight), "<"))
         {
             levelsOfDifficulty = false;
             modiMenu = true;
@@ -115,7 +125,7 @@ public class Menu : MonoBehaviour
     void InitHighscores()
     {
         GUI.Label(new Rect(centerX, guiBoxY, buttonWidth, buttonHeight * 2), "Highscores");
-        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+		if (GUI.Button(new Rect(guiBoxX, guiBoxY, backbuttonWidth, backbuttonHeight), "<"))
         {
             highscores = false;
             mainMenu = true;
@@ -124,13 +134,13 @@ public class Menu : MonoBehaviour
 
     void InitMultiplayer()
     {
-        GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Server");
+		GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Server", boxStyle);
 
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Spiel Hosten"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Spiel Hosten", buttonStyle))
         {
             networkScript.Server_startServer();
         }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Spiele anzeigen"))
+		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Spiele anzeigen", buttonStyle))
         {
             networkScript.Client_refreshHostList();
             //networkScript.Client_connectToHost();
@@ -146,7 +156,7 @@ public class Menu : MonoBehaviour
                 }
             }
         }
-        if (GUI.Button(new Rect(guiBoxX, guiBoxY, buttonWidth / 3, buttonHeight), "<"))
+		if (GUI.Button(new Rect(guiBoxX, guiBoxY, backbuttonWidth, backbuttonHeight), "<"))
         {
             multiplayer = false;
             modiMenu = true;
