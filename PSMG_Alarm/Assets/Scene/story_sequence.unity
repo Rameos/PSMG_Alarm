@@ -82,8 +82,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 111869459}
-  - 114: {fileID: 111869458}
   - 82: {fileID: 111869460}
+  - 114: {fileID: 111869458}
   m_Layer: 0
   m_Name: StorySequence
   m_TagString: Untagged
@@ -94,18 +94,20 @@ GameObject:
 --- !u!114 &111869458
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 01d9c90eb90544b4a9f2201539cf8ebe,
-    type: 2}
-  m_PrefabInternal: {fileID: 849115259}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 111869457}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f39037bc4e3dd4e889420cf94158d3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intro: []
   off: 0
   speed: 8
+  SpeechBubble: {fileID: 100000, guid: 0acd055bdb184ea499bc75a17144275d, type: 2}
+  speechBubble: {fileID: 0}
+  introText: 
+  SpeechBubbleText: {fileID: 1814162792}
 --- !u!4 &111869459
 Transform:
   m_ObjectHideFlags: 0
@@ -389,7 +391,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a6eeb561427c489e8f5a97250bef6fa, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a6eeb561427c489e8f5a97250bef6fa, type: 2}
@@ -442,6 +444,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &849115259
 Prefab:
   m_ObjectHideFlags: 0
@@ -483,9 +486,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 01d9c90eb90544b4a9f2201539cf8ebe, type: 2}
       propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 01d9c90eb90544b4a9f2201539cf8ebe, type: 2}
+      propertyPath: SpeechBubble
+      value: 
+      objectReference: {fileID: 100000, guid: 0acd055bdb184ea499bc75a17144275d, type: 2}
+    - target: {fileID: 11400000, guid: 01d9c90eb90544b4a9f2201539cf8ebe, type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: 01d9c90eb90544b4a9f2201539cf8ebe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 01d9c90eb90544b4a9f2201539cf8ebe, type: 2}
   m_RootGameObject: {fileID: 111869457}
   m_IsPrefabParent: 0
@@ -547,7 +559,7 @@ GameObject:
   - 124: {fileID: 1501696574}
   - 81: {fileID: 1501696573}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: 
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,6 +814,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 791990953}
   m_RootOrder: 2
+--- !u!1 &1814162792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1814162794}
+  - 132: {fileID: 1814162793}
+  m_Layer: 0
+  m_Name: SpeechBubbleText
+  m_TagString: SpeechBubbleText
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &1814162793
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1814162792}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: hallo Welt
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4281742902
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &1814162794
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1814162792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .800000012, y: .5, z: 72.9518051}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1836064807
 GameObject:
   m_ObjectHideFlags: 0
