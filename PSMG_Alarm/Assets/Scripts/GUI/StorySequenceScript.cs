@@ -20,6 +20,7 @@ public class StorySequenceScript : MonoBehaviour {
 	void Start () {
 		//TextMesh IntroGUI = new TextMesh ();
 		introText = "";
+		showIntroText = true;
 
 		intro = new ArrayList (); //string[20];
 
@@ -45,15 +46,22 @@ public class StorySequenceScript : MonoBehaviour {
 			intro.Add (line);
 			i++;
 		} while (line != null); 
+	
+		Debug.Log (intro.Count);
 
-		showIntroText = true;
-		if (currentLine == intro.Count-1)
-			showIntroText = false;
 
-		while (showIntroText == true) {
+		do {
+			Debug.Log (currentLine);
+			if (currentLine >= 5) {
+				showIntroText = false;
+			} 
+			
+			Debug.Log (showIntroText);
 			SpeechBubbleText.text = (intro [currentLine]).ToString ();
 			StartCoroutine (HideSpeechBubble ());
-		}
+		} while (showIntroText == true);
+
+		Debug.Log (showIntroText);
 		/*foreach(string j in intro) {
 			//IntroGUI.text = j;
 			Debug.Log (j);
@@ -117,7 +125,7 @@ public class StorySequenceScript : MonoBehaviour {
 		//Destroy (speechBubble);
 		//speechBubble.renderer.enabled = false;
 		currentLine++;
+		Debug.Log (currentLine);
 
-		//showSpeechBubbles = false;
 	}
 }
