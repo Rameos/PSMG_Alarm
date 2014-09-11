@@ -800,7 +800,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 296b2edc094239942be7bc931ce631a4, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 296b2edc094239942be7bc931ce631a4, type: 2}
       propertyPath: gameOverScript
@@ -2010,7 +2010,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
@@ -4726,8 +4726,13 @@ MonoBehaviour:
   - time: 0
     repeatTime: 15
     size: 4
-    enemy: {fileID: 100000, guid: 76f1edf4851378741a64264f95027a47, type: 2}
-    spawnAsEgg: 1
+    enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
+    spawnAsEgg: 0
+  - time: 0
+    repeatTime: 15
+    size: 4
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    spawnAsEgg: 0
 --- !u!4 &665831170
 Transform:
   m_ObjectHideFlags: 0
@@ -7674,6 +7679,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1081762689
 GameObject:
   m_ObjectHideFlags: 0
