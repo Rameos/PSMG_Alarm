@@ -1,5 +1,4 @@
-Oh Nein! 
-Durch eine Kollision mit einem Eisberg geht dein Schiff zu Bruch und sinkt mitten im Ozean. 
+Oh Nein! Durch eine Kollision mit einem Eisberg geht dein Schiff zu Bruch und sinkt mitten im Ozean. 
 Nur du hast dich mit einem Rettungsboot retten können, der  Rest der Besatzung ist mit dem Schiff untergegangen. 
 Durch einen Notruf erfährst du, dass einige  Crewmitglieder in einer Luftblase in dem gesunkenen Schiff überlebt haben. 
 Nun machst du dich mit einem U-Boot auf den Weg, die Überlebenden so schnell wie möglich zu retten. 

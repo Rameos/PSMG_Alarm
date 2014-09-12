@@ -14,8 +14,7 @@ public class MenuScript : MonoBehaviour {
 	public GameObject ConnectToHostButton;
 
 	private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer;
-
-
+	
 	void Start()
 	{
 		PlayerPrefsManager.Reset();
@@ -25,14 +24,6 @@ public class MenuScript : MonoBehaviour {
 		levelsOfDifficultyPanel.SetActive (false);
 		multiplayerPanel.SetActive (false);
 
-	}
-
-	public void onStartGameClick() {
-		Debug.Log ("startGame");
-	}
-
-	public void onHighscoresClick() {
-		Debug.Log ("Highscore");
 	}
 
 	public void onCalibrationClick() {
@@ -75,5 +66,4 @@ public class MenuScript : MonoBehaviour {
 	public void onStartMultiplayerGameButtonClick() {
 		networkScript.Client_refreshHostList();
 	}
-	
 }
