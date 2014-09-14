@@ -241,6 +241,10 @@ Prefab:
       propertyPath: m_Size.x
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 08ff3c29c335a504ea664d44a45b3d5b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08ff3c29c335a504ea664d44a45b3d5b, type: 2}
   m_RootGameObject: {fileID: 1252775715}
@@ -710,23 +714,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera2d: {fileID: 1434523117}
-  egg: {fileID: 0}
+  egg: {fileID: 100000, guid: bbb0fd730bd05f143b608f0f8e48a779, type: 2}
   waves:
   - time: 0
-    repeatTime: 20
+    repeatTime: 30
     size: 5
-    enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 0
-  - time: 10
+  - time: 15
     repeatTime: 0
     size: 2
     enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
     spawnAsEgg: 0
-  - time: 30
+  - time: 40
     repeatTime: 30
     size: 4
-    enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
-    spawnAsEgg: 0
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    spawnAsEgg: 1
   - time: 80
     repeatTime: 0
     size: 2
@@ -749,9 +753,9 @@ MonoBehaviour:
     spawnAsEgg: 0
   - time: 45
     repeatTime: 0
-    size: 8
+    size: 5
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
-    spawnAsEgg: 0
+    spawnAsEgg: 1
 --- !u!4 &665831170
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,7 +1293,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9111b29e0da0d843a6295379790ff5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2bebe047f5c1c774385dff7e0636df59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1405926345
 Transform:
@@ -1952,7 +1956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1760654390
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2259,3 +2263,4 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

@@ -11,7 +11,7 @@ public class BigEnemy : Enemy
 
     public override void Shoot()
     {
-        bulletTimer += Time.deltaTime;
+        /*bulletTimer += Time.deltaTime;
         if (submarine != null)
         {
             if (bulletTimer > minBulletTimer && Random.Range(0, 300) == 1 && GetMoveAllowed())
@@ -24,7 +24,7 @@ public class BigEnemy : Enemy
                 Destroy(bullet, 3);
                 bulletTimer = 0;
             }
-        }
+        }*/
     }
 
     public override void FindOtherObjects()

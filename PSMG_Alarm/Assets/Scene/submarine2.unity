@@ -806,6 +806,14 @@ Prefab:
       propertyPath: gameOverScript
       value: 
       objectReference: {fileID: 665831172}
+    - target: {fileID: 13100000, guid: 296b2edc094239942be7bc931ce631a4, type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: bcce31ee7ee9eeb44a92b5082c7fde8e, type: 3}
+    - target: {fileID: 13100000, guid: 296b2edc094239942be7bc931ce631a4, type: 2}
+      propertyPath: m_PixelInset.x
+      value: -55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296b2edc094239942be7bc931ce631a4, type: 2}
   m_RootGameObject: {fileID: 653787099}
@@ -1043,11 +1051,11 @@ GUITexture:
   m_PrefabInternal: {fileID: 145156099}
   m_GameObject: {fileID: 205493321}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 80ade8cf497e3ed4f9eba73e130472fc, type: 3}
+  m_Texture: {fileID: 2800000, guid: bcce31ee7ee9eeb44a92b5082c7fde8e, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
-    x: -64
+    x: -55
     y: -29
     width: 30
     height: 30
@@ -4725,13 +4733,8 @@ MonoBehaviour:
   waves:
   - time: 0
     repeatTime: 15
-    size: 4
-    enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
-    spawnAsEgg: 0
-  - time: 0
-    repeatTime: 15
-    size: 4
-    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    size: 5
+    enemy: {fileID: 100000, guid: 76f1edf4851378741a64264f95027a47, type: 2}
     spawnAsEgg: 0
 --- !u!4 &665831170
 Transform:
@@ -12651,7 +12654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1760654390
 AudioSource:
   m_ObjectHideFlags: 0
