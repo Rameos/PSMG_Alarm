@@ -232,59 +232,6 @@ namespace iViewX
 
             //TimeStamp of the Sample
             gazeModel.timeStamp = sampleData.timestamp;
-
-
-            Rect gameView = getOffsetFromGameView();
-            Vector2 posGazeLeft = new Vector3(gazeModel.posGazeLeft.x, gazeModel.posGazeLeft.y - gameView.y);
-            Vector2 posGazeRight = new Vector3(gazeModel.posGazeRight.x, gazeModel.posGazeRight.y - gameView.y);
-
-            gazeModel.posGazeLeft = posGazeLeft;
-            gazeModel.posGazeRight = posGazeRight;
-
-
-            //Vector2 offSet = Win32HelperClass.GetGameViewPosition();
-            //if (offSet.x >= 0)
-            //{
-            //    gazeModel.posGazeLeft = gazeModel.posGazeLeft - offSet;
-            //    gazeModel.posGazeRight = gazeModel.posGazeRight - offSet;
-            //}
-            //else
-            //{
-            //    gazeModel.posGazeLeft = offSet - gazeModel.posGazeLeft;
-            //    gazeModel.posGazeRight = offSet - gazeModel.posGazeRight;
-            //}
-
-//#if UNITY_EDITOR
-
-
-//#else
-//            Vector2 offSet = Win32HelperClass.GetGameViewPosition();
-//            if (offSet.x >= 0)
-//            {
-//                gazeModel.posGazeLeft = gazeModel.posGazeLeft - offSet;
-//                gazeModel.posGazeRight = gazeModel.posGazeRight - offSet;
-//            }
-//            else
-//            {
-//                gazeModel.posGazeLeft = offSet -gazeModel.posGazeLeft;
-//                gazeModel.posGazeRight = offSet - gazeModel.posGazeRight;
-//            }
-
-//#endif
-
-//            gazeModel.gameScreenPosition = Win32HelperClass.GetGameViewPosition();
-
-//            //Head Position
-//            gazeModel.posHead = (gazeModel.posLeftEye + gazeModel.posRightEye) * 0.5f;
-
-//            //TimeStamp of the Sample
-//            gazeModel.timeStamp = sampleData.timestamp;
-
-
-
-
-
-
         }
 
         /// <summary>
