@@ -5,19 +5,17 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene/main_menu.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene/submarine.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene/main_menu.unity
-  - enabled: 0
-    path: Assets/Scene/story_sequence.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scene/skilltree.unity
-  - enabled: 0
-    path: Assets/Scene/sub_cameramovement.unity
-  - enabled: 0
-    path: Assets/Scene/sub2_camera.unity
+  - enabled: 1
+    path: Assets/Scene/story_sequence.unity
   - enabled: 1
     path: Assets/Scene/submarine2.unity
+  - enabled: 1
+    path: Assets/Scene/demo_ende.unity

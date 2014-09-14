@@ -47,33 +47,13 @@ public class PlayerShooting : MonoBehaviour
     {
         Vector3 ubootposition = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 aimPosition;
-        Vector2 aimPositionE;
 
         fireTimer += Time.deltaTime;
 
         if (useGazeControl)
         {
-            aimPositionE = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
-            aimPositionE.y = (Screen.height - aimPositionE.y);
-
-            aimPositionE = Camera.main.ScreenToWorldPoint(aimPositionE);
-
-            aimPosition = Input.mousePosition;
-            aimPosition.y = aimPosition.y - ubootposition.y;
-
-            if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), aimPositionE) > 4f)
-            {
-                float factor = 15 / (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), aimPositionE) - 4);
-                if (factor > 1)
-                {
-                    factor = 1;
-                }
-                offset = Quaternion.Euler(new Vector3(Random.Range(-60f * factor, 60f * factor), Random.Range(-60f * factor, 60f * factor)));
-            }
-            else
-            {
-                offset = Quaternion.Euler(new Vector3(1, 1));
-            }
+            aimPosition = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
+            aimPosition.y = (Screen.height - aimPosition.y);
         }
         else
         {
@@ -156,7 +136,7 @@ public class PlayerShooting : MonoBehaviour
         GameObject bulletInstance;
         int bonusDamage = 0;
 
-        bulletInstance = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation * offset, false, true);
+        bulletInstance = NetworkManagerScript.NetworkInstantiate(weapon[(int)weaponTyp].weapon, transform.position, transform.rotation, false, true);
 
         if (weaponTyp == weaponTyps.mg && mgUpgrade > 0)
         {

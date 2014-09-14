@@ -5,6 +5,7 @@ public class GameControlScript : MonoBehaviour
 {
     public float maxNoGazeDataTime = 1;
     public bool blockWhenNoGazeData = true;
+    public string sceneWhenFinished;
 
     public static int coins;
     public static float timeElapsed;
@@ -64,7 +65,7 @@ public class GameControlScript : MonoBehaviour
         PlayerPrefsManager.SetCurrentLive(lifeControl.GetLifes());
         shooting.SaveAmmo();
 
-        Application.LoadLevel("skilltree");
+        Application.LoadLevel(sceneWhenFinished);
     }
 
     public void PauseGame()

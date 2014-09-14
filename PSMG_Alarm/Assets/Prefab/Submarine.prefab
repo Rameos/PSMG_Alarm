@@ -376,9 +376,9 @@ MonoBehaviour:
   - weapon: {fileID: 100000, guid: 0853c2c6649c6044c97b102518db6f7c, type: 2}
     fireRate: .5
     damage: 100
-  useGazeControl: 0
+  useGazeControl: 1
   weaponTyp: 0
-  fakeEndlessAmmo: 1
+  fakeEndlessAmmo: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -504,15 +504,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
+      propertyPath: useGazeFilter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
@@ -572,9 +576,9 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1ee8dc996a86c0f40981815313b6fa3a, type: 3}
   m_PrefabInternal: {fileID: 134664428}
   m_GameObject: {fileID: 377221676}
-  m_LocalRotation: {x: -.685124576, y: -.174941018, z: -.381577522, w: .595313787}
+  m_LocalRotation: {x: -.685124636, y: -.174941033, z: -.381577551, w: .595313847}
   m_LocalPosition: {x: .186127827, y: 1.544245, z: -.593171537}
-  m_LocalScale: {x: .999999881, y: .999999881, z: 1}
+  m_LocalScale: {x: .99999994, y: .999999881, z: .99999994}
   m_Children: []
   m_Father: {fileID: 2127960861}
   m_RootOrder: 0
@@ -787,46 +791,76 @@ MonoBehaviour:
   camera2d: {fileID: 1434523117}
   egg: {fileID: 100000, guid: bbb0fd730bd05f143b608f0f8e48a779, type: 2}
   waves:
-  - time: 0
-    repeatTime: 30
+  - time: 3
+    repeatTime: 0
     size: 5
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 0
   - time: 15
     repeatTime: 0
-    size: 2
+    size: 3
     enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
     spawnAsEgg: 0
-  - time: 40
-    repeatTime: 30
+  - time: 25
+    repeatTime: 0
     size: 4
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 1
-  - time: 80
+  - time: 30
     repeatTime: 0
     size: 2
-    enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
-    spawnAsEgg: 0
-  - time: 120
-    repeatTime: 0
-    size: 2
-    enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
-    spawnAsEgg: 0
-  - time: 130
-    repeatTime: 15
-    size: 4
-    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
-    spawnAsEgg: 0
-  - time: 150
-    repeatTime: 0
-    size: 5
     enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
     spawnAsEgg: 0
   - time: 45
     repeatTime: 0
+    size: 2
+    enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
+    spawnAsEgg: 0
+  - time: 45
+    repeatTime: 20
+    size: 4
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    spawnAsEgg: 0
+  - time: 60
+    repeatTime: 0
     size: 5
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 1
+  - time: 80
+    repeatTime: 0
+    size: 5
+    enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
+    spawnAsEgg: 1
+  - time: 100
+    repeatTime: 0
+    size: 4
+    enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
+    spawnAsEgg: 0
+  - time: 100
+    repeatTime: 0
+    size: 5
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    spawnAsEgg: 0
+  - time: 130
+    repeatTime: 25
+    size: 3
+    enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
+    spawnAsEgg: 0
+  - time: 150
+    repeatTime: 0
+    size: 5
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    spawnAsEgg: 1
+  - time: 150
+    repeatTime: 0
+    size: 5
+    enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
+    spawnAsEgg: 1
+  - time: 165
+    repeatTime: 0
+    size: 5
+    enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
+    spawnAsEgg: 0
 --- !u!4 &665831170
 Transform:
   m_ObjectHideFlags: 0
@@ -879,7 +913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNoGazeDataTime: 1
-  blockWhenNoGazeData: 0
+  blockWhenNoGazeData: 1
+  sceneWhenFinished: skilltree
   timeUntilLevelEnd: 180
 --- !u!1 &756505000
 GameObject:
@@ -1024,9 +1059,9 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 1ee8dc996a86c0f40981815313b6fa3a, type: 3}
   m_PrefabInternal: {fileID: 134664428}
   m_GameObject: {fileID: 840421366}
-  m_LocalRotation: {x: -.685124576, y: -.174941018, z: -.381577522, w: .595313787}
+  m_LocalRotation: {x: -.685124636, y: -.174941033, z: -.381577551, w: .595313847}
   m_LocalPosition: {x: -1.20678329, y: .184180617, z: .245206594}
-  m_LocalScale: {x: .999999881, y: .999999881, z: 1}
+  m_LocalScale: {x: .99999994, y: .999999881, z: .99999994}
   m_Children: []
   m_Father: {fileID: 2127960861}
   m_RootOrder: 1
@@ -1927,7 +1962,7 @@ GameObject:
   m_Icon: {fileID: 2800000, guid: 9242785d392820348a98bc2290e49706, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1548188326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,7 +1970,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 314543432}
   m_GameObject: {fileID: 1548188325}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f8eb254268ce8547be8c6a33ad23cde, type: 3}
   m_Name: 
@@ -2416,7 +2451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1760654390
 AudioSource:
   m_ObjectHideFlags: 0
