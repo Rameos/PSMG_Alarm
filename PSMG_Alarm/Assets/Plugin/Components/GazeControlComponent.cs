@@ -143,22 +143,22 @@ namespace iViewX
         void Update()
         {
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-            if (gazeModel.isEyeTrackerRunning)
-            {
-                startCalibrationRoutine();
-                startValidationRoutine();
+//#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+//            if (gazeModel.isEyeTrackerRunning)
+//            {
+//                startCalibrationRoutine();
+//                startValidationRoutine();
 
-            }
+//            }
 
-            if (enableGazeReactionOfObjects)
-            {
-                rayCastGazeRay();
-            }
-#else
+//            if (enableGazeReactionOfObjects)
+//            {
+//                rayCastGazeRay();
+//            }
+//#else
             
-            Debug.LogError("You need Windows as operation system.");
-#endif
+//            Debug.LogError("You need Windows as operation system.");
+//#endif
         }
 
 
