@@ -27,7 +27,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void onCalibrationClick() {
-		GazeControlComponent.instanceObject.StartCalibration();
+        GazeControlComponent.Instance().StartCalibration();
 	}
 
 	public void onQuitGameClick() {
