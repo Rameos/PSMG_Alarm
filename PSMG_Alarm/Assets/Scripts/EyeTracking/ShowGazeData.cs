@@ -41,12 +41,12 @@ public class ShowGazeData : MonoBehaviour {
         #region Buttons
         //Start CalibrationButton
         if (GUI.Button(new Rect(Screen.width * 0.35f, Screen.height * 0.7f, Screen.width * 0.1f, Screen.height * 0.1f), "Start Calibration"))
-            GazeControlComponent.Instance.StartCalibration();
+            GazeControlComponent.Instance().StartCalibration();
 
         //Start ValidationButton
         if (GUI.Button(new Rect(Screen.width * 0.45f, Screen.height * 0.7f, Screen.width * 0.1f, Screen.height * 0.1f), "Start Validation"))
         {
-            GazeControlComponent.Instance.StartValidation();
+            GazeControlComponent.Instance().StartValidation();
         }
         
         //ShowGazeButton
