@@ -28,35 +28,26 @@ namespace iViewX
         private static GazeController gazeController;
         private MonoBehaviourWithGazeComponent oldSelection;
 
-        public static GazeControlComponent instanceObject;
+        private static GazeControlComponent instanceObject;
 
-        //public static GazeControlComponent Instance ()
-        //{
-        //    return instanceObject;
-        //    //get
-        //    //{
-        //    //    if (!instance)
-        //    //    {
-        //    //        instance = (GazeControlComponent)FindObjectOfType(typeof(GazeControlComponent));
-        //    //        {
-        //    //            if (!instance)
-        //    //            {
-        //    //                GameObject gameObject = new GameObject();
-        //    //                gameObject.name = "EyeTrackingController";
-        //    //                instance = gameObject.AddComponent(typeof(GazeControlComponent)) as GazeControlComponent;
-        //    //                Debug.Log(instance);
-        //    //            }
-        //    //            Debug.Log(instance);
-
-
-        //    //        }
-        //    //    }
-
+        public static GazeControlComponent Instance()
+        {
                 
-        //    //}
+                    instanceObject = (GazeControlComponent)FindObjectOfType(typeof(GazeControlComponent));
+                    {
+                        if (!instanceObject)
+                        {
+                            GameObject gameObject = new GameObject();
+                            gameObject.name = "EyeTrackingController";
+                            instanceObject = gameObject.AddComponent(typeof(GazeControlComponent)) as GazeControlComponent;
+                            Debug.Log(instanceObject);
+                        }
+                        Debug.Log(instanceObject);
 
-        //    //return instance;
-        //}
+
+                    }
+                return instanceObject;
+        }
 
         /// <summary>
         /// Pause the EyeTracker
@@ -127,12 +118,21 @@ namespace iViewX
 
         void Awake()
         {
+            if (!instanceObject)
+            {
                 instanceObject = this;
                 DontDestroyOnLoad(gameObject);
                 gazeController = new GazeController();
 
                 instanceObject.initEyeThread();
                 instanceObject.startEyeThread();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+
         }
 
 
