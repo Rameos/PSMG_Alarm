@@ -43,7 +43,11 @@ namespace iViewX
                             GameObject gameObject = new GameObject();
                             gameObject.name = "EyeTrackingController";
                             instance = gameObject.AddComponent(typeof(GazeControlComponent)) as GazeControlComponent;
+                            Debug.Log(instance);
                         }
+                        Debug.Log(instance);
+
+
                     }
                 }
 
@@ -128,8 +132,6 @@ namespace iViewX
 
                 instance.initEyeThread();
                 instance.startEyeThread();
-
-
             }
             else
             {

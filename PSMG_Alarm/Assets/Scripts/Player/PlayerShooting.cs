@@ -8,7 +8,6 @@ public class PlayerShooting : MonoBehaviour
 
     private GameOverScript gameOver;
     private GameObject crosshair;
-    private Quaternion offset;
 
     public enum weaponTyps { mg, rocket, laser };
     public weaponTyps weaponTyp = weaponTyps.rocket;
@@ -54,15 +53,15 @@ public class PlayerShooting : MonoBehaviour
         {
             aimPosition = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
             aimPosition.y = (Screen.height - aimPosition.y);
+            aimPosition = Camera.main.ScreenToWorldPoint(aimPosition);
         }
         else
         {
-            offset = Quaternion.Euler(new Vector3(0, 0));
             aimPosition = Input.mousePosition;
             aimPosition.y = aimPosition.y - ubootposition.y;
         }
 
-        crosshair.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+        crosshair.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(aimPosition.x, aimPosition.y));
         crosshair.transform.position = new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 0);
         aimPosition.x = aimPosition.x - ubootposition.x;
 
