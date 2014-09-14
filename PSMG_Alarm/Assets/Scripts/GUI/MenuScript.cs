@@ -35,14 +35,17 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void onEasyButtonClick() {
+        PlayerPrefsManager.SetDifficulty(0);
 		Application.LoadLevel("story_sequence");
 	}
 
 	public void onMiddleButtonClick() {
+        PlayerPrefsManager.SetDifficulty(1);
 		Application.LoadLevel("story_sequence");
 	}
 
 	public void onHardButtonClick() {
+        PlayerPrefsManager.SetDifficulty(2);
 		Application.LoadLevel("story_sequence");
 	}
 
