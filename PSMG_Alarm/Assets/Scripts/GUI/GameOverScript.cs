@@ -4,17 +4,20 @@ using System.Collections;
 public class GameOverScript : MonoBehaviour
 {
     public GameObject destoyedPieces;
+	public GameObject gameOverPanel;
 
     private bool gameOver;
     private GameObject player;
     private GameControlScript controller;
-    private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
+
+   // private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
 
     void Start()
     {
         gameOver = false;
         player = GameObject.FindGameObjectWithTag("Player");
         controller = GameObject.Find("GameController").GetComponent<GameControlScript>();
+		gameOverPanel.SetActive (false);
     }
 
     public void EndOfGame()
@@ -29,9 +32,18 @@ public class GameOverScript : MonoBehaviour
         Destroy(player);
         controller.StopEnemies();
         controller.StopPowerUps();
+		gameOverPanel.SetActive (true);
     }
 
-    void OnGUI()
+	public void onPlayAgainButtonClick() {
+		Application.LoadLevel("submarine");
+	}
+	
+	public void onToMainmenuButtonClick() {
+		Application.LoadLevel("main_menu");
+	}
+
+   /* void OnGUI()
     {
         if (gameOver) ShowGameOverMenu();
     }
@@ -57,7 +69,7 @@ public class GameOverScript : MonoBehaviour
         {
             Application.LoadLevel("main_menu");
         }
-    }
+    }*/
 
     public bool GetGameOver()
     {

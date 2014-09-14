@@ -18,6 +18,12 @@ TagManager:
   - MachineGun
   - MainGUI
   - XRay
+  - SpeechBubble
+  - SpeechBubbleText
+  - StorySequence
+  - StartGameText
+  - MainMenuPanel
+  - ModiMenuPanel
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
