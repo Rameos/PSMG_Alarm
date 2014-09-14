@@ -66,7 +66,7 @@ public class Menu : MonoBehaviour
         }
 		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight + 40, buttonWidth, buttonHeight), "Kalibrierung", buttonStyle))
         {
-            GazeControlComponent.Instance().StartCalibration();
+            GazeControlComponent.instanceObject.StartCalibration();
         }
 		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 4 * buttonHeight + 50, buttonWidth, buttonHeight), "Spiel beenden", buttonStyle))
         {
