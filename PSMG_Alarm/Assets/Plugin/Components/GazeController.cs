@@ -212,19 +212,29 @@ namespace iViewX
         {
             Debug.Log("sampleData:LeftEye PosX:" + sampleData.leftEye.eyePositionX);
 
-//            //Left Eye
-//            gazeModel.posLeftEye = new Vector3((float)sampleData.leftEye.eyePositionX, (float)sampleData.leftEye.eyePositionY, (float)sampleData.leftEye.eyePositionZ);
-//            gazeModel.posGazeLeft = new Vector2((float)sampleData.leftEye.gazeX, (float)sampleData.leftEye.gazeY);
+            //Left Eye
+            gazeModel.posLeftEye = new Vector3((float)sampleData.leftEye.eyePositionX, (float)sampleData.leftEye.eyePositionY, (float)sampleData.leftEye.eyePositionZ);
+            gazeModel.posGazeLeft = new Vector2((float)sampleData.leftEye.gazeX, (float)sampleData.leftEye.gazeY);
 
-//            //Right Eye
-//            gazeModel.posRightEye = new Vector3((float)sampleData.rightEye.eyePositionX, (float)sampleData.rightEye.eyePositionY, (float)sampleData.rightEye.eyePositionZ);
-//            gazeModel.posGazeRight = new Vector2((float)sampleData.rightEye.gazeX, (float)sampleData.rightEye.gazeY);
+            //Right Eye
+            gazeModel.posRightEye = new Vector3((float)sampleData.rightEye.eyePositionX, (float)sampleData.rightEye.eyePositionY, (float)sampleData.rightEye.eyePositionZ);
+            gazeModel.posGazeRight = new Vector2((float)sampleData.rightEye.gazeX, (float)sampleData.rightEye.gazeY);
 
-//            //PupilData
-//            gazeModel.diamLeftEye = (float)sampleData.leftEye.diam;
-//            gazeModel.diamRightEye = (float)sampleData.leftEye.diam;
+            //PupilData
+            gazeModel.diamLeftEye = (float)sampleData.leftEye.diam;
+            gazeModel.diamRightEye = (float)sampleData.leftEye.diam;
 
-
+            //Vector2 offSet = Win32HelperClass.GetGameViewPosition();
+            //if (offSet.x >= 0)
+            //{
+            //    gazeModel.posGazeLeft = gazeModel.posGazeLeft - offSet;
+            //    gazeModel.posGazeRight = gazeModel.posGazeRight - offSet;
+            //}
+            //else
+            //{
+            //    gazeModel.posGazeLeft = offSet - gazeModel.posGazeLeft;
+            //    gazeModel.posGazeRight = offSet - gazeModel.posGazeRight;
+            //}
 
 //#if UNITY_EDITOR
 //            Rect gameView = getOffsetFromGameView();
