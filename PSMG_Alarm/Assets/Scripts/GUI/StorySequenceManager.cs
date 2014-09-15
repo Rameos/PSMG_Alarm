@@ -26,7 +26,7 @@ public class StorySequenceManager : MonoBehaviour
         showIntroText = true;
         intro = new ArrayList();
 
-        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StoryAssets/Level1.txt");
+        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StreamingAssets/Level1.txt");
         StreamReader reader = theSourceFile.OpenText();
 
         string line;
