@@ -6,11 +6,10 @@ using System.IO;
 
 public class StorySequenceManager : MonoBehaviour
 {
-
-    Text text;
     Text StartGameText;
     public static string introPart;
     public ArrayList intro;
+    public Text text;
 
     private int currentLine;
     private bool showIntroText;
@@ -19,7 +18,6 @@ public class StorySequenceManager : MonoBehaviour
 
     void Awake()
     {
-        text = GetComponent<Text>();
         StartGameText = GameObject.FindWithTag("StartGameText").GetComponent<Text>();
         StorySequence = GameObject.FindWithTag("StorySequence").GetComponent<AudioSource>() as AudioSource;
         SpeechBubble = GameObject.FindWithTag("SpeechBubble").GetComponent<Image>();
@@ -28,7 +26,7 @@ public class StorySequenceManager : MonoBehaviour
         showIntroText = true;
         intro = new ArrayList();
 
-        FileInfo theSourceFile = new FileInfo("Assets/StoryAssets/Level1.txt");
+        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StoryAssets/Level1.txt");
         StreamReader reader = theSourceFile.OpenText();
 
         string line;
