@@ -889,6 +889,7 @@ GameObject:
   - 92: {fileID: 178948781}
   - 124: {fileID: 178948780}
   - 114: {fileID: 178948779}
+  - 114: {fileID: 178948784}
   m_Layer: 0
   m_Name: 3D Camera
   m_TagString: 3DCam
@@ -969,6 +970,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &178948784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 178948778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Radius: .400000006
+  m_SampleCount: 1
+  m_OcclusionIntensity: 1.5
+  m_Blur: 2
+  m_Downsampling: 2
+  m_OcclusionAttenuation: 1
+  m_MinZ: .00999999978
+  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!1 &200729820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,17 +5076,17 @@ MonoBehaviour:
   waves:
   - time: 5
     repeatTime: 30
-    size: 5
+    size: 3
     enemy: {fileID: 100000, guid: 76f1edf4851378741a64264f95027a47, type: 2}
     spawnAsEgg: 0
   - time: 15
     repeatTime: 0
-    size: 5
+    size: 3
     enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
     spawnAsEgg: 0
   - time: 25
     repeatTime: 0
-    size: 5
+    size: 4
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 0
   - time: 45
@@ -5085,22 +5106,22 @@ MonoBehaviour:
     spawnAsEgg: 0
   - time: 100
     repeatTime: 15
-    size: 5
+    size: 3
     enemy: {fileID: 100000, guid: 76f1edf4851378741a64264f95027a47, type: 2}
     spawnAsEgg: 0
   - time: 110
     repeatTime: 20
-    size: 3
+    size: 2
     enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
     spawnAsEgg: 0
   - time: 150
     repeatTime: 0
-    size: 6
+    size: 3
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
     spawnAsEgg: 1
   - time: 140
     repeatTime: 25
-    size: 4
+    size: 3
     enemy: {fileID: 100002, guid: 20fbdaf5f5178af4cb368dc8ece590dc, type: 2}
     spawnAsEgg: 0
 --- !u!4 &665831170
@@ -5170,7 +5191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNoGazeDataTime: 1
   blockWhenNoGazeData: 0
-  sceneWhenFinished: 
+  sceneWhenFinished: demo_scene
   timeUntilLevelEnd: 180
 --- !u!1 &669526849
 GameObject:
@@ -6894,7 +6915,7 @@ Canvas:
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
 --- !u!1 &897329222
 GameObject:
   m_ObjectHideFlags: 0

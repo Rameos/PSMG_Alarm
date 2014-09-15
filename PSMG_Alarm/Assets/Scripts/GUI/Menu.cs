@@ -105,14 +105,17 @@ public class Menu : MonoBehaviour
 
 		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight+ 20, buttonWidth, buttonHeight), "leicht", buttonStyle))
         {
+            PlayerPrefsManager.SetDifficulty(0);
             Application.LoadLevel("story_sequence");
         }
 		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight + 30, buttonWidth, buttonHeight), "mittel", buttonStyle))
         {
+            PlayerPrefsManager.SetDifficulty(1);
             Application.LoadLevel("story_sequence");
         }
 		if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 3 * buttonHeight + 40, buttonWidth, buttonHeight), "schwer", buttonStyle))
         {
+            PlayerPrefsManager.SetDifficulty(2);
             Application.LoadLevel("story_sequence");
         }
 		if (GUI.Button(new Rect(guiBoxX + 5, guiBoxY+ 5, backbuttonWidth, backbuttonHeight), "<",buttonStyle))

@@ -210,8 +210,6 @@ namespace iViewX
         /// <param name="sampleData"></param>
         private void GetSampleCallbackFunction(EyeTrackingController.SampleStruct sampleData)
         {
-            Debug.Log("sampleData:LeftEye PosX:" + sampleData.leftEye.eyePositionX);
-
             //Left Eye
             gazeModel.posLeftEye = new Vector3((float)sampleData.leftEye.eyePositionX, (float)sampleData.leftEye.eyePositionY, (float)sampleData.leftEye.eyePositionZ);
             gazeModel.posGazeLeft = new Vector2((float)sampleData.leftEye.gazeX, (float)sampleData.leftEye.gazeY);

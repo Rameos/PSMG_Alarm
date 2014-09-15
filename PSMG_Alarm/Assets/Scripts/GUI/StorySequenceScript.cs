@@ -10,7 +10,7 @@ public class StorySequenceScript : MonoBehaviour
     public float speed = 0.001f;
 
     public GameObject SpeechBubble;
-    public GameObject speechBubble;
+    private GameObject speechBubble;
     public string introText;
     private GUIText SpeechBubbleText;
     private int currentLine;
@@ -20,7 +20,6 @@ public class StorySequenceScript : MonoBehaviour
     {
         introText = "";
         showIntroText = true;
-
         intro = new ArrayList();
 
         FileInfo theSourceFile = new FileInfo("Assets/StoryAssets/Level1.txt");
@@ -58,7 +57,10 @@ public class StorySequenceScript : MonoBehaviour
 
     public IEnumerator HideSpeechBubble()
     {
-        yield return new WaitForSeconds(8f);
-        currentLine++;
+        if (currentLine < intro.Count-1)
+        {
+            yield return new WaitForSeconds(8f);
+            currentLine++;
+        }
     }
 }

@@ -121,6 +121,11 @@ public class PlayerPrefsManager : MonoBehaviour
         }
     }
 
+    public static int GetDifficulty()
+    {
+        return PlayerPrefs.GetInt(DIFFICULTY, 0);
+    }
+
     public static int GetCurrentLife()
     {
         return PlayerPrefs.GetInt(PLAYER_CURRENT_LIFES);

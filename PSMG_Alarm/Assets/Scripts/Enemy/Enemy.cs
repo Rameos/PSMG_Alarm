@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        life /= 2;
+        life += PlayerPrefsManager.GetDifficulty() * life;
         camera2d = GameObject.Find("2D Camera");
         player = GameObject.FindGameObjectWithTag("Player");
         highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;

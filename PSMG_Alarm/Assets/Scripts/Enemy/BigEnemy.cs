@@ -5,8 +5,6 @@ public class BigEnemy : Enemy
 {
     public GameObject enemyBullet;
     public float minBulletTimer;
-
-    private GameObject submarine;
     private float bulletTimer;
 
     public override void Shoot()
@@ -25,10 +23,5 @@ public class BigEnemy : Enemy
                 bulletTimer = 0;
             }
         }*/
-    }
-
-    public override void FindOtherObjects()
-    {
-        submarine = GameObject.FindGameObjectWithTag("Player");
     }
 }

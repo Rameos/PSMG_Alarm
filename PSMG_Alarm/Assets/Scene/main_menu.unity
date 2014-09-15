@@ -216,6 +216,7 @@ GameObject:
   - 92: {fileID: 87850515}
   - 124: {fileID: 87850514}
   - 114: {fileID: 87850513}
+  - 114: {fileID: 87850518}
   m_Layer: 0
   m_Name: 3D Camera
   m_TagString: 3DCam
@@ -296,6 +297,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &87850518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87850512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Radius: .400000006
+  m_SampleCount: 1
+  m_OcclusionIntensity: 1.5
+  m_Blur: 2
+  m_Downsampling: 2
+  m_OcclusionAttenuation: 1
+  m_MinZ: .00999999978
+  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!1 &117451649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,8 +1274,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1185826884}
   - {fileID: 1524957924}
+  - {fileID: 1185826884}
   - {fileID: 591157568}
   - {fileID: 1476936181}
   m_Father: {fileID: 117451650}
@@ -2416,7 +2437,7 @@ GameObject:
   - 114: {fileID: 1185826886}
   - 95: {fileID: 1185826885}
   m_Layer: 5
-  m_Name: EasyButton
+  m_Name: MiddleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2434,7 +2455,7 @@ RectTransform:
   m_Children:
   - {fileID: 1720598207}
   m_Father: {fileID: 658138866}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: .600000024, y: 0}
@@ -2507,7 +2528,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_Enabled: 1
       - m_Target: {fileID: 850674734}
-        m_MethodName: onEasyButtonClick
+        m_MethodName: onMiddleButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2811,6 +2832,7 @@ GameObject:
   - 114: {fileID: 1292230691}
   - 114: {fileID: 1292230690}
   - 114: {fileID: 1292230689}
+  - 20: {fileID: 1292230693}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2871,6 +2893,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!20 &1292230693
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1292230688}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
 --- !u!1 &1293330088
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,7 +3549,7 @@ GameObject:
   - 114: {fileID: 1524957926}
   - 95: {fileID: 1524957925}
   m_Layer: 5
-  m_Name: MiddleButton
+  m_Name: EasyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3508,15 +3562,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1524957923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.67700011e-05}
+  m_LocalScale: {x: 1, y: .99999994, z: 1}
   m_Children:
   - {fileID: 1768696563}
   m_Father: {fileID: 658138866}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: .600000024, y: 90}
+  m_AnchoredPosition: {x: .599974215, y: 90}
   m_SizeDelta: {x: 221, y: 76}
   m_Pivot: {x: .5, y: .5}
 --- !u!95 &1524957925
@@ -3586,7 +3640,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_Enabled: 1
       - m_Target: {fileID: 850674734}
-        m_MethodName: onMiddleButtonClick
+        m_MethodName: onEasyButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

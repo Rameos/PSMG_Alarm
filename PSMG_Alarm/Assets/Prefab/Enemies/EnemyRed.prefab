@@ -144,8 +144,8 @@ MonoBehaviour:
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   drop: {fileID: 100000, guid: 05e13c768020e5b4f84ebddd9b898a31, type: 2}
   speed: 1
-  life: 100
-  value: 100
+  life: 150
+  value: 150
   submarineLifeControl: {fileID: 0}
   player: {fileID: 0}
   enemyBullet: {fileID: 100000, guid: 7abebc5f5ac9d104e852543c6129d6aa, type: 2}

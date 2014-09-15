@@ -132,6 +132,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,8 +148,8 @@ MonoBehaviour:
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   drop: {fileID: 0}
   speed: 2
-  life: 100
-  value: 100
+  life: 90
+  value: 150
   submarineLifeControl: {fileID: 0}
   player: {fileID: 0}
 --- !u!148 &14800000
