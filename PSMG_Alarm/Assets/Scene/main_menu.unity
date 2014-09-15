@@ -2113,8 +2113,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1535698854}
-        m_MethodName: StartCalibration
+      - m_Target: {fileID: 850674734}
+        m_MethodName: onCalibrationClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
