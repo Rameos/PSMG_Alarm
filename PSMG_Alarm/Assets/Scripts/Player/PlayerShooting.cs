@@ -19,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
     private int rocketAmmo;
     private int laserAmmo;
     private GameObject xRay;
+    private Vector2 rawAimPosition;
 
     //TODO: Remove this flag
     public bool fakeEndlessAmmo;
@@ -51,21 +52,24 @@ public class PlayerShooting : MonoBehaviour
 
         if (useGazeControl)
         {
-            aimPosition = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
-            aimPosition.y = (Screen.height - aimPosition.y);
-            aimPosition = Camera.main.ScreenToWorldPoint(aimPosition);
+            rawAimPosition = (gazeModel.posGazeLeft + gazeModel.posGazeRight) * 0.5f;
+            rawAimPosition.y = (Screen.height - rawAimPosition.y);
+            aimPosition = rawAimPosition;
+            aimPosition.y = aimPosition.y - ubootposition.y;
         }
         else
         {
             aimPosition = Input.mousePosition;
+            rawAimPosition = aimPosition;
             aimPosition.y = aimPosition.y - ubootposition.y;
         }
 
-        crosshair.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(aimPosition.x, aimPosition.y));
+        crosshair.transform.position = Camera.main.ScreenToWorldPoint(rawAimPosition);
         crosshair.transform.position = new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 0);
         aimPosition.x = aimPosition.x - ubootposition.x;
 
-        float angle = Mathf.Atan2(aimPosition.y, aimPosition.x) * Mathf.Rad2Deg - 90;
+        float angle;
+        angle = Mathf.Atan2(aimPosition.y, aimPosition.x) * Mathf.Rad2Deg - 90;
 
         Vector3 rotationVector = new Vector3(0, 0, angle);
         transform.rotation = Quaternion.Euler(rotationVector);
@@ -107,7 +111,7 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
             xRay.SetActive(true);
         }
@@ -116,7 +120,7 @@ public class PlayerShooting : MonoBehaviour
         {
             xRay.SetActive(false);
             GameObject[] eggs = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach(GameObject egg in eggs)
+            foreach (GameObject egg in eggs)
             {
                 if (egg.name == "EggEnemy(Clone)")
                 {
