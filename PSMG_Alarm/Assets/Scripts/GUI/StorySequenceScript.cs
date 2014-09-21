@@ -10,7 +10,6 @@ public class StorySequenceScript : MonoBehaviour
     public float speed = 0.001f;
 
     public GameObject SpeechBubble;
-    private GameObject speechBubble;
     public string introText;
     private GUIText SpeechBubbleText;
     private int currentLine;
@@ -24,7 +23,6 @@ public class StorySequenceScript : MonoBehaviour
 
         FileInfo theSourceFile = new FileInfo("Assets/StoryAssets/Level1.txt");
         StreamReader reader = theSourceFile.OpenText();
-        speechBubble = (GameObject)Instantiate(SpeechBubble);
         SpeechBubbleText = GameObject.FindWithTag("SpeechBubbleText").GetComponent<GUIText>() as GUIText;
         string line;
         int i = 0;

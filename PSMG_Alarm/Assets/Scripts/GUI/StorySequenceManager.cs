@@ -12,18 +12,14 @@ public class StorySequenceManager : MonoBehaviour
     public Text text;
 
     private int currentLine;
-    private bool showIntroText;
     private AudioSource StorySequence;
-    private Image SpeechBubble;
 
     void Awake()
     {
         StartGameText = GameObject.FindWithTag("StartGameText").GetComponent<Text>();
         StorySequence = GameObject.FindWithTag("StorySequence").GetComponent<AudioSource>() as AudioSource;
-        SpeechBubble = GameObject.FindWithTag("SpeechBubble").GetComponent<Image>();
 
         StartGameText.color = new Color(1, 1, 1, 0);
-        showIntroText = true;
         intro = new ArrayList();
 
         FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StreamingAssets/Level1.txt");
@@ -59,8 +55,6 @@ public class StorySequenceManager : MonoBehaviour
             yield return new WaitForSeconds(5f);
         }
         StorySequence.mute = true;
-        //SpeechBubble.color = new Color(1,1,1, 0);
-        //text.color = new Color(1, 1, 1, 0);
         StartGameText.color = new Color (1, 1, 1, 1);
     }
 

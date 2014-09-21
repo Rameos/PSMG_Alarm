@@ -11,7 +11,8 @@ public class MenuScript : MonoBehaviour {
 	public GameObject modiMenuPanel;
 	public GameObject levelsOfDifficultyPanel;
 	public GameObject multiplayerPanel; 
-	public GameObject ConnectToHostButton;
+	public GameObject connectToHostButton;
+    public GameObject settingsPanel;
 
 	private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer;
 	
@@ -23,7 +24,7 @@ public class MenuScript : MonoBehaviour {
 		modiMenuPanel.SetActive (false);
 		levelsOfDifficultyPanel.SetActive (false);
 		multiplayerPanel.SetActive (false);
-
+        settingsPanel.SetActive(false);
 	}
 
 	public void onCalibrationClick() {
@@ -55,7 +56,7 @@ public class MenuScript : MonoBehaviour {
 			HostData[] list = networkScript.Client_getHostData();
 			for (int i = 0; i < list.Length; i++)
 			{
-				Button newItem = (Button)Instantiate(ConnectToHostButton);
+				Button newItem = (Button)Instantiate(connectToHostButton);
 				newItem.name = list[i].gameName;
 				newItem.onClick.AddListener(() => {networkScript.Client_connectToHost(list[i]); });
 			}

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
-
     // store selected difficulty
     private static readonly string DIFFICULTY = "difficulty";
 
@@ -20,6 +20,11 @@ public class PlayerPrefsManager : MonoBehaviour
     private static readonly string PLAYER_CURRENT_LIFES = "player_current_lifes";
     private static readonly string PLAYER_MAX_LIFES = "player_max_lifes";
 
+    // store settings
+    private static readonly string SOUND_VOLUME = "sound_volume";
+    private static readonly string MUSIC_VOLUME = "music_volume";
+    private static readonly string USE_GAZE = "use_gaze";
+
     // store bought upgrades
     private static readonly string MG_UPGRADE_1 = "mg_upgrade_1";
     private static readonly string MG_UPGRADE_2 = "mg_upgrade_2";
@@ -31,7 +36,30 @@ public class PlayerPrefsManager : MonoBehaviour
 
     public static void Reset()
     {
+        float music = GetMusic();
+        float sound = GetSound();
+        bool control = GetControl();
+
         PlayerPrefs.DeleteAll();
+
+        SetMusic(music);
+        SetSound(sound);
+        SetControl(control);
+    }
+
+    public static void SetSound(float value)
+    {
+        PlayerPrefs.SetFloat(SOUND_VOLUME, value);
+    }
+
+    public static void SetMusic(float value)
+    {
+        PlayerPrefs.SetFloat(MUSIC_VOLUME, value);
+    }
+
+    public static void SetControl(bool value)
+    {
+        PlayerPrefs.SetInt(USE_GAZE, Convert.ToInt32(value));
     }
 
     public static void SetDifficulty(int value)
@@ -119,6 +147,21 @@ public class PlayerPrefsManager : MonoBehaviour
             default:
                 return 0;
         }
+    }
+
+    public static float GetSound()
+    {
+        return PlayerPrefs.GetFloat(SOUND_VOLUME, 1f);
+    }
+
+    public static float GetMusic()
+    {
+        return PlayerPrefs.GetFloat(MUSIC_VOLUME, 1f);
+    }
+
+    public static bool GetControl()
+    {
+        return Convert.ToBoolean(PlayerPrefs.GetInt(USE_GAZE, 0));
     }
 
     public static int GetDifficulty()
