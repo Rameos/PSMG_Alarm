@@ -41,6 +41,8 @@ public class PlayerShooting : MonoBehaviour
 
         rocketAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.ROCKET_AMMO);
         laserAmmo = PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.PHASER_AMMO);
+
+        useGazeControl = PlayerPrefsManager.GetControl();
     }
 
     void Update()

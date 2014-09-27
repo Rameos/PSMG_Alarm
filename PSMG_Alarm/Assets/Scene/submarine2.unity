@@ -2288,7 +2288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d3734a9d7daaf4a4986321ab572549b9, type: 2}
       propertyPath: m_IsActive
@@ -11332,6 +11332,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1548188327}
   - 114: {fileID: 1548188326}
+  - 114: {fileID: 1548188328}
   m_Layer: 0
   m_Name: EyeTrackerController
   m_TagString: GazeController
@@ -11346,7 +11347,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 314543432}
   m_GameObject: {fileID: 1548188325}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f8eb254268ce8547be8c6a33ad23cde, type: 3}
   m_Name: 
@@ -11365,6 +11366,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &1548188328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548188325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3d7bd7cabadfb4c89b2230148df400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1557387042
 Prefab:
   m_ObjectHideFlags: 0
