@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
-  - 58: {fileID: 5800002}
   - 95: {fileID: 9500000}
   - 82: {fileID: 8200000}
   m_Layer: 12
@@ -41,17 +40,6 @@ CircleCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 764b7a5701280764a94ca7043d6233c7, type: 2}
-  m_IsTrigger: 0
-  m_Radius: .389999986
-  m_Center: {x: 0, y: 0}
---- !u!58 &5800002
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Radius: .389999986
   m_Center: {x: 0, y: 0}
@@ -143,7 +131,7 @@ MonoBehaviour:
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   drop: {fileID: 0}
   speed: .5
-  life: 300
+  life: 10
   value: 0
   submarineLifeControl: {fileID: 0}
   player: {fileID: 0}

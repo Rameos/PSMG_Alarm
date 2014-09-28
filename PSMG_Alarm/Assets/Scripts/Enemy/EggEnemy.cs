@@ -13,9 +13,13 @@ public class EggEnemy : Enemy
     private bool spawned;
     private bool isFading;
     private float timestamp = 0;
+    private float life2;
+    private int energy;
 
     public override void FindOtherObjects()
     {
+        energy = 1 + PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.X_RAY);
+        life2 = life;
         isOpen = false;
         spawned = false;
         surviveTime = maxSurviveTime;
@@ -26,6 +30,7 @@ public class EggEnemy : Enemy
 
     public override void Move()
     {
+        life = (int)Mathf.Round(life2);
         surviveTime -= Time.deltaTime;
         populateTimer -= Time.deltaTime;
 
@@ -90,7 +95,7 @@ public class EggEnemy : Enemy
     {
         if (col.gameObject.tag == "XRay" && !isOpen)
         {
-            life -= 1;
+            life2 -= Time.deltaTime * energy;
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }

@@ -10,8 +10,6 @@ public class StorySequenceManager : MonoBehaviour
     public static string introPart;
     public ArrayList intro;
     public Text text;
-
-    private int currentLine;
     private AudioSource StorySequence;
 
     void Awake()

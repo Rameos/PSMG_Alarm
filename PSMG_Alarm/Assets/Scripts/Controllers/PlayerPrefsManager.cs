@@ -16,6 +16,10 @@ public class PlayerPrefsManager : MonoBehaviour
     // store current coins
     private static readonly string CURRENT_COINS = "current_coins";
 
+    // store highscore
+    private static readonly string HIGHSCORE_SCORES = "highscore_scores";
+    private static readonly string HIGHSCORE_NAMES = "highscore_names";
+
     // store player life stats
     private static readonly string PLAYER_CURRENT_LIFES = "player_current_lifes";
     private static readonly string PLAYER_MAX_LIFES = "player_max_lifes";
@@ -40,15 +44,28 @@ public class PlayerPrefsManager : MonoBehaviour
 
     public static void Reset()
     {
-        float music = GetMusic();
-        float sound = GetSound();
         bool control = GetControl();
 
         PlayerPrefs.DeleteAll();
 
-        SetMusic(music);
-        SetSound(sound);
         SetControl(control);
+    }
+
+    public static void SetHighscore(HighscoreElement[] score)
+    {
+        int[] scores = new int[score.Length];
+        string[] names = new string[score.Length];
+        int i = 0;
+
+        foreach (HighscoreElement currentScore in score)
+        {
+            scores[i] = currentScore.GetScore();
+            names[i] = currentScore.GetName();
+            i++;
+        }
+
+        PlayerPrefsX.SetIntArray(HIGHSCORE_SCORES, scores);
+        PlayerPrefsX.SetStringArray(HIGHSCORE_NAMES, names);
     }
 
     public static void SetSound(float value)
@@ -95,7 +112,7 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(PLAYER_MAX_LIFES, value);
     }
-    
+
     public static void SetUpgrade(int value, UpgradeController.upgradeID id)
     {
         switch (id)
@@ -185,6 +202,20 @@ public class PlayerPrefsManager : MonoBehaviour
     public static float GetMusic()
     {
         return PlayerPrefs.GetFloat(MUSIC_VOLUME, 1f);
+    }
+
+    public static HighscoreElement[] GetHighscore()
+    {
+        int[] scores = PlayerPrefsX.GetIntArray(HIGHSCORE_SCORES, 0, 10);
+        string[] names = PlayerPrefsX.GetStringArray(HIGHSCORE_NAMES, "-- no player --", 10);
+        HighscoreElement[] highscores = new HighscoreElement[scores.Length];
+
+        for (int i = 0; i < highscores.Length; i++)
+        {
+            highscores[i] = new HighscoreElement(names[i], scores[i]);
+        }
+
+        return highscores;
     }
 
     public static bool GetControl()

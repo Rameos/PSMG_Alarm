@@ -13,8 +13,7 @@ public class MenuScript : MonoBehaviour {
 	public GameObject multiplayerPanel; 
 	public GameObject connectToHostButton;
     public GameObject settingsPanel;
-
-	private bool mainMenu, modiMenu, levelsOfDifficulty, highscores, multiplayer;
+    public GameObject highscorePanel;
 	
 	void Start()
 	{
@@ -25,6 +24,7 @@ public class MenuScript : MonoBehaviour {
 		levelsOfDifficultyPanel.SetActive (false);
 		multiplayerPanel.SetActive (false);
         settingsPanel.SetActive(false);
+        highscorePanel.SetActive(false);
 	}
 
 	public void onCalibrationClick() {
