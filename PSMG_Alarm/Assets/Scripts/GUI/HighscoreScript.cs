@@ -15,6 +15,7 @@ public class HighscoreScript : MonoBehaviour
     {
         score = score + value;
         scoreText.text = "" + score;
+        GameControlScript.score = score;
     }
     public void UpdateCoins(int coins)
     {

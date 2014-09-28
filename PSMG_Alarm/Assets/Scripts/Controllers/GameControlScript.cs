@@ -9,10 +9,11 @@ public class GameControlScript : MonoBehaviour
     public string sceneWhenFinished;
 
     public static int coins;
+    public static int score;
     public static float timeElapsed;
     public float timeUntilLevelEnd;
-
     public Text countDown;
+
     private SubmarineLifeControl lifeControl;
     private GameObject[] powerUps;
     private PowerUpSpawner powerUpSpawner;
@@ -20,7 +21,6 @@ public class GameControlScript : MonoBehaviour
     private MovePlayer movePlayer;
     private float noGazeDataTimer;
     private bool paused = false;
-
 
     void Start()
     {
@@ -32,7 +32,6 @@ public class GameControlScript : MonoBehaviour
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().AddScoreValue(PlayerPrefsManager.GetScore());
 
         lifeControl = GameObject.FindGameObjectWithTag("MainGUI").GetComponent<SubmarineLifeControl>();
-
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
         shooting = GameObject.Find("gun").GetComponent<PlayerShooting>();
         powerUpSpawner = GameObject.Find("GameController").GetComponent<PowerUpSpawner>();
@@ -64,6 +63,7 @@ public class GameControlScript : MonoBehaviour
     private void SaveAndFinishLevel()
     {
         PlayerPrefsManager.SetCurrentLive(lifeControl.GetLifes());
+        PlayerPrefsManager.SetScore(score);
         shooting.SaveAmmo();
 
         Application.LoadLevel(sceneWhenFinished);
