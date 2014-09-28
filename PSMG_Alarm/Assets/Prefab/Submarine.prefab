@@ -394,6 +394,7 @@ MonoBehaviour:
   speedBackwards: 15
   rotationSpeed: 2
   maxShield: 30
+  shieldPrefab: {fileID: 100000, guid: 6919348ebaaa0f441bcb9108e0c94cad, type: 2}
   lights:
   - {fileID: 100010}
   - {fileID: 100008}

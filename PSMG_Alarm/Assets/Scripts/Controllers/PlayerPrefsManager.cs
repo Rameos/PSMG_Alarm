@@ -34,6 +34,9 @@ public class PlayerPrefsManager : MonoBehaviour
     private static readonly string ROCKET_AMMO = "rocket_ammo";
     private static readonly string MAX_LIVE_UPGRADE1 = "max_live_upgrade1";
     private static readonly string MAX_LIVE_UPGRADE2 = "max_live_upgrade2";
+    private static readonly string X_RAY_UPGRADE = "x_ray_upgrade";
+    private static readonly string TURBO_UPGRADE = "turbo_upgrade";
+    private static readonly string SHIELD_UPGRADE = "shield_upgrade";
 
     public static void Reset()
     {
@@ -131,6 +134,15 @@ public class PlayerPrefsManager : MonoBehaviour
             case UpgradeController.upgradeID.PHASER_AMMO_ABS:
                 PlayerPrefs.SetInt(PHASER_AMMO, value);
                 break;
+            case UpgradeController.upgradeID.X_RAY:
+                PlayerPrefs.SetInt(X_RAY_UPGRADE, value);
+                break;
+            case UpgradeController.upgradeID.TURBO:
+                PlayerPrefs.SetInt(TURBO_UPGRADE, value);
+                break;
+            case UpgradeController.upgradeID.SHIELD:
+                PlayerPrefs.SetInt(SHIELD_UPGRADE, value);
+                break;
         }
     }
 
@@ -154,6 +166,12 @@ public class PlayerPrefsManager : MonoBehaviour
                 return PlayerPrefs.GetInt(PHASER_AMMO);
             case UpgradeController.upgradeID.ROCKET_AMMO:
                 return PlayerPrefs.GetInt(ROCKET_AMMO);
+            case UpgradeController.upgradeID.TURBO:
+                return PlayerPrefs.GetInt(TURBO_UPGRADE);
+            case UpgradeController.upgradeID.X_RAY:
+                return PlayerPrefs.GetInt(X_RAY_UPGRADE);
+            case UpgradeController.upgradeID.SHIELD:
+                return PlayerPrefs.GetInt(SHIELD_UPGRADE);
             default:
                 return 0;
         }
