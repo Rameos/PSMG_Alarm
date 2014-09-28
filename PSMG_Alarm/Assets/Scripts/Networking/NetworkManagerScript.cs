@@ -6,10 +6,14 @@ public class NetworkManagerScript : MonoBehaviour
 {
     public static bool networkActive = false;
 
+
+	//GUI Elements
 	public Text statusText;
 	public Text serverCall;
 	public Text gameDescription;
 	public Toggle easy, medium, difficult;
+	public GameObject refreshText;
+	public GameObject serverList;
 
 	public string gameName;
 
@@ -28,15 +32,19 @@ public class NetworkManagerScript : MonoBehaviour
     {
         if (refresh)
         {
+			refreshText.SetActive(true);
             if (MasterServer.PollHostList().Length != 0)
             {
                 refresh = false;
                 hostData = MasterServer.PollHostList();
                 gotHostData = true;
-            }
-        }
-    }
-
+				serverList.GetComponent<ServerListScript>().InitializeServerList(hostData);
+			}
+		}else{
+			refreshText.SetActive(false);
+		}
+	}
+	
 	//Server methods
 	public void Server_startServer()
     {	
