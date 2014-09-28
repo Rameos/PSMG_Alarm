@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour
     public bool drop;
 
     private bool moveAllowed = true;
-    private float despawnTime = 10;
+    private float despawnTime = 15;
     private float lifeTime = 0;
 
     void Start()

@@ -1033,7 +1033,7 @@ MonoBehaviour:
     repeatTime: 0
     size: 5
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
-    spawnAsEgg: 0
+    spawnAsEgg: 1
   - time: 15
     repeatTime: 0
     size: 3

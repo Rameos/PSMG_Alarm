@@ -12,6 +12,7 @@ public class EggEnemy : Enemy
     private bool isOpen;
     private bool spawned;
     private bool isFading;
+    private float timestamp = 0;
 
     public override void FindOtherObjects()
     {
@@ -68,12 +69,19 @@ public class EggEnemy : Enemy
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        //set timestamp to avoid multipledamage
+        if (Time.time - timestamp < 0.1f)
+        {
+            return;
+        }
+        timestamp = Time.time;
+
         if (col.gameObject.tag == "Player")
         {
             foreach (ContactPoint2D contacts in col.contacts)
             {
                 submarineLifeControl.DecrementLife();
-                col.gameObject.rigidbody2D.AddForce(contacts.normal * 2000);
+                col.gameObject.rigidbody2D.AddForce(contacts.normal * 3000);
             }
         }
     }
