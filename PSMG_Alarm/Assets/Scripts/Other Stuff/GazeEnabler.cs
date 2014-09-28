@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GazeEnabler : MonoBehaviour {
 
-    void Start()
+    void Awake()
     {
         if (!PlayerPrefsManager.GetControl())
             gameObject.SetActive(false);
