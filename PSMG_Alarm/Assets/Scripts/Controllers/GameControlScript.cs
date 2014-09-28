@@ -138,7 +138,6 @@ public class GameControlScript : MonoBehaviour
         }
     }
 
-
     bool CheckGazeDataAvailable()
     {
         return !(gazeModel.posGazeLeft.x == 0 && gazeModel.posGazeRight.x == 0);

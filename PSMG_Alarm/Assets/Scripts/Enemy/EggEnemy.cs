@@ -3,8 +3,6 @@ using System.Collections;
 
 public class EggEnemy : Enemy
 {
-
-    private int enemyCount;
     private int startPopulation;
     private float maxSurviveTime = 15;
     private float surviveTime;
@@ -33,7 +31,6 @@ public class EggEnemy : Enemy
         if (surviveTime <= 0f && !isOpen)
         {
             isOpen = true;
-            enemyCount = 2 * startPopulation - Mathf.RoundToInt(startPopulation * (populateTimer / maxSurviveTime));
             GetComponent<Animator>().SetTrigger("Break");
             surviveTime = 1f;
         }
@@ -47,7 +44,7 @@ public class EggEnemy : Enemy
             Destroy(GetComponent<CircleCollider2D>());
             isFading = true;
 
-            for (int i = 0; i < enemyCount; i++)
+            for (int i = 0; i < startPopulation; i++)
             {
                 NetworkManagerScript.NetworkInstantiate(enemyType, transform.position, Quaternion.Euler(0, 0, 0));
             }
@@ -81,15 +78,11 @@ public class EggEnemy : Enemy
         }
     }
 
-    public override void OnTriggerEnter2D(Collider2D col)
-    {
-    }
-
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "XRay" && !isOpen)
         {
-            surviveTime -= Time.deltaTime * 3;
+            life -= 1;
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
@@ -101,7 +94,6 @@ public class EggEnemy : Enemy
 
     public void Populate(int count)
     {
-        enemyCount = count;
         startPopulation = count;
     }
 

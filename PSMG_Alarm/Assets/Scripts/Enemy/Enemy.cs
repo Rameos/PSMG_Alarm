@@ -14,10 +14,8 @@ public class Enemy : MonoBehaviour
     public int value = 100;
 
     private GameObject camera2d;
-    private HighscoreScript highscorecontroller;
-    [HideInInspector]
+    private HighscoreScript highscoreController;
     public SubmarineLifeControl submarineLifeControl;
-    [HideInInspector]
     public GameObject player;
     private bool moveAllowed = true;
     private bool slowed = false;
@@ -28,7 +26,7 @@ public class Enemy : MonoBehaviour
         life += PlayerPrefsManager.GetDifficulty() * life;
         camera2d = GameObject.Find("2D Camera");
         player = GameObject.FindGameObjectWithTag("Player");
-        highscorecontroller = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
+        highscoreController = GameObject.FindObjectOfType(typeof(HighscoreScript)) as HighscoreScript;
         submarineLifeControl = GameObject.FindObjectOfType(typeof(SubmarineLifeControl)) as SubmarineLifeControl;
 
         targetLocation = GetNewTargetLocation();
@@ -73,7 +71,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void DestroyEnemy()
     {
-        highscorecontroller.AddScoreValue(value);
+        highscoreController.AddScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
 
         AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, new Vector3(transform.position.x, transform.position.y, -10), 1);

@@ -51,7 +51,7 @@ public class SubmarineLifeControl : MonoBehaviour
 
     public void IncrementLife()
     {
-        if (life > 0 && life < 4)
+        if (life > 0)
         {
             life++;
             lifeArray[life - 1] = 1;
@@ -61,7 +61,7 @@ public class SubmarineLifeControl : MonoBehaviour
 
     public void DecrementLife()
     {
-        if (life > 0 && life <= 4)
+        if (life > 0)
         {
             life--;
             lifeArray[life] = 0;
