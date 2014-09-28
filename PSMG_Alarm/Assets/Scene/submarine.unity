@@ -139,9 +139,14 @@ MonoBehaviour:
   - {fileID: 690307839}
   - {fileID: 1907009732}
   - {fileID: 1860681604}
+  sub_grey:
+  - {fileID: 2120674492}
+  - {fileID: 543854186}
+  - {fileID: 339588183}
+  - {fileID: 704502552}
+  - {fileID: 1851935419}
+  - {fileID: 687364584}
   gameOverScript: {fileID: 665831172}
-  red: {fileID: 0}
-  grey: {fileID: 0}
 --- !u!114 &25365741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,7 +1153,7 @@ MonoBehaviour:
   maxNoGazeDataTime: 1
   blockWhenNoGazeData: 0
   sceneWhenFinished: skilltree
-  timeUntilLevelEnd: 180
+  timeUntilLevelEnd: 40
   countDown: {fileID: 512158353}
 --- !u!1 &687364584
 GameObject:

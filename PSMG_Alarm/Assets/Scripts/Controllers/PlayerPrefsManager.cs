@@ -32,7 +32,8 @@ public class PlayerPrefsManager : MonoBehaviour
     private static readonly string ROCKET_UPGRADE = "rocket_upgrade";
     private static readonly string PHASER_AMMO = "phaser_ammo";
     private static readonly string ROCKET_AMMO = "rocket_ammo";
-    private static readonly string MAX_LIVE_UPGRADE = "max_live_upgrade";
+    private static readonly string MAX_LIVE_UPGRADE1 = "max_live_upgrade1";
+    private static readonly string MAX_LIVE_UPGRADE2 = "max_live_upgrade2";
 
     public static void Reset()
     {
@@ -96,8 +97,15 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         switch (id)
         {
-            case UpgradeController.upgradeID.MAX_LIVE:
-                PlayerPrefs.SetInt(MAX_LIVE_UPGRADE, value);
+            case UpgradeController.upgradeID.MAX_LIVE1:
+                PlayerPrefs.SetInt(MAX_LIVE_UPGRADE1, value);
+                SetCurrentLive(GetCurrentLife() + 1);
+                SetMaxLives(GetMaxLife() + 1);
+                break;
+            case UpgradeController.upgradeID.MAX_LIVE2:
+                PlayerPrefs.SetInt(MAX_LIVE_UPGRADE2, value);
+                SetCurrentLive(GetCurrentLife() + 1);
+                SetMaxLives(GetMaxLife() + 1);
                 break;
             case UpgradeController.upgradeID.MACHINE_GUN_1:
                 PlayerPrefs.SetInt(MG_UPGRADE_1, value);
@@ -130,8 +138,10 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         switch (id)
         {
-            case UpgradeController.upgradeID.MAX_LIVE:
-                return PlayerPrefs.GetInt(MAX_LIVE_UPGRADE);
+            case UpgradeController.upgradeID.MAX_LIVE1:
+                return PlayerPrefs.GetInt(MAX_LIVE_UPGRADE1);
+            case UpgradeController.upgradeID.MAX_LIVE2:
+                return PlayerPrefs.GetInt(MAX_LIVE_UPGRADE2);
             case UpgradeController.upgradeID.MACHINE_GUN_1:
                 return PlayerPrefs.GetInt(MG_UPGRADE_1);
             case UpgradeController.upgradeID.MACHINE_GUN_2:
