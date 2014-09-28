@@ -108,14 +108,14 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 pos = GetRandomPosition();
 
-        NetworkManagerScript.NetworkInstantiate(type, pos, Quaternion.Euler(0, 0, 0));
+        InGameNetworking.NetworkInstantiate(type, pos, Quaternion.Euler(0, 0, 0), true);
     }
 
     public void SpawnEgg(GameObject type, int count)
     {
         Vector3 pos = GetRandomPosition();
 
-        GameObject newEgg = NetworkManagerScript.NetworkInstantiate(egg, pos, Quaternion.Euler(0, 0, 0));
+        GameObject newEgg = InGameNetworking.NetworkInstantiate(egg, pos, Quaternion.Euler(0, 0, 0), true);
         newEgg.SendMessage("Populate", count);
         newEgg.SendMessage("GiveType", type);
     }

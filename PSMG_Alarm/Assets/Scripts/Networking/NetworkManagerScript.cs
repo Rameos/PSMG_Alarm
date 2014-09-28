@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class NetworkManagerScript : MonoBehaviour
 {
     public static bool networkActive = false;
 
-    public string gameName;
+	public Text statusText;
+	public Text serverCall;
+	public Text gameDescription;
+	public Toggle easy, medium, difficult;
+
+	public string gameName;
 
     private bool refresh;
     private HostData[] hostData;
@@ -13,7 +19,7 @@ public class NetworkManagerScript : MonoBehaviour
 
     void Start()
     {
-        gameName = "UFight_test_game";
+        gameName = "SubFight";
         refresh = false;
         gotHostData = false;
     }
@@ -22,67 +28,62 @@ public class NetworkManagerScript : MonoBehaviour
     {
         if (refresh)
         {
-            if (MasterServer.PollHostList().Length > 0)
+            if (MasterServer.PollHostList().Length != 0)
             {
                 refresh = false;
                 hostData = MasterServer.PollHostList();
                 gotHostData = true;
-                Debug.Log("got host data!");
             }
         }
     }
 
-    public static GameObject NetworkInstantiate(GameObject initObject, Vector3 position, Quaternion rotation,
-        bool spawnOnServer = false, bool hasToBeMine = false)
-    {
-        if (networkActive)
-        {
-            if (hasToBeMine)
-            {
-                if (spawnOnServer && initObject.networkView.isMine)
-                {
-                    if (Network.isServer)
-                        return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-                else if (initObject.networkView.isMine)
-                {
-                    return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-            }
-            else
-            {
-                if (spawnOnServer)
-                {
-                    if (Network.isServer)
-                        return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-                else
-                {
-                    return (GameObject)Network.Instantiate(initObject, position, rotation, 5);
-                }
-            }
-        }
-        else
-        {
-            return (GameObject)Instantiate(initObject, position, rotation);
-        }
-
-        return null;
-    }
-
-    public void Server_startServer()
-    {
+	//Server methods
+	public void Server_startServer()
+    {	
+		setDifficulty ();
+		string serverName = serverCall.text;
+		string serverDescription = gameDescription.text;
         bool useNat = !Network.HavePublicAddress();
         Network.InitializeServer(2, 25000, useNat);
-        MasterServer.RegisterHost(gameName, "Noob pwning zone 554", "This is the epic first glance in our new Multiplayer");
-        Debug.Log(Network.player.ipAddress);
-        Debug.Log(Network.player.port);
+        MasterServer.RegisterHost(gameName, serverName, serverDescription);
+		networkActive = true;
     }
 
+	public void Server_UnregisterServer (){
+		networkActive = false;
+		Network.Disconnect();
+		MasterServer.UnregisterHost();
+		Debug.Log ("Unregistered Server");
+	}
+
+	public void Server_LoadLevel()
+	{
+		if (Network.isServer)
+		{
+			networkView.RPC("NetworkLoadLevel", RPCMode.AllBuffered, "submarine");
+		}
+	}
+
+	private void Server_RecursiveNetworkInstantiate(Transform node)
+	{
+		if (node.networkView != null)
+		{
+			networkView.RPC("AssignViewID", RPCMode.AllBuffered, node.name, Network.AllocateViewID());
+		}
+		
+		for (int i = 0; i < node.childCount; ++i)
+		{
+			Transform child = node.GetChild(i);
+			Server_RecursiveNetworkInstantiate(child);
+		}
+	}
+
+	//Client methods
     public void Client_refreshHostList()
     {
+		gotHostData = false;
+		MasterServer.ClearHostList ();
         MasterServer.RequestHostList(gameName);
-        Debug.Log("start refreshing..");
         refresh = true;
     }
 
@@ -98,19 +99,28 @@ public class NetworkManagerScript : MonoBehaviour
 
     public void Client_connectToHost(HostData data)
     {
+		networkActive = true;
         Network.Connect(data);
-        //Network.Connect ("132.199.184.52", 25000);
     }
+
+	public void Client_disconnectFromHost(){
+		networkActive = false;
+		Network.CloseConnection(Network.connections[0], true);
+		networkView.RPC ("PlayerDisconnected", RPCMode.Server);
+	}
 
     //Messages
     void OnServerInitialized()
     {
-        Debug.Log("Server initialized");
+		statusText.text = "Server initialized.. Waiting for player to join!";
     }
+
+	public void resetStatusMessage(){
+		statusText.text = "";
+	}
 
     void OnMasterServerEvent(MasterServerEvent mse)
     {
-        Debug.Log("inmasterserverevent");
         if (mse == MasterServerEvent.RegistrationSucceeded)
         {
             Debug.Log("Registered Server!");
@@ -130,23 +140,18 @@ public class NetworkManagerScript : MonoBehaviour
         if (mse == MasterServerEvent.HostListReceived)
         {
             Debug.Log("Host list received!");
+			gotHostData = true;
         }
     }
 
     void OnPlayerConnected()
     {
         Debug.Log("player came in!");
-        loadLevel();
+		//Menu.EnableStartButton ();
+		//Menu.ChangeHostFeedBackText("A player joined the game! You can now start");
     }
-
-    public void loadLevel()
-    {
-        if (Network.isServer)
-        {
-            networkView.RPC("NetworkLoadLevel", RPCMode.AllBuffered, "submarine");
-        }
-    }
-
+    
+	//RPC calls
     [RPC]
     void NetworkLoadLevel(string levelName)
     {
@@ -156,23 +161,9 @@ public class NetworkManagerScript : MonoBehaviour
         if (Network.isServer)
         {
             Transform root = transform.root;
-            recursiveNetworkInstantiate(root);
+		Server_RecursiveNetworkInstantiate(root);
         }
-    }
-
-    private void recursiveNetworkInstantiate(Transform node)
-    {
-        if (node.networkView != null)
-        {
-            networkView.RPC("AssignViewID", RPCMode.AllBuffered, node.name, Network.AllocateViewID());
-        }
-
-        for (int i = 0; i < node.childCount; ++i)
-        {
-            Transform child = node.GetChild(i);
-            recursiveNetworkInstantiate(child);
-        }
-    }
+    }    
 
     [RPC]
     void AssignViewID(string nodeName, NetworkViewID nvid)
@@ -183,4 +174,23 @@ public class NetworkManagerScript : MonoBehaviour
             target.networkView.viewID = nvid;
         }
     }
+
+	[RPC]
+	void PlayerDisconnected(){
+		//Menu.ChangeHostFeedBackText ("Player disconnected! Waiting for player to connect...");
+		//Menu.DisableStartButton();
+	}
+
+	//Other stuff
+	public void setDifficulty(){
+		if (easy.isOn) {
+			PlayerPrefsManager.SetDifficulty(0);
+		}
+		if (medium.isOn) {
+			PlayerPrefsManager.SetDifficulty(1);
+		}
+		if (difficult.isOn) {
+			PlayerPrefsManager.SetDifficulty(2);
+		}
+	}
 }

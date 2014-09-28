@@ -49,7 +49,7 @@ public class EggEnemy : Enemy
 
             for (int i = 0; i < enemyCount; i++)
             {
-                NetworkManagerScript.NetworkInstantiate(enemyType, transform.position, Quaternion.Euler(0, 0, 0));
+                InGameNetworking.NetworkInstantiate(enemyType, transform.position, Quaternion.Euler(0, 0, 0), true);
             }
             spawned = true;
         }
