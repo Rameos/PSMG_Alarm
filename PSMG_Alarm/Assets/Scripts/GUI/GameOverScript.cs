@@ -43,34 +43,6 @@ public class GameOverScript : MonoBehaviour
 		Application.LoadLevel("main_menu");
 	}
 
-   /* void OnGUI()
-    {
-        if (gameOver) ShowGameOverMenu();
-    }
-
-    void ShowGameOverMenu()
-    {
-        buttonWidth = Screen.width / 6;
-        buttonHeight = Screen.height / 12;
-        centerX = Screen.width / 2;
-        centerY = Screen.height / 2;
-        guiBoxWidth = Screen.width / 3;
-        guiBoxHeight = Screen.height / 2;
-        guiBoxX = centerX - guiBoxWidth / 2;
-        guiBoxY = centerY - guiBoxHeight / 2;
-
-        GUI.Box(new Rect(guiBoxX, guiBoxY, guiBoxWidth, guiBoxHeight), "Game Over");
-
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + buttonHeight, buttonWidth, buttonHeight), "Nochmal"))
-        {
-            Application.LoadLevel("submarine");
-        }
-        if (GUI.Button(new Rect(centerX - buttonWidth / 2, guiBoxY + 2 * buttonHeight, buttonWidth, buttonHeight), "Haupmenü"))
-        {
-            Application.LoadLevel("main_menu");
-        }
-    }*/
-
     public bool GetGameOver()
     {
         return gameOver;
