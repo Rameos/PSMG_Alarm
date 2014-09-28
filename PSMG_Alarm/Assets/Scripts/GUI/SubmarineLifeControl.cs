@@ -6,13 +6,13 @@ public class SubmarineLifeControl : MonoBehaviour
 {
 
     public GameObject[] sub;
+    public GameObject[] sub_grey;
     public GameOverScript gameOverScript;
-    public Texture2D red;
-    public Sprite grey;
 
     private GameObject player;
     private int[] lifeArray = new int[6];
     private int life;
+    private int maxLife;
     private GameObject cam2D;
     private GameObject cam3D;
 
@@ -22,12 +22,14 @@ public class SubmarineLifeControl : MonoBehaviour
         cam3D = GameObject.FindGameObjectWithTag("3DCam");
 
         int currentLife = PlayerPrefsManager.GetCurrentLife();
+        maxLife = PlayerPrefsManager.GetMaxLife();
 
         if (currentLife == 0)
         {
             PlayerPrefsManager.SetCurrentLive(GameConstants.PLAYER_START_HEALTH);
             PlayerPrefsManager.SetMaxLives(GameConstants.PLAYER_START_HEALTH);
             currentLife = GameConstants.PLAYER_START_HEALTH;
+            maxLife = GameConstants.PLAYER_START_HEALTH;
         }
 
         life = currentLife;
@@ -36,6 +38,11 @@ public class SubmarineLifeControl : MonoBehaviour
         {
             if (i < currentLife)
                 lifeArray[i] = 1;
+        }
+
+        for (int i = maxLife; i < lifeArray.Length; i++)
+        {
+            sub_grey[i].SetActive(false);
         }
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -72,7 +79,6 @@ public class SubmarineLifeControl : MonoBehaviour
 
     void UpdateLife()
     {
-
         for (int i = 0; i < lifeArray.Length; i++)
         {
             if (lifeArray[i] != 1)

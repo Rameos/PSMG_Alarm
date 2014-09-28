@@ -3026,9 +3026,14 @@ MonoBehaviour:
   - {fileID: 1208572734}
   - {fileID: 1843709292}
   - {fileID: 3551359}
+  sub_grey:
+  - {fileID: 1119804911}
+  - {fileID: 912607728}
+  - {fileID: 917275935}
+  - {fileID: 1178566579}
+  - {fileID: 1689499230}
+  - {fileID: 33603066}
   gameOverScript: {fileID: 665831172}
-  red: {fileID: 0}
-  grey: {fileID: 0}
 --- !u!1 &355175415
 GameObject:
   m_ObjectHideFlags: 0
