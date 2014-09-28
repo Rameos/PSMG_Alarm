@@ -53,7 +53,7 @@ public class PowerUp : MonoBehaviour
             Destroy(this.gameObject);
             if (!drop)
             {
-                spawner.removePowerUp();
+                spawner.RemovePowerUp();
             }
         }
     }
@@ -67,7 +67,7 @@ public class PowerUp : MonoBehaviour
 
             if (!drop)
             {
-                spawner.removePowerUp();
+                spawner.RemovePowerUp();
             }
         }
     }
@@ -87,11 +87,11 @@ public class PowerUp : MonoBehaviour
             GetNewTargetLocation();
     }
 
-    public void stopPowerUpMovement()
+    public void StopPowerUpMovement()
     {
         moveAllowed = false;
     }
-    public void startPowerUpMovement()
+    public void StartPowerUpMovement()
     {
         moveAllowed = true;
     }

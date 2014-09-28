@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameControlScript : MonoBehaviour
@@ -11,7 +12,7 @@ public class GameControlScript : MonoBehaviour
     public static float timeElapsed;
     public float timeUntilLevelEnd;
 
-    private GUIText countDown;
+    public Text countDown;
     private SubmarineLifeControl lifeControl;
     private GameObject[] powerUps;
     private PowerUpSpawner powerUpSpawner;
@@ -28,8 +29,8 @@ public class GameControlScript : MonoBehaviour
 
         coins = PlayerPrefsManager.GetCoins();
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().UpdateCoins(coins);
+        GameObject.Find("Highscore").GetComponent<HighscoreScript>().AddScoreValue(PlayerPrefsManager.GetScore());
 
-        countDown = GameObject.Find("CountDown").GetComponent<GUIText>();
         lifeControl = GameObject.FindGameObjectWithTag("MainGUI").GetComponent<SubmarineLifeControl>();
 
         movePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<MovePlayer>();
@@ -102,14 +103,14 @@ public class GameControlScript : MonoBehaviour
 
     public void StopPowerUps()
     {
-        powerUpSpawner.stopSpawning();
+        powerUpSpawner.StopSpawning();
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 
         PowerUp powerUp;
         for (int i = 0; i < powerUps.Length; i++)
         {
             powerUp = powerUps[i].GetComponent<PowerUp>();
-            powerUp.stopPowerUpMovement();
+            powerUp.StopPowerUpMovement();
         }
     }
 
@@ -126,14 +127,14 @@ public class GameControlScript : MonoBehaviour
 
     public void StartPowerUps()
     {
-        powerUpSpawner.stopSpawning();
+        powerUpSpawner.StopSpawning();
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 
         PowerUp powerUp;
         for (int i = 0; i < powerUps.Length; i++)
         {
             powerUp = powerUps[i].GetComponent<PowerUp>();
-            powerUp.startPowerUpMovement();
+            powerUp.StartPowerUpMovement();
         }
     }
 

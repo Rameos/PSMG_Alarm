@@ -6,7 +6,6 @@ public class PowerUpSpawner : MonoBehaviour
 {
 
     public GameObject[] powerUps;
-
     public GameObject camera2d;
     private GameOverScript gameOver;
     private int updateCount;
@@ -51,18 +50,18 @@ public class PowerUpSpawner : MonoBehaviour
         powerUpsCount++;
     }
 
-    public void removePowerUp()
+    public void RemovePowerUp()
     {
         powerUpsCount--;
         updateCount = 0;
     }
 
-    public void stopSpawning()
+    public void StopSpawning()
     {
         powerUpsCanSpawn = false;
     }
 
-    public void startSpawning()
+    public void StartSpawning()
     {
         powerUpsCanSpawn = true;
     }

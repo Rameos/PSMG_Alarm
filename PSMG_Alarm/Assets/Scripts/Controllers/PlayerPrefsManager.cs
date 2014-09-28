@@ -183,4 +183,9 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt(CURRENT_COINS);
     }
+
+    public static int GetScore()
+    {
+        return PlayerPrefs.GetInt(CURRENT_SCORE);
+    }
 }

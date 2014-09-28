@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SubmarineLifeControl : MonoBehaviour
 {
 
-    public GUITexture[] sub = new GUITexture[4];
+    public GameObject[] sub;
     public GameOverScript gameOverScript;
     public Texture2D red;
-    public Texture2D grey;
+    public Sprite grey;
 
     private GameObject player;
-    private int[] lifeArray = new int[4];
+    private int[] lifeArray = new int[6];
     private int life;
     private GameObject cam2D;
     private GameObject cam3D;
@@ -74,13 +75,9 @@ public class SubmarineLifeControl : MonoBehaviour
 
         for (int i = 0; i < lifeArray.Length; i++)
         {
-            if (lifeArray[i] == 1)
+            if (lifeArray[i] != 1)
             {
-                sub[i].texture = red;
-            }
-            else
-            {
-                sub[i].texture = grey;
+                sub[i].SetActive(false);
             }
         }
     }
