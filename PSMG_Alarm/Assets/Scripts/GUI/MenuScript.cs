@@ -51,23 +51,14 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void onMultiplayerButtonClick() {
-		if (networkScript.Client_getHostDataStatus())
-		{
-			HostData[] list = networkScript.Client_getHostData();
-			for (int i = 0; i < list.Length; i++)
-			{
-				Button newItem = (Button)Instantiate(connectToHostButton);
-				newItem.name = list[i].gameName;
-				newItem.onClick.AddListener(() => {networkScript.Client_connectToHost(list[i]); });
-			}
-		}
+		
 	}
 
 	public void onHostGameButtonClick() {
-		networkScript.Server_startServer();
+		//networkScript.Server_startServer();
 	}
 
 	public void onStartMultiplayerGameButtonClick() {
-		networkScript.Client_refreshHostList();
+		//networkScript.Client_refreshHostList();
 	}
 }
