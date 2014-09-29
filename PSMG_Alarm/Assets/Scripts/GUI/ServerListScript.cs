@@ -46,6 +46,7 @@ public class ServerListScript : MonoBehaviour {
 			newItem.transform.parent = gameObject.transform;
 			newItem.GetComponent<ServlistitemScript>().SetGameName(hostData[i].gameName);
 			newItem.GetComponent<ServlistitemScript>().SetGameDifficulty(hostData[i].comment);
+			newItem.GetComponent<ServlistitemScript>().SetHostData(hostData[i]);
 			
 			RectTransform rectTransform = newItem.GetComponent<RectTransform>();
 			

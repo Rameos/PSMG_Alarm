@@ -10,16 +10,19 @@ public class NetworkManagerScript : MonoBehaviour
 	//GUI Elements
 	public Text statusText;
 	public Text serverCall;
-	public Text gameDescription;
 	public Toggle easy, medium, difficult;
 	public GameObject refreshText;
 	public GameObject serverList;
+	public LobbyTitleScript titleScriptHost;
+	public LobbyTitleScript titleScriptClient;
+	public Button startGameButton;
 
 	public string gameName;
 
     private bool refresh;
     private HostData[] hostData;
     private bool gotHostData;
+	private string difficulty;
 
     void Start()
     {
@@ -50,10 +53,10 @@ public class NetworkManagerScript : MonoBehaviour
     {	
 		setDifficulty ();
 		string serverName = serverCall.text;
-		string serverDescription = gameDescription.text;
+		titleScriptHost.SetTitleText (serverCall.text);
         bool useNat = !Network.HavePublicAddress();
         Network.InitializeServer(2, 25000, useNat);
-        MasterServer.RegisterHost(gameName, serverName, serverDescription);
+        MasterServer.RegisterHost(gameName, serverName, difficulty);
 		networkActive = true;
     }
 
@@ -107,6 +110,7 @@ public class NetworkManagerScript : MonoBehaviour
 
     public void Client_connectToHost(HostData data)
     {
+		titleScriptClient.SetTitleText (data.gameName);
 		networkActive = true;
         Network.Connect(data);
     }
@@ -120,7 +124,7 @@ public class NetworkManagerScript : MonoBehaviour
     //Messages
     void OnServerInitialized()
     {
-		statusText.text = "Server initialized.. Waiting for player to join!";
+		statusText.text = "Server initialisiert! Warte auf Spieler..";
     }
 
 	public void resetStatusMessage(){
@@ -155,8 +159,8 @@ public class NetworkManagerScript : MonoBehaviour
     void OnPlayerConnected()
     {
         Debug.Log("player came in!");
-		//Menu.EnableStartButton ();
-		//Menu.ChangeHostFeedBackText("A player joined the game! You can now start");
+		startGameButton.interactable = true;
+		statusText.text = "Ein spieler ist beigetreten! Sie können nun starten.";
     }
     
 	//RPC calls
@@ -185,20 +189,23 @@ public class NetworkManagerScript : MonoBehaviour
 
 	[RPC]
 	void PlayerDisconnected(){
-		//Menu.ChangeHostFeedBackText ("Player disconnected! Waiting for player to connect...");
-		//Menu.DisableStartButton();
+		startGameButton.interactable = false;
+		statusText.text = "Der Spieler hat die Lobby verlassen.. Warte auf Spieler";
 	}
 
 	//Other stuff
 	public void setDifficulty(){
 		if (easy.isOn) {
 			PlayerPrefsManager.SetDifficulty(0);
+			difficulty = "Einfach";
 		}
 		if (medium.isOn) {
 			PlayerPrefsManager.SetDifficulty(1);
+			difficulty = "Normal";
 		}
 		if (difficult.isOn) {
 			PlayerPrefsManager.SetDifficulty(2);
+			difficulty = "Schwer";
 		}
 	}
 }
