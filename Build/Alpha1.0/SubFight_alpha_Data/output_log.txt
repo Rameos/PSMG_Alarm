@@ -1,0 +1,69 @@
+Initialize engine version: 4.6.0b17 (2d43734a3870)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.4052]
+    Renderer: NVIDIA GeForce GTX 770
+    Vendor:   NVIDIA
+    VRAM:     1985 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.294 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\Managed\System.Core.dll (this message is harmless)
+GazeFilterSetup finished
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Connect finished
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 5.508401 ms
+IsolatedStorageException: Could not find a part of the path "C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\StoryAssets\Level1.txt".
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.OpenText () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo:OpenText ()
+  at StorySequenceManager.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+IsolatedStorageException: Could not find a part of the path "C:\Users\Andi\Documents\PSMG_Alarm\Build\Alpha1.0\SubFight_alpha_Data\StoryAssets\Level1.txt".
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.OpenText () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo:OpenText ()
+  at StorySequenceManager.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 306.
+Total: 1.378222 ms (FindLiveObjects: 0.027262 ms CreateObjectMapping: 0.024697 ms MarkObjects: 0.157804 ms  DeleteObjects: 0.755344 ms)
+
+Finish
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Disconnect finished
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
