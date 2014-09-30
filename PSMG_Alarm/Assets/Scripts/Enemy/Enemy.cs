@@ -73,14 +73,12 @@ public class Enemy : MonoBehaviour
     {
         highscoreController.AddScoreValue(value);
         Instantiate(explosion, transform.position, transform.rotation);
-
         AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, new Vector3(transform.position.x, transform.position.y, -10), 1);
 
         if (Random.Range(0, 4) == 0 && drop != null)
         {
             Instantiate(drop, transform.position, Quaternion.Euler(Vector3.zero));
         }
-
         Destroy(gameObject);
     }
 
@@ -108,8 +106,8 @@ public class Enemy : MonoBehaviour
         }
         else if (col.gameObject.tag == "Player")
         {
-            submarineLifeControl.DecrementLife();
             DestroyEnemy();
+            submarineLifeControl.DecrementLife();
         }
         else if (col.gameObject.tag == "Shield")
         {

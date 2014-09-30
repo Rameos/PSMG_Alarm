@@ -1033,8 +1033,8 @@ MonoBehaviour:
     repeatTime: 0
     size: 5
     enemy: {fileID: 100000, guid: 91aedea9ea712554293fc099b64a01f7, type: 2}
-    spawnAsEgg: 0
-  - time: 15
+    spawnAsEgg: 1
+  - time: 10
     repeatTime: 0
     size: 3
     enemy: {fileID: 100000, guid: c2eb1c9e1add38e48bb1b16608d95f67, type: 2}
@@ -1667,7 +1667,7 @@ MonoBehaviour:
         m_Enabled: 1
       - m_Target: {fileID: 1713563033}
         m_MethodName: StoreScore
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -3759,6 +3759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f705aaaed97b8940ac8aa4064bd514e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 1244648079}
+  nameText: {fileID: 971661688}
 --- !u!1 &1740214005
 GameObject:
   m_ObjectHideFlags: 0
