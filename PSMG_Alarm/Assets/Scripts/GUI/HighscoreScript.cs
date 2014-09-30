@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HighscoreScript : MonoBehaviour
 {
 
-    public GUIText scoreText;
-    public GUIText coinText;
-    public GUIText ammoText;
+    public Text scoreText;
+    public Text coinText;
+    public Text ammoText;
 
     private int score;
 
     public void AddScoreValue(int value)
     {
         score = score + value;
-        ChangeScoreText();
+        scoreText.text = "" + score;
+        GameControlScript.score = score;
     }
     public void UpdateCoins(int coins)
     {
@@ -30,10 +32,5 @@ public class HighscoreScript : MonoBehaviour
         {
             ammoText.text = "Ammo: --";
         }
-    }
-
-    void ChangeScoreText()
-    {
-        scoreText.text = "" + score;
     }
 }

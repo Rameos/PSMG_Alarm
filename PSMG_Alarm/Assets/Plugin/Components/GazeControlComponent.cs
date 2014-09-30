@@ -28,27 +28,21 @@ namespace iViewX
         private static GazeController gazeController;
         private MonoBehaviourWithGazeComponent oldSelection;
 
-        private static GazeControlComponent instance;
+        private static GazeControlComponent instanceObject;
 
-        public static GazeControlComponent Instance
+        public static GazeControlComponent Instance()
         {
-            get
-            {
-                if (!instance)
-                {
-                    instance = (GazeControlComponent)FindObjectOfType(typeof(GazeControlComponent));
+                
+                    instanceObject = (GazeControlComponent)FindObjectOfType(typeof(GazeControlComponent));
                     {
-                        if (!instance)
+                        if (!instanceObject)
                         {
                             GameObject gameObject = new GameObject();
                             gameObject.name = "EyeTrackingController";
-                            instance = gameObject.AddComponent(typeof(GazeControlComponent)) as GazeControlComponent;
+                            instanceObject = gameObject.AddComponent(typeof(GazeControlComponent)) as GazeControlComponent;
                         }
                     }
-                }
-
-                return instance;
-            }
+                return instanceObject;
         }
 
         /// <summary>
@@ -89,8 +83,8 @@ namespace iViewX
         /// </summary>
         public void StartCalibration()
         {
-            if (!instance.enabled)
-                instance.enabled = true;
+            if (!instanceObject.enabled)
+                instanceObject.enabled = true;
             gazeModel.isCalibrationRunning = true;
         }
 
@@ -100,8 +94,8 @@ namespace iViewX
         /// </summary>
         public void StartValidation()
         {
-            if (!instance.enabled)
-                instance.enabled = true;
+            if (!instanceObject.enabled)
+                instanceObject.enabled = true;
             gazeModel.isValidationRunning = true;
         }
 
@@ -120,16 +114,14 @@ namespace iViewX
 
         void Awake()
         {
-            if (!instance)
+            if (!instanceObject)
             {
-                instance = this;
+                instanceObject = this;
                 DontDestroyOnLoad(gameObject);
                 gazeController = new GazeController();
 
-                instance.initEyeThread();
-                instance.startEyeThread();
-
-
+                instanceObject.initEyeThread();
+                instanceObject.startEyeThread();
             }
             else
             {
@@ -173,7 +165,7 @@ namespace iViewX
         void OnApplicationQuit()
         {
             Debug.Log("Finish");
-            instance.joinEyeThread();
+            instanceObject.joinEyeThread();
         }
 
 

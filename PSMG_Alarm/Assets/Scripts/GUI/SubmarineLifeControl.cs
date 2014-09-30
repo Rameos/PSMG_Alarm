@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SubmarineLifeControl : MonoBehaviour
 {
 
-    public GUITexture[] sub = new GUITexture[4];
+    public GameObject[] sub;
+    public GameObject[] sub_grey;
     public GameOverScript gameOverScript;
-    public Texture2D red;
-    public Texture2D grey;
 
     private GameObject player;
-    private int[] lifeArray = new int[4];
+    private int[] lifeArray = new int[6];
     private int life;
+    private int maxLife;
     private GameObject cam2D;
     private GameObject cam3D;
 
@@ -21,12 +22,14 @@ public class SubmarineLifeControl : MonoBehaviour
         cam3D = GameObject.FindGameObjectWithTag("3DCam");
 
         int currentLife = PlayerPrefsManager.GetCurrentLife();
+        maxLife = PlayerPrefsManager.GetMaxLife();
 
         if (currentLife == 0)
         {
             PlayerPrefsManager.SetCurrentLive(GameConstants.PLAYER_START_HEALTH);
             PlayerPrefsManager.SetMaxLives(GameConstants.PLAYER_START_HEALTH);
             currentLife = GameConstants.PLAYER_START_HEALTH;
+            maxLife = GameConstants.PLAYER_START_HEALTH;
         }
 
         life = currentLife;
@@ -37,13 +40,18 @@ public class SubmarineLifeControl : MonoBehaviour
                 lifeArray[i] = 1;
         }
 
+        for (int i = maxLife; i < lifeArray.Length; i++)
+        {
+            sub_grey[i].SetActive(false);
+        }
+
         player = GameObject.FindGameObjectWithTag("Player");
         UpdateLife();
     }
 
     public void IncrementLife()
     {
-        if (life > 0 && life < 4)
+        if (life > 0)
         {
             life++;
             lifeArray[life - 1] = 1;
@@ -53,7 +61,7 @@ public class SubmarineLifeControl : MonoBehaviour
 
     public void DecrementLife()
     {
-        if (life > 0 && life <= 4)
+        if (life > 0)
         {
             life--;
             lifeArray[life] = 0;
@@ -69,18 +77,21 @@ public class SubmarineLifeControl : MonoBehaviour
         }
     }
 
+    public void KillPlayer()
+    {
+        while (life > 0)
+        {
+            DecrementLife();
+        }
+    }
+
     void UpdateLife()
     {
-
         for (int i = 0; i < lifeArray.Length; i++)
         {
-            if (lifeArray[i] == 1)
+            if (lifeArray[i] != 1)
             {
-                sub[i].texture = red;
-            }
-            else
-            {
-                sub[i].texture = grey;
+                sub[i].SetActive(false);
             }
         }
     }

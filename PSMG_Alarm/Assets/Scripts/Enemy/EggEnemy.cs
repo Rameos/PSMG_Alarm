@@ -3,8 +3,6 @@ using System.Collections;
 
 public class EggEnemy : Enemy
 {
-
-    private int enemyCount;
     private int startPopulation;
     private float maxSurviveTime = 15;
     private float surviveTime;
@@ -14,9 +12,14 @@ public class EggEnemy : Enemy
     private bool isOpen;
     private bool spawned;
     private bool isFading;
+    private float timestamp = 0;
+    private float life2;
+    private int energy;
 
     public override void FindOtherObjects()
     {
+        energy = 1 + PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.X_RAY);
+        life2 = life;
         isOpen = false;
         spawned = false;
         surviveTime = maxSurviveTime;
@@ -27,13 +30,13 @@ public class EggEnemy : Enemy
 
     public override void Move()
     {
+        life = (int)Mathf.Round(life2);
         surviveTime -= Time.deltaTime;
         populateTimer -= Time.deltaTime;
 
         if (surviveTime <= 0f && !isOpen)
         {
             isOpen = true;
-            enemyCount = 2 * startPopulation - Mathf.RoundToInt(startPopulation * (populateTimer / maxSurviveTime));
             GetComponent<Animator>().SetTrigger("Break");
             surviveTime = 1f;
         }
@@ -47,7 +50,7 @@ public class EggEnemy : Enemy
             Destroy(GetComponent<CircleCollider2D>());
             isFading = true;
 
-            for (int i = 0; i < enemyCount; i++)
+            for (int i = 0; i < startPopulation; i++)
             {
                 NetworkManagerScript.NetworkInstantiate(enemyType, transform.position, Quaternion.Euler(0, 0, 0));
             }
@@ -71,25 +74,28 @@ public class EggEnemy : Enemy
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        //set timestamp to avoid multipledamage
+        if (Time.time - timestamp < 0.1f)
+        {
+            return;
+        }
+        timestamp = Time.time;
+
         if (col.gameObject.tag == "Player")
         {
             foreach (ContactPoint2D contacts in col.contacts)
             {
                 submarineLifeControl.DecrementLife();
-                col.gameObject.rigidbody2D.AddForce(contacts.normal * 2000);
+                col.gameObject.rigidbody2D.AddForce(contacts.normal * 3000);
             }
         }
-    }
-
-    public override void OnTriggerEnter2D(Collider2D col)
-    {
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "XRay" && !isOpen)
         {
-            surviveTime -= Time.deltaTime * 3;
+            life2 -= Time.deltaTime * energy;
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
@@ -101,7 +107,6 @@ public class EggEnemy : Enemy
 
     public void Populate(int count)
     {
-        enemyCount = count;
         startPopulation = count;
     }
 

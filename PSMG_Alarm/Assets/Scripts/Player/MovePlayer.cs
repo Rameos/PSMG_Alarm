@@ -15,7 +15,22 @@ public class MovePlayer : MonoBehaviour
     private SpriteRenderer shieldR;
     private bool pitchUp;
 
+    public GameObject shieldPrefab;
     public GameObject[] lights;
+
+    void Start()
+    {
+        shieldTimer = maxShield * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.SHIELD);
+        if (shieldTimer > 0)
+        {
+            GameObject clone = Instantiate(shieldPrefab, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+            clone.transform.parent = transform;
+            SetShield();
+        }
+        speedForwards += 10 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
+        speedBackwards += 10 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
+        rotationSpeed += 2 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
+    }
 
     void Update()
     {

@@ -11,7 +11,6 @@ public class PowerUpFreezeEnemies : PowerUp
         foreach (GameObject enemy in enemies)
         {
             enemy.GetComponent<Enemy>().SlowEnemy();
-            enemy.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1);
         }
     }
 }

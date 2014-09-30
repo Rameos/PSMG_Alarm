@@ -132,6 +132,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,8 +148,8 @@ MonoBehaviour:
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   drop: {fileID: 0}
   speed: 2
-  life: 100
-  value: 100
+  life: 90
+  value: 150
   submarineLifeControl: {fileID: 0}
   player: {fileID: 0}
 --- !u!148 &14800000
@@ -183,7 +184,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: 2e87d10dfa28eb94b9cc983e95ca0ded, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 2954ffb7979032044b7e5068adf27b2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: .823529422}
 --- !u!1001 &100100000
 Prefab:

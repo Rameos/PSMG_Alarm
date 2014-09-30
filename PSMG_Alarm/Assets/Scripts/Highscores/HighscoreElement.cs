@@ -6,6 +6,12 @@ public class HighscoreElement
     private int score;
     private string name;
 
+    public HighscoreElement(string name, int score)
+    {
+        this.name = name;
+        this.score = score;
+    }
+
     public void SetName(string name)
     {
         this.name = name;

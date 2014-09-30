@@ -1,6 +1,12 @@
 fileFormatVersion: 2
 guid: be62fe8c8767b1941a438a7926e5db05
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: MonsterEgg_0
+    21300002: MonsterEgg_1
+    21300004: MonsterEgg_2
+    21300006: MonsterEgg_3
+    21300008: MonsterEgg_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

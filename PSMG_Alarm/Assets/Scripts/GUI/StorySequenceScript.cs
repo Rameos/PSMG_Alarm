@@ -3,49 +3,62 @@ using System.Collections;
 using System;
 using System.IO;
 
-public class StorySequenceScript : MonoBehaviour {
+public class StorySequenceScript : MonoBehaviour
+{
+    public ArrayList intro;
+    public float off;
+    public float speed = 0.001f;
 
-	public string[] intro;
-	public float off;
-	public float speed = 0.001f;
-	
-	void Start () {
-		intro = new string[20];
+    public GameObject SpeechBubble;
+    public string introText;
+    private GUIText SpeechBubbleText;
+    private int currentLine;
+    private bool showIntroText;
 
-		FileInfo theSourceFile = new FileInfo ("Assets/StoryAssets/Level1.txt");
-		StreamReader reader = theSourceFile.OpenText();
-		
-		string text;
-		int i = 0;
-		
-		do
-		{
-			text = reader.ReadLine();
-			intro[i] = text;
-			i++;
-		} while (text != null);  
+    void Start()
+    {
+        introText = "";
+        showIntroText = true;
+        intro = new ArrayList();
 
-		off = Screen.height + intro.Length*20;
-	}
+        FileInfo theSourceFile = new FileInfo("Assets/StoryAssets/Level1.txt");
+        StreamReader reader = theSourceFile.OpenText();
+        SpeechBubbleText = GameObject.FindWithTag("SpeechBubbleText").GetComponent<GUIText>() as GUIText;
+        string line;
+        int i = 0;
+        currentLine = 0;
 
-	void Update () {
-		if(Input.GetButton("Escape"))
-		   Application.LoadLevel("submarine");
-	}
+        do
+        {
+            line = reader.ReadLine();
+            intro.Add(line);
+            i++;
+        } while (line != null);
 
-	public void OnGUI()
-	{
-		off -= Time.deltaTime * speed;
-		for (int i = 0; i < intro.Length; i++)
-		{
-			float roff = (intro.Length*-20) + (i*20 + off);
-			float alph = Mathf.Sin((roff/Screen.height)*180*Mathf.Deg2Rad);
-			GUI.color = new Color(1,1,1, alph);
-			GUI.Label(new Rect(0,roff,Screen.width, 20),intro[i]);
-			GUI.color = new Color(1,1,1,1);
-		}
+        do
+        {
+            if (currentLine >= 5)
+            {
+                showIntroText = false;
+            }
 
-		if (off < 300)
-			GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-25, 100, 50), "Drücke Escape zum starten!");
-	}
+            SpeechBubbleText.text = (intro[currentLine]).ToString();
+            StartCoroutine(HideSpeechBubble());
+        } while (showIntroText == true);
+    }
+
+    void Update()
+    {
+        if (Input.GetButton("Escape"))
+            Application.LoadLevel("submarine");
+    }
+
+    public IEnumerator HideSpeechBubble()
+    {
+        if (currentLine < intro.Count-1)
+        {
+            yield return new WaitForSeconds(8f);
+            currentLine++;
+        }
+    }
 }

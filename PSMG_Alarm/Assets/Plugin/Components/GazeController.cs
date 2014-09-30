@@ -210,7 +210,6 @@ namespace iViewX
         /// <param name="sampleData"></param>
         private void GetSampleCallbackFunction(EyeTrackingController.SampleStruct sampleData)
         {
-
             //Left Eye
             gazeModel.posLeftEye = new Vector3((float)sampleData.leftEye.eyePositionX, (float)sampleData.leftEye.eyePositionY, (float)sampleData.leftEye.eyePositionZ);
             gazeModel.posGazeLeft = new Vector2((float)sampleData.leftEye.gazeX, (float)sampleData.leftEye.gazeY);
@@ -224,30 +223,6 @@ namespace iViewX
             gazeModel.diamRightEye = (float)sampleData.leftEye.diam;
 
 
-
-#if UNITY_EDITOR
-            Rect gameView = getOffsetFromGameView();
-            Vector2 posGazeLeft = new Vector3(gazeModel.posGazeLeft.x, gazeModel.posGazeLeft.y - gameView.y);
-            Vector2 posGazeRight = new Vector3(gazeModel.posGazeRight.x, gazeModel.posGazeRight.y - gameView.y);
-
-            gazeModel.posGazeLeft = posGazeLeft;
-            gazeModel.posGazeRight = posGazeRight;
-
-#else
-            Vector2 offSet = Win32HelperClass.GetGameViewPosition();
-            if (offSet.x >= 0)
-            {
-                gazeModel.posGazeLeft = gazeModel.posGazeLeft - offSet;
-                gazeModel.posGazeRight = gazeModel.posGazeRight - offSet;
-            }
-            else
-            {
-                gazeModel.posGazeLeft = offSet -gazeModel.posGazeLeft;
-                gazeModel.posGazeRight = offSet - gazeModel.posGazeRight;
-            }
-
-#endif
-
             gazeModel.gameScreenPosition = Win32HelperClass.GetGameViewPosition();
 
             //Head Position
@@ -255,12 +230,6 @@ namespace iViewX
 
             //TimeStamp of the Sample
             gazeModel.timeStamp = sampleData.timestamp;
-
-
-
-
-
-
         }
 
         /// <summary>

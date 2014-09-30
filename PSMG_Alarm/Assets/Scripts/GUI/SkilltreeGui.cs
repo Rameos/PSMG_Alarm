@@ -84,7 +84,7 @@ public class SkilltreeGui : MonoBehaviour
 
         if (GUI.Button(new Rect(Screen.width - 450, Screen.height / 20, 100, 30), "Fertig"))
         {
-            Application.LoadLevel("submarine");
+            Application.LoadLevel("submarine2");
         }
 
         if (hovering)
