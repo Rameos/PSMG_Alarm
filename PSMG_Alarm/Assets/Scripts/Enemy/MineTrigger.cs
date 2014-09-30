@@ -53,6 +53,12 @@ public class MineTrigger : MonoBehaviour
                     ga.SendMessage("TakeDamage", 100);
                 }
 
+				if (ga.tag == "Boss")
+				{
+					Debug.Log("boss take damage");
+					ga.SendMessage("TakeDamage", 300);
+				}
+
                 if (ga.tag == "Player")
                 {
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
