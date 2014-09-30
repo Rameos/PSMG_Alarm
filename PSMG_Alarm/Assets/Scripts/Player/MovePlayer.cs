@@ -27,8 +27,8 @@ public class MovePlayer : MonoBehaviour
             clone.transform.parent = transform;
             SetShield();
         }
-        speedForwards += 10 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
-        speedBackwards += 10 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
+        speedForwards += 5 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
+        speedBackwards += 5 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
         rotationSpeed += 2 * PlayerPrefsManager.GetUpgrade(UpgradeController.upgradeID.TURBO);
     }
 

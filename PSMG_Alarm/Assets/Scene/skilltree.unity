@@ -181,7 +181,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 4d5412655ee4c5446a58462bdc521d27, type: 3}
   title: Extraleben 2
   description: Erhalte ein weiteres Extraleben
-  cost: 150
+  cost: 200
   not_upgradeable: 0
   upgraded: 0
   preCondition: 14
@@ -423,7 +423,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 7d6a12e261f4ad14d895caebdccf3b9f, type: 3}
   title: Raketenwerfer
   description: Raketenwerfer der massiven Schaden verursacht
-  cost: 60
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
   title: Munition Phaser
   description: "Eine Ladung f\xFCr den Mega Phaser"
-  cost: 10
+  cost: 15
   not_upgradeable: 1
   upgraded: 0
   preCondition: 6
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 28878874466611d4ebf567731f95eba3, type: 3}
   title: Schild
   description: Erhalte zu Beginn des Levels bereits einen Schild.
-  cost: 100
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 4
@@ -2733,7 +2733,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 4202636d4f29ded4eb99da3fcb25e0b6, type: 3}
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
-  cost: 100
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -2875,7 +2875,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 24edc1b5ae8673c408ca7665e810e2ea, type: 3}
   title: Turbo
   description: "Erh\xF6he die Bewegungsgeschwindigkeit deines Uboots."
-  cost: 100
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -3067,7 +3067,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
   title: Munition Raketenwerfer
   description: "Eine Rakete f\xFCr den Raketenwerfer"
-  cost: 5
+  cost: 10
   not_upgradeable: 1
   upgraded: 0
   preCondition: 7
@@ -3429,7 +3429,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: a1aa693761ae87a4d85c0c69e2a11cb5, type: 3}
   title: Mega Phaser
   description: "Ultimativer Laser der alles aus dem Weg r\xE4umt!"
-  cost: 150
+  cost: 200
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -3594,7 +3594,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 6507777230bd3f4408e6996459dced52, type: 3}
   title: Maschinengewehr +2
   description: "F\xFCgt 2 weitere Kugeln zu jeder MG Salve hinzu."
-  cost: 150
+  cost: 250
   not_upgradeable: 0
   upgraded: 0
   preCondition: 1
