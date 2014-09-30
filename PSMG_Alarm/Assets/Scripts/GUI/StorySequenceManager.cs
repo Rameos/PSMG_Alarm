@@ -10,6 +10,9 @@ public class StorySequenceManager : MonoBehaviour
     public static string introPart;
     public ArrayList intro;
     public Text text;
+
+    public string SceneName;
+    public string textName;
     private AudioSource StorySequence;
 
     void Awake()
@@ -20,7 +23,7 @@ public class StorySequenceManager : MonoBehaviour
         StartGameText.color = new Color(1, 1, 1, 0);
         intro = new ArrayList();
 
-        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StreamingAssets/Level2.txt");
+        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StreamingAssets/" + textName + ".txt");
         StreamReader reader = theSourceFile.OpenText();
 
         string line;
@@ -40,7 +43,7 @@ public class StorySequenceManager : MonoBehaviour
     {
         if (Input.GetButton("Escape"))
         {
-            Application.LoadLevel("endboss");
+            Application.LoadLevel(SceneName);
         }
         text.text = introPart;
     }
@@ -53,7 +56,7 @@ public class StorySequenceManager : MonoBehaviour
             yield return new WaitForSeconds(5f);
         }
         StorySequence.mute = true;
-        StartGameText.color = new Color (1, 1, 1, 1);
+        StartGameText.color = new Color(1, 1, 1, 1);
     }
 
 }

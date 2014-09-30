@@ -7,6 +7,8 @@ public class GameControlScript : MonoBehaviour
     public float maxNoGazeDataTime = 1;
     public bool blockWhenNoGazeData = true;
     public string sceneWhenFinished;
+    public GameObject pausePanel;
+    public GameObject noGazeDataText;
 
     public static int coins;
     public static int score;
@@ -28,6 +30,7 @@ public class GameControlScript : MonoBehaviour
         timeElapsed = 0;
 
         coins = PlayerPrefsManager.GetCoins();
+        blockWhenNoGazeData = PlayerPrefsManager.GetControl();
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().UpdateCoins(coins);
         GameObject.Find("Highscore").GetComponent<HighscoreScript>().AddScoreValue(PlayerPrefsManager.GetScore());
 
@@ -39,25 +42,44 @@ public class GameControlScript : MonoBehaviour
 
     void Update()
     {
+        if (!paused)
+        {
         timeElapsed += Time.deltaTime;
         timeUntilLevelEnd -= Time.deltaTime;
-
+        }
         countDown.text = ((int)timeUntilLevelEnd / 60).ToString() + ":" + ((int)timeUntilLevelEnd % 60).ToString();
+
         if (timeUntilLevelEnd <= 0 && lifeControl.GetLifes() > 0)
         {
             SaveAndFinishLevel();
         }
 
         if (!CheckGazeDataAvailable() && blockWhenNoGazeData)
+        {
             noGazeDataTimer += Time.deltaTime;
+        }
         else
+        {
             noGazeDataTimer = 0;
+        }
 
         if (noGazeDataTimer > maxNoGazeDataTime)
+        {
+            noGazeDataText.SetActive(true);
             PauseGame();
+        }
 
-        if (paused)
-            WaitForInput();
+        if (Input.GetButtonDown("Escape"))
+        {
+            if (!paused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                UnpauseGame();
+            }
+        }
     }
 
     private void SaveAndFinishLevel()
@@ -71,18 +93,21 @@ public class GameControlScript : MonoBehaviour
 
     public void PauseGame()
     {
-        powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
-
+        Screen.showCursor = true;
+        pausePanel.SetActive(true);
         paused = true;
-
         movePlayer.stopPlayerMovement();
         shooting.BlockShooting();
         StopEnemies();
         StopPowerUps();
+        noGazeDataTimer = 0;
     }
 
     public void UnpauseGame()
     {
+        noGazeDataText.SetActive(false);
+        Screen.showCursor = false;
+        pausePanel.SetActive(false);
         StartPowerUps();
         StartEnemies();
         shooting.UnblockShooting();
@@ -121,7 +146,7 @@ public class GameControlScript : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             Enemy controller = enemy.GetComponent<Enemy>();
-            controller.StopEnemyMovement();
+            controller.StartEnemyMovement();
         }
     }
 
@@ -145,7 +170,7 @@ public class GameControlScript : MonoBehaviour
 
     void WaitForInput()
     {
-        if (Input.anyKey && CheckGazeDataAvailable())
+        if (Input.GetButton("1"))
         {
             UnpauseGame();
         }

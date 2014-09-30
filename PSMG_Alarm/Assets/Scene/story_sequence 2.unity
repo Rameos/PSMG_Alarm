@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1948825708}
+  SceneName: endboss
+  textName: Level2
 --- !u!1 &239999567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,6 +2336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 0}
+  SceneName: 
+  textName: 
 --- !u!114 &1948825708
 MonoBehaviour:
   m_ObjectHideFlags: 0

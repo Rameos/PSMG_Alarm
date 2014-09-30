@@ -17,3 +17,7 @@ EditorBuildSettings:
     path: Assets/Scene/demo_ende.unity
   - enabled: 1
     path: Assets/Scene/story_sequence.unity
+  - enabled: 1
+    path: Assets/Scene/story_sequence 2.unity
+  - enabled: 1
+    path: Assets/Scene/endboss.unity
