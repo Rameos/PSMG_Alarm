@@ -11,6 +11,11 @@ public class CheckHighscoreValue : MonoBehaviour
 
     void OnEnable()
     {
+        if (scoreText.text == "")
+        {
+            scoreText.text = "" + PlayerPrefsManager.GetScore();
+        }
+
         int score = Convert.ToInt32(scoreText.text);
 
         if (disabled)
