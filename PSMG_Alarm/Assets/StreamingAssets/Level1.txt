@@ -1,9 +1,0 @@
-Oh Nein! Durch eine Kollision mit einem Eisberg geht dein Schiff zu Bruch und sinkt mitten im Ozean. 
-Nur du hast dich mit einem Rettungsboot retten können, der  Rest der Besatzung ist mit dem Schiff untergegangen. 
-Durch einen Notruf erfährst du, dass einige  Crewmitglieder in einer Luftblase in dem gesunkenen Schiff überlebt haben. 
-Nun machst du dich mit einem U-Boot auf den Weg, die Überlebenden so schnell wie möglich zu retten. 
-Doch kurz vor deinem Ziel wirst du von Monstern angegriffen, die ihre neugewonnene Beute verteidigen. 
-Um näher an das Wrack zu gelangen, musst du soviele Monster wie möglich abschießen und töten und dich selbst vor den Monstern verteidigen. 
-Sammle die Coins auf, um bessere Waffen und Schilde zu bekommen. 
-Nutze den Phaser um die dämonischen Eier zu zerstören bevor sie sich zu sehr vermehren.
-Steuerung: Bewegung: WASD, Feuer: Leertaste, Phaser: strg links, Waffen wählen: 1/2/3
