@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300006, guid: 24316d7b391f94640aaadfb895395c56, type: 3}
-  s_upgraded: {fileID: 21300004, guid: 24316d7b391f94640aaadfb895395c56, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 4d5412655ee4c5446a58462bdc521d27, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 4d5412655ee4c5446a58462bdc521d27, type: 3}
   title: Extraleben 2
   description: Erhalte ein weiteres Extraleben
   cost: 10
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300002, guid: 24316d7b391f94640aaadfb895395c56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d5412655ee4c5446a58462bdc521d27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &31405868
 AudioSource:
@@ -419,8 +419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 623dc77800fb29046a3b706aa710f11a, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 623dc77800fb29046a3b706aa710f11a, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 7d6a12e261f4ad14d895caebdccf3b9f, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 7d6a12e261f4ad14d895caebdccf3b9f, type: 3}
   title: Raketenwerfer
   description: Raketenwerfer der massiven Schaden verursacht
   cost: 60
@@ -448,7 +448,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 623dc77800fb29046a3b706aa710f11a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d6a12e261f4ad14d895caebdccf3b9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &154241501
 AudioSource:
@@ -639,8 +639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: c30f6f82e2d90ee4dafb0861e568ef6b, type: 3}
-  s_upgraded: {fileID: 21300002, guid: c30f6f82e2d90ee4dafb0861e568ef6b, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 97e4bffc251b72b43a9a3030e84ff6b1, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 97e4bffc251b72b43a9a3030e84ff6b1, type: 3}
   title: Reparieren
   description: Repariere Schaden an deinem Schiff!
   cost: 20
@@ -668,7 +668,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c30f6f82e2d90ee4dafb0861e568ef6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97e4bffc251b72b43a9a3030e84ff6b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &292677927
 AudioSource:
@@ -1831,8 +1831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300006, guid: 2e10584ab538ffa4182390e9c1781cbb, type: 3}
-  s_upgraded: {fileID: 21300004, guid: 2e10584ab538ffa4182390e9c1781cbb, type: 3}
+  s_highlighted: {fileID: 21300004, guid: d467efb4828a04643a1a70538761efea, type: 3}
+  s_upgraded: {fileID: 21300002, guid: d467efb4828a04643a1a70538761efea, type: 3}
   title: Extraleben 1
   description: Erhalte ein Extraleben
   cost: 10
@@ -1860,7 +1860,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300002, guid: 2e10584ab538ffa4182390e9c1781cbb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d467efb4828a04643a1a70538761efea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1221622870
 AudioSource:
@@ -2376,8 +2376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
+  s_highlighted: {fileID: 21300004, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
+  s_upgraded: {fileID: 21300002, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
   title: Munition Phaser
   description: "Eine Ladung f\xFCr den Mega Phaser"
   cost: 10
@@ -2405,7 +2405,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1280667539
 AudioSource:
@@ -2661,8 +2661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 37ca997e94b4259479c26dbdafec8886, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 37ca997e94b4259479c26dbdafec8886, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 28878874466611d4ebf567731f95eba3, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 28878874466611d4ebf567731f95eba3, type: 3}
   title: Schild
   description: Erhalte zu Beginn des Levels bereits einen Schild.
   cost: 10
@@ -2690,7 +2690,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 37ca997e94b4259479c26dbdafec8886, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28878874466611d4ebf567731f95eba3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1458501707
 AudioSource:
@@ -2923,8 +2923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 2ddd4ebf48fc2aa48bece98bdbef7911, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 2ddd4ebf48fc2aa48bece98bdbef7911, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 4202636d4f29ded4eb99da3fcb25e0b6, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 4202636d4f29ded4eb99da3fcb25e0b6, type: 3}
   title: Maschinengewehr +1
   description: "Erh\xF6ht den Schaden deiner MG"
   cost: 100
@@ -2952,7 +2952,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2ddd4ebf48fc2aa48bece98bdbef7911, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4202636d4f29ded4eb99da3fcb25e0b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1659510900
 AudioSource:
@@ -3257,8 +3257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
-  s_upgraded: {fileID: 21300002, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
+  s_highlighted: {fileID: 21300004, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
+  s_upgraded: {fileID: 21300002, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
   title: Munition Raketenwerfer
   description: "Eine Rakete f\xFCr den Raketenwerfer"
   cost: 5
@@ -3286,7 +3286,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 77ba5f6a085f3f94487782e9156184d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e43efa380a20f6244a7a0293aeeca363, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1704436297
 AudioSource:
@@ -3784,8 +3784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e06d3160618d840afb5f0dcf5088a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_highlighted: {fileID: 21300004, guid: d43b8f8b8b454f742aee165c1f2a7751, type: 3}
-  s_upgraded: {fileID: 21300002, guid: d43b8f8b8b454f742aee165c1f2a7751, type: 3}
+  s_highlighted: {fileID: 21300004, guid: 6507777230bd3f4408e6996459dced52, type: 3}
+  s_upgraded: {fileID: 21300002, guid: 6507777230bd3f4408e6996459dced52, type: 3}
   title: Maschinengewehr +2
   description: "F\xFCgt 2 weitere Kugeln zu jeder MG Salve hinzu."
   cost: 150
@@ -3813,7 +3813,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d43b8f8b8b454f742aee165c1f2a7751, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6507777230bd3f4408e6996459dced52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!82 &1950126179
 AudioSource:
