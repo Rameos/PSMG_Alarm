@@ -181,7 +181,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 4d5412655ee4c5446a58462bdc521d27, type: 3}
   title: Extraleben 2
   description: Erhalte ein weiteres Extraleben
-  cost: 10
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 14
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: d467efb4828a04643a1a70538761efea, type: 3}
   title: Extraleben 1
   description: Erhalte ein Extraleben
-  cost: 10
+  cost: 100
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 28878874466611d4ebf567731f95eba3, type: 3}
   title: Schild
   description: Erhalte zu Beginn des Levels bereits einen Schild.
-  cost: 10
+  cost: 100
   not_upgradeable: 0
   upgraded: 0
   preCondition: 4
@@ -2875,7 +2875,7 @@ MonoBehaviour:
   s_upgraded: {fileID: 21300002, guid: 24edc1b5ae8673c408ca7665e810e2ea, type: 3}
   title: Turbo
   description: "Erh\xF6he die Bewegungsgeschwindigkeit deines Uboots."
-  cost: 10
+  cost: 100
   not_upgradeable: 0
   upgraded: 0
   preCondition: 0
@@ -3310,7 +3310,7 @@ MonoBehaviour:
   title: X-Ray 2.0
   description: "Erh\xF6he die Effektivit\xE4t deines X-Ray Strahlers um die d\xE4monischen
     Eier noch schneller zu zerst\xF6ren."
-  cost: 10
+  cost: 150
   not_upgradeable: 0
   upgraded: 0
   preCondition: 13
