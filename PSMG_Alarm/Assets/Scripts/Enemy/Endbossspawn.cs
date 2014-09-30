@@ -13,7 +13,7 @@ public class Endbossspawn : MonoBehaviour
 
 	void Start()
 	{
-		spawnTimer = Random.Range(2.0f, 7.0f);
+		spawnTimer = Random.Range(1.0f, 1.1f);
 		gameOver = GameObject.Find("GameController").GetComponent<GameOverScript>();
 	}
 	
@@ -27,7 +27,7 @@ public class Endbossspawn : MonoBehaviour
 		if (time > spawnTimer) 
 		{
 			time = 0;
-			spawnTimer = Random.Range(3.0f, 10.0f);
+			spawnTimer = Random.Range(1.0f, 5f);
 			SpawnEnemy(minePrefab);
 		}
 	}
