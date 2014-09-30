@@ -19,9 +19,6 @@ public class CheckHighscoreValue : MonoBehaviour
             return;
         }
         HighscoreElement[] highscores = PlayerPrefsManager.GetHighscore();
-        Debug.Log(highscores.Length);
-        Debug.Log(highscores[highscores.Length - 1].GetScore());
-        Debug.Log(scoreText.text);
         gameObject.GetComponent<Button>().interactable = (score > highscores[highscores.Length - 1].GetScore());
     }
 

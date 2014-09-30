@@ -20,7 +20,7 @@ public class StorySequenceManager : MonoBehaviour
         StartGameText.color = new Color(1, 1, 1, 0);
         intro = new ArrayList();
 
-        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StreamingAssets/Level1.txt");
+        FileInfo theSourceFile = new FileInfo(Application.dataPath + "/StreamingAssets/Level2.txt");
         StreamReader reader = theSourceFile.OpenText();
 
         string line;
@@ -40,7 +40,7 @@ public class StorySequenceManager : MonoBehaviour
     {
         if (Input.GetButton("Escape"))
         {
-            Application.LoadLevel("submarine");
+            Application.LoadLevel("endboss");
         }
         text.text = introPart;
     }
