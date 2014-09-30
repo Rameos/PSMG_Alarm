@@ -1355,6 +1355,7 @@ MonoBehaviour:
   noGazeDataText: {fileID: 850370923}
   timeUntilLevelEnd: 180
   countDown: {fileID: 512158353}
+  theNextLevel: submarine2
 --- !u!1 &687364584
 GameObject:
   m_ObjectHideFlags: 0

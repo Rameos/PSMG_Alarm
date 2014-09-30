@@ -5638,11 +5638,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNoGazeDataTime: 1
   blockWhenNoGazeData: 0
-  sceneWhenFinished: demo_scene
+  sceneWhenFinished: skilltree
   pausePanel: {fileID: 1237871940}
   noGazeDataText: {fileID: 134111155}
   timeUntilLevelEnd: 180
   countDown: {fileID: 1422014484}
+  theNextLevel: story_sequence 2
 --- !u!1 &669526849
 GameObject:
   m_ObjectHideFlags: 0

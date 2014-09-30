@@ -115,6 +115,11 @@ public class PlayerPrefsManager : MonoBehaviour
         PlayerPrefs.SetInt(PLAYER_MAX_LIFES, value);
     }
 
+    public static void SetLevel(string value)
+    {
+        PlayerPrefs.SetString(CURRENT_LEVEL, value);
+    }
+
     public static void SetUpgrade(int value, UpgradeController.upgradeID id)
     {
         switch (id)
@@ -247,5 +252,10 @@ public class PlayerPrefsManager : MonoBehaviour
     public static int GetScore()
     {
         return PlayerPrefs.GetInt(CURRENT_SCORE);
+    }
+
+    public static string GetLevel()
+    {
+        return PlayerPrefs.GetString(CURRENT_LEVEL, "submarine2");
     }
 }

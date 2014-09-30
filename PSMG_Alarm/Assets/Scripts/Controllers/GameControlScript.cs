@@ -15,6 +15,7 @@ public class GameControlScript : MonoBehaviour
     public static float timeElapsed;
     public float timeUntilLevelEnd;
     public Text countDown;
+    public string theNextLevel;
 
     private SubmarineLifeControl lifeControl;
     private GameObject[] powerUps;
@@ -86,6 +87,7 @@ public class GameControlScript : MonoBehaviour
     {
         PlayerPrefsManager.SetCurrentLive(lifeControl.GetLifes());
         PlayerPrefsManager.SetScore(score);
+        PlayerPrefsManager.SetLevel(theNextLevel);
         shooting.SaveAmmo();
 
         Application.LoadLevel(sceneWhenFinished);
