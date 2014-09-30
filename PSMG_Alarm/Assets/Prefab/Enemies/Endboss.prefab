@@ -155,8 +155,8 @@ MonoBehaviour:
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   drop: {fileID: 100000, guid: 05e13c768020e5b4f84ebddd9b898a31, type: 2}
   speed: 2
-  life: 5000
-  value: 100
+  life: 10000
+  value: 1000
   submarineLifeControl: {fileID: 0}
   player: {fileID: 100006, guid: dd20e505b45fed745a23cb2b6496c6e0, type: 2}
   eggPrefab: {fileID: 100000, guid: bbb0fd730bd05f143b608f0f8e48a779, type: 2}

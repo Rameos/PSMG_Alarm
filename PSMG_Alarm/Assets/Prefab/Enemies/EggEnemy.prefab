@@ -131,7 +131,7 @@ MonoBehaviour:
   spark: {fileID: 100000, guid: 7a598717ded698c4dbdd57c2260fa1e1, type: 2}
   drop: {fileID: 0}
   speed: .5
-  life: 10
+  life: 5
   value: 0
   submarineLifeControl: {fileID: 0}
   player: {fileID: 0}
