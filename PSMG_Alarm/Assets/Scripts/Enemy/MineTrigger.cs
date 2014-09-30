@@ -11,8 +11,12 @@ public class MineTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Bossshield")
         {
+            if (col.gameObject.name == "Endboss(Clone)")
+            {
+                return;
+            }
             insideObject.Add(col.gameObject);
 
             if (col.gameObject.tag == "Player")
@@ -53,10 +57,10 @@ public class MineTrigger : MonoBehaviour
                     ga.SendMessage("TakeDamage", 100);
                 }
 
-				if (ga.tag == "Boss")
+				if (ga.tag == "Bossshield")
 				{
-					Debug.Log("boss take damage");
-					ga.SendMessage("TakeDamage", 500);
+					Debug.Log("destroy shield");
+					ga.SendMessage("DestroyEBShield");
 				}
 
                 if (ga.tag == "Player")

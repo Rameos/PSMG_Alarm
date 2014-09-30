@@ -135,11 +135,12 @@ public class Enemy : MonoBehaviour
         moveAllowed = false;
     }
 
-    public void SlowEnemy()
+    public virtual void SlowEnemy()
     {
         if (!slowed)
         {
             SetSpeed(speed * 0.3f);
+            GetComponent<SpriteRenderer>().color = new Color(0, 0, 1);
         }
     }
 

@@ -3,12 +3,21 @@ using System.Collections;
 
 public class MenuLoader : MonoBehaviour
 {
+    void Start()
+    {
+        Screen.showCursor = true;
+    }
 
     void Update()
     {
         if (Input.GetButton("Escape"))
         {
-            Application.LoadLevel("main_menu");
+            LoadMenu();
         }
+    }
+
+    public void LoadMenu()
+    {
+        Application.LoadLevel("main_menu");
     }
 }

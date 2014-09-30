@@ -77,6 +77,14 @@ public class SubmarineLifeControl : MonoBehaviour
         }
     }
 
+    public void KillPlayer()
+    {
+        while (life > 0)
+        {
+            DecrementLife();
+        }
+    }
+
     void UpdateLife()
     {
         for (int i = 0; i < lifeArray.Length; i++)
