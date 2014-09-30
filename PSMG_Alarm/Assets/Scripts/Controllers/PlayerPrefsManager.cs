@@ -45,10 +45,12 @@ public class PlayerPrefsManager : MonoBehaviour
     public static void Reset()
     {
         bool control = GetControl();
+        HighscoreElement[] highscore = GetHighscore();
 
         PlayerPrefs.DeleteAll();
 
         SetControl(control);
+        SetHighscore(highscore);
     }
 
     public static void SetHighscore(HighscoreElement[] score)
@@ -214,7 +216,6 @@ public class PlayerPrefsManager : MonoBehaviour
         {
             highscores[i] = new HighscoreElement(names[i], scores[i]);
         }
-
         return highscores;
     }
 

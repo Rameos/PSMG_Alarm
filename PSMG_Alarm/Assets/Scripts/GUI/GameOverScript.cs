@@ -10,8 +10,6 @@ public class GameOverScript : MonoBehaviour
     private GameObject player;
     private GameControlScript controller;
 
-   // private int buttonWidth, buttonHeight, centerX, centerY, guiBoxWidth, guiBoxHeight, guiBoxX, guiBoxY;
-
     void Start()
     {
         gameOver = false;
