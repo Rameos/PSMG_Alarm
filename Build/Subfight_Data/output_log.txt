@@ -1,0 +1,48 @@
+Initialize engine version: 4.6.0b17 (2d43734a3870)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.4411]
+    Renderer: NVIDIA GeForce GTX 770
+    Vendor:   NVIDIA
+    VRAM:     1985 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.040 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\Managed\System.Core.dll (this message is harmless)
+UnloadTime: 3.854667 ms
+IsolatedStorageException: Could not find file "C:\Users\Andi\Documents\PSMG_Alarm\Build\Subfight_Data\StreamingAssets\.txt".
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, Boolean anonymous, FileOptions options) [0x00000] in <filename unknown>:0 
+  at System.IO.FileStream..ctor (System.String path, FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access, FileShare share) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.Open (FileMode mode, FileAccess access) [0x00000] in <filename unknown>:0 
+  at System.IO.FileInfo.OpenText () [0x00000] in <filename unknown>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo:OpenText ()
+  at StorySequenceManager.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 277.
+Total: 1.409978 ms (FindLiveObjects: 0.021810 ms CreateObjectMapping: 0.007377 ms MarkObjects: 0.118674 ms  DeleteObjects: 0.778759 ms)
+
+UnloadTime: 1.414789 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 759.
+Total: 5.585386 ms (FindLiveObjects: 0.024697 ms CreateObjectMapping: 0.012508 ms MarkObjects: 0.263969 ms  DeleteObjects: 4.870133 ms)
+
