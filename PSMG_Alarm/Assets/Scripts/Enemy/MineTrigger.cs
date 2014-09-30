@@ -11,7 +11,7 @@ public class MineTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy")
+		if (col.gameObject.tag == "Player" || col.gameObject.tag == "Enemy" || col.gameObject.tag == "Boss")
         {
             insideObject.Add(col.gameObject);
 
@@ -56,7 +56,7 @@ public class MineTrigger : MonoBehaviour
 				if (ga.tag == "Boss")
 				{
 					Debug.Log("boss take damage");
-					ga.SendMessage("TakeDamage", 300);
+					ga.SendMessage("TakeDamage", 500);
 				}
 
                 if (ga.tag == "Player")

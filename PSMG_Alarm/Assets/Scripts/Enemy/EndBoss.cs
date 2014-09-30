@@ -8,16 +8,22 @@ public class EndBoss : Enemy {
 
 	public float eggSpawntime;
 
+
 	private float time = 0f;
-	private float timestamp= 0f;
 
 	public override void Shoot()
 	{
 		time += Time.deltaTime;
 		
-		if (time > eggSpawntime) {
+		if (time > eggSpawntime)
+		{
 			time = 0;
 			SpawnEgg(enemyPrefab, 5);
+		}
+
+		if (life <= 0) 
+		{
+			Application.LoadLevel("demo-ende");
 		}
 	}
 
@@ -45,24 +51,7 @@ public class EndBoss : Enemy {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		//set timestamp to avoid multipledamage
-		if (Time.time - timestamp < 0.1f)
-		{
-			return;
-		}
-		timestamp = Time.time;
-		
-		if (col.gameObject.tag == "Player")
-		{
-			foreach (ContactPoint2D contacts in col.contacts)
-			{
-				submarineLifeControl.DecrementLife();
-				col.gameObject.rigidbody2D.AddForce(contacts.normal * 3000);
-			}
-		}
-	}
+
 
 	public void SpawnEgg(GameObject type, int count)
 	{
